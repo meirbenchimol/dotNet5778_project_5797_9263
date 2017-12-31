@@ -3,10 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BL;
+using BE;
 
-namespace BE
+namespace MAIN_PL
 {
-    public class Class1
+    class Program
     {
+        static void Main(string[] args)
+        {
+
+        }
     }
 }

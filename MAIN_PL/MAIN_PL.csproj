@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A1EC5264-A718-4BC4-ACDE-C089EB12455D}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BE</RootNamespace>
-    <AssemblyName>BE</AssemblyName>
+    <ProjectGuid>{A8FB02C0-F27D-40A2-8FB9-B897319737B4}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>MAIN_PL</RootNamespace>
+    <AssemblyName>MAIN_PL</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -40,12 +42,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Child.cs" />
-    <Compile Include="Contract.cs" />
-    <Compile Include="Enum.cs" />
-    <Compile Include="Mother.cs" />
-    <Compile Include="Nanny.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BE\BE.csproj">
+      <Project>{a1ec5264-a718-4bc4-acde-c089eb12455d}</Project>
+      <Name>BE</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BL\BL.csproj">
+      <Project>{54903743-f6d6-496c-8fd6-2b175966d4d4}</Project>
+      <Name>BL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
