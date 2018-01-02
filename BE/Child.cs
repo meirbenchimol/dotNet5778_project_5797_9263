@@ -13,7 +13,7 @@ namespace BE
         private int teoudatZeoutMom;
         private string firstname;
         private DateTime birthday;
-        private Gender gender; 
+        private Gender genderChild; 
         private bool specialNeed;
         private string specialNeeds;
 
@@ -24,7 +24,7 @@ namespace BE
             this.teoudatZeoutMom = teoudatZeoutMom;
             this.firstname = "bart";
             this.birthday = DateTime.MinValue;
-            this.gender = Gender.boy;
+            this.genderChild = Gender.Boy;
             this.specialNeed = false;
         }
 
@@ -35,7 +35,7 @@ namespace BE
         public DateTime Birthday { get => birthday; set => birthday = value; }
         public bool SpecialNeed { get => specialNeed; set => specialNeed = value; }
         public string SpecialNeeds { get => specialNeeds; set => specialNeeds = value; }
-        public Gender Gender { get => gender; set => gender = value; }
+        public Gender GenderChild { get => genderChild; set => genderChild = value; }
 
         //to string 
         public override string ToString()

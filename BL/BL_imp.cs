@@ -115,7 +115,7 @@ namespace BL
         public void AddContract(Contract contract)
         {
             Nanny myNanny = GetNanny(contract.TeoudatZeoutNanny);
-            if (!CapacityOSignature(myNanny, contract))
+            if (!CapacityOSignature(myNanny, contract)&& myNanny==null)
                 throw new Exception("you can do this conctract because this nanny have signed the max children she can !");
 
             contract.MonthPrice = PriceOfMonth(contract);
@@ -144,7 +144,7 @@ namespace BL
         #endregion
 
 
-        //fonction
+        #region Methods
         public int Age(DateTime birthdate)
         {
             var today = DateTime.Today;
@@ -191,7 +191,7 @@ namespace BL
                     count++;
             }
 
-            if (contract.Payement == Payement.horraire)// checkink if the payement is to houres ?
+            if (contract.Payement == Payement.Horraire)// checkink if the payement is to houres ?
             {
                 //if the payement is to houre we need the number of houre par semain and there are 4 week in the month
                 contract.MonthPrice =(4 * TotalHouresWorkingWeek(childMother.HouresNeeds) * nannychildren.PriceHoure * ((100 - count * 2) / 100));
@@ -242,7 +242,7 @@ namespace BL
         }
 
         //method for calculate all nanny she can be good for the mom
-        public List<Nanny> CoordinationMother(Mother mother)
+        public IEnumerable<Nanny> CoordinationMother(Mother mother)
         {
             Mother myMother = dal.GetMother(mother.TeoudatZeout);
             List<Nanny> potentialNanny = new List<Nanny>();// list for the nanny who correspond to the mother
@@ -268,9 +268,9 @@ namespace BL
                 if (problem1 == 0 && problem2 == 0)
                     potentialNanny.Add(item);
             }
-            return potentialNanny;
+            return potentialNanny.AsEnumerable();
         }
-        public List <Nanny> LessPotentielNanny (Mother mother)
+        public IEnumerable <Nanny> LessPotentielNanny (Mother mother)
         {
             Mother myMother = dal.GetMother(mother.TeoudatZeout);
             List<Nanny> lessPotentialNanny = new List<Nanny>();// list for the nanny who correspond to the mother
@@ -313,11 +313,11 @@ namespace BL
                     }
                 }
             }
-            return lessPotentialNanny;
+            return lessPotentialNanny.AsEnumerable();
         }
        
         // method for cherche the nanny in zone wanted
-        public List <Nanny> accessibleNanny (Mother mother)
+        public IEnumerable <Nanny> AccessibleNanny (Mother mother)
         {
             Mother myMother = dal.GetMother(mother.TeoudatZeout);
             List<Nanny> listOfAccessibleNanny = new List<Nanny>();
@@ -335,11 +335,11 @@ namespace BL
                         listOfAccessibleNanny.Add(item);
                 }
             }
-            return listOfAccessibleNanny;
+            return listOfAccessibleNanny.AsEnumerable();
         }
 
         //method for view all children without Nanny
-        public List<Child> ChildWithoutNanny ()
+        public IEnumerable<Child> ChildWithoutNanny ()
         {
             List<Child> listOfChildWithoutNanny = new List<Child>();
             IEnumerable<Contract> ContractList = dal.GetAllContract(null);// take the list of all contract 
@@ -355,11 +355,11 @@ namespace BL
                 if (!check)
                     listOfChildWithoutNanny.Add(item);
             }
-            return listOfChildWithoutNanny;
+            return listOfChildWithoutNanny.AsEnumerable();
         }
 
         // method for all nanny whith hollyday TAMAT
-        public List<Nanny> NannyHolydayTAMAT ()
+        public IEnumerable<Nanny> NannyHolydayTAMAT ()
         {
             List<Nanny> nannyHolydayTAMATList = new List<Nanny>();
             IEnumerable<Nanny> nannyList = dal.GetAllNanny(null);//get all nanny 
@@ -368,7 +368,7 @@ namespace BL
                 if (item.HollydayTAMAT)
                     nannyHolydayTAMATList.Add(item);
             }
-            return nannyHolydayTAMATList;
+            return nannyHolydayTAMATList.AsEnumerable();
         }
 
         public delegate bool ConditionDegate (Contract c);
@@ -386,5 +386,44 @@ namespace BL
                                 select n;
             return List_contract.Count(); 
         }
+        #endregion
+
+
+        #region Grouping
+        IEnumerable <IGrouping<int,Nanny>> Grouping_Nanny (bool MinOrMax=false)
+        {
+            var result = from item in dal.GetAllNanny(null)
+                         orderby CutGroup(item.MinAge, 6)
+                         group item by CutGroup(item.MinAge, 6);
+            if (MinOrMax == false)
+                return result;
+            else
+                return result.Reverse();
+
+        }
+        public int CutGroup (int nbr,int cuter)
+        {
+                return nbr % cuter;
+        }
+
+        IEnumerable<IGrouping<double, Contract>> Grouping_Contract()
+        {
+
+            var Distance = from item in dal.GetAllContract(null)
+                           orderby CutGroup((int)item.Distance, 5)
+                           group item by CutGroup((int)item.Distance, 5);
+            foreach (var g in Distance)
+            {
+                Console.WriteLine("Less than {0}", g);
+                foreach ( var c in g)
+                {
+                    Console.WriteLine(c);
+                }
+            }
+
+            return Distance;
+        }
+        #endregion
+
     }
 }

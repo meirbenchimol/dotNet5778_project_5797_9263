@@ -12,6 +12,6 @@ namespace DS
         public List<Nanny> nannyList = new List<Nanny>();
         public List<Mother> motherList = new List<Mother>();
         public List<Child> childList = new List<Child>();
-       ^public List<Contract> contractList = new List<Contract>();
+        public List<Contract> contractList = new List<Contract>();
     }
 }

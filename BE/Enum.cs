@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    public enum Gender { boy , girl}
-    public enum Payement { horraire , mensuel}
+    public enum Gender { Boy , Girl}
+    public enum Payement { Horraire , Mensuel}
 }

@@ -13,6 +13,7 @@ namespace BE
         private int teoudatZeoutNanny;
         private int teoudatZeoutChild;
         private bool knowMeet;
+        private double distance;
         private bool signature;
         private int hourePrice;
         private int monthPrice;
@@ -41,6 +42,7 @@ namespace BE
         public Payement Payement { get => payement; set => payement = value; }
         public DateTime DateBeguin { get => dateBeguin; set => dateBeguin = value; }
         public DateTime DateFinish { get => dateFinish; set => dateFinish = value; }
+        public double Distance { get => distance; set => distance = value; }
 
         //to string
         public override string ToString()

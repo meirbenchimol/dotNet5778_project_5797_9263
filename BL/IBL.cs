@@ -41,5 +41,22 @@ namespace BL
         IEnumerable<Contract> GetAllContract(Func<Contract, bool> predicate = null);
         #endregion
 
+        #region Methods
+        int CalculateDistance(string source, string dest);
+        IEnumerable<Nanny> CoordinationMother(Mother mother);
+        IEnumerable<Nanny> LessPotentielNanny(Mother mother);
+        IEnumerable<Nanny> AccessibleNanny(Mother mother);
+        IEnumerable<Child> ChildWithoutNanny();
+        IEnumerable<Nanny> NannyHolydayTAMAT();
+        public delegate bool ConditionDegate(Contract c);
+        IEnumerable<Contract> ListOfContractWanted(ConditionDegate cond);
+        int NumberOfContractWanted(ConditionDegate cond);
+        #endregion
+
+        #region Grouping
+        IEnumerable<IGrouping<int, Nanny>> Grouping_Nanny(bool MinOrMax = false);
+        IEnumerable<IGrouping<double, Contract>> Grouping_Contract();
+        #endregion 
+
     }
 }
