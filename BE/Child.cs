@@ -42,7 +42,7 @@ namespace BE
         {
             string children = "the children : " + firstname + "\n teoudat Zeout : " + teoudatZeout
                             + "\n teoudat Zeout'mom : " + teoudatZeoutMom + "\n nirthday : " + birthday
-                            + "\n gender : " + gender + "\n he have speciales need ?" 
+                            + "\n gender : " + genderChild + "\n he have speciales need ?" 
                             + specialNeed + " who are : " + specialNeeds;
 
             return children;

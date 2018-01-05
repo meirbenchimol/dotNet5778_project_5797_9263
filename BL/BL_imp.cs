@@ -13,7 +13,7 @@ using GoogleMapsApi.Entities.Directions.Response;
 
 namespace BL
 {
-    internal class BL_imp : IBL
+    public  class BL_imp : IBL
     {
         DAL.Idal dal;
 
@@ -227,7 +227,7 @@ namespace BL
         }
         
         // method for calcul the distance between 2 adresse 
-        public static int CalculateDistance(string source, string dest)
+        public int CalculateDistance(string source, string dest)
         {
             var drivingDirectonRequest = new DirectionsRequest
             {
@@ -371,15 +371,15 @@ namespace BL
             return nannyHolydayTAMATList.AsEnumerable();
         }
 
-        public delegate bool ConditionDegate (Contract c);
-        public IEnumerable<Contract> ListOfContractWanted (ConditionDegate cond)
+        public delegate bool ConditionDelegate (Contract c);
+        public IEnumerable<Contract> ListOfContractWanted (ConditionDelegate cond)
         {
             return from c in dal.GetAllContract(null)
                    where cond(c)
                    select c;
         }
 
-        public int NumberOfContractWanted (ConditionDegate cond)
+        public int NumberOfContractWanted (ConditionDelegate cond)
         {
             var List_contract = from n in dal.GetAllContract(null)
                                 where cond(n)
@@ -390,7 +390,7 @@ namespace BL
 
 
         #region Grouping
-        IEnumerable <IGrouping<int,Nanny>> Grouping_Nanny (bool MinOrMax=false)
+        public IEnumerable <IGrouping<int,Nanny>> Grouping_Nanny (bool MinOrMax=false)
         {
             var result = from item in dal.GetAllNanny(null)
                          orderby CutGroup(item.MinAge, 6)
@@ -406,16 +406,16 @@ namespace BL
                 return nbr % cuter;
         }
 
-        IEnumerable<IGrouping<double, Contract>> Grouping_Contract()
+        public IEnumerable<IGrouping<double, Contract>> Grouping_Contract()
         {
 
             var Distance = from item in dal.GetAllContract(null)
-                           orderby CutGroup((int)item.Distance, 5)
-                           group item by CutGroup((int)item.Distance, 5);
+                           orderby item.Distance % 5
+                           group item by item.Distance % 5;
             foreach (var g in Distance)
             {
                 Console.WriteLine("Less than {0}", g);
-                foreach ( var c in g)
+                foreach (var c in g)
                 {
                     Console.WriteLine(c);
                 }
