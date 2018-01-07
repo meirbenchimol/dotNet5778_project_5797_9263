@@ -48,9 +48,9 @@ namespace BL
         IEnumerable<Nanny> AccessibleNanny(Mother mother);
         IEnumerable<Child> ChildWithoutNanny();
         IEnumerable<Nanny> NannyHolydayTAMAT();
-        public delegate bool ConditionDelegate(Contract c);
-        IEnumerable<Contract> ListOfContractWanted(ConditionDelegate cond);
-        int NumberOfContractWanted(ConditionDelegate cond);
+        //public delegate bool ConditionDelegate(Contract c);
+        //IEnumerable<Contract> ListOfContractWanted(ConditionDelegate cond);
+        //int NumberOfContractWanted(ConditionDelegate cond);
         #endregion
 
         #region Grouping

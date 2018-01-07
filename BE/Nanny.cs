@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    public class Nanny
+    public class Nanny : IComparable
     {
         //attributs
         private int teoudatZeout;
@@ -37,7 +37,7 @@ namespace BE
             this.firstname = "h";
             this.birthdate = DateTime.Today;
             this.phoneNumber = 0000;
-            this.adresse = "gerard,jeru,israel";
+            this.adresse = "herzl,jeru,israel";
             this.checkfloor = true;
             this.floor = 2;
             this.yearsExperiences = 3;
@@ -45,6 +45,12 @@ namespace BE
             this.minAge = 5;
             this.maxAge = 18;
             this.takePriceHoure = true;
+            priceHoure = 35;
+            priceMonth = 1800;
+            daysWorking = new bool[6];
+            hoursWorking = new int[6, 2];
+            hollydayTAMAT = true;
+            recommandations = "  ";
         }
         
         //propreties
@@ -68,10 +74,17 @@ namespace BE
         public bool HollydayTAMAT { get => hollydayTAMAT; set => hollydayTAMAT = value; }
         public string Recommandations { get => recommandations; set => recommandations = value; }
 
+        public int CompareTo(object obj)
+        {
+            Nanny nanny = obj as Nanny;
+            return this.teoudatZeout.CompareTo(nanny.teoudatZeout);
+        }
+
+
         //to string
         public override string ToString()
         {
-            string nanny = "the Nanny " + surname + " " + firstname
+            string nan = "the Nanny " + surname + " " + firstname
                 + " \n teoudat Zeout :" + teoudatZeout + "\n birth date :" + birthdate
                 + "\n phone number :" + phoneNumber + "\n adresse :" + adresse
                 + "\n there are ascensor : " + checkfloor + " \n Floor : " + floor
@@ -79,10 +92,24 @@ namespace BE
                 + "\n max age : " + maxAge + "\n min age : " + minAge
                 + "\n she take price par houres ? :" + takePriceHoure
                 + "\n price houre : " + priceHoure + "\n price months : " + priceMonth
-                + "\n days working : " + daysWorking + "\n houres wrking : " + hoursWorking
+               
                 + "\n hollyday TAMAT ? : " + hollydayTAMAT + "\recomandations : " + recommandations;
 
-            return nanny;
+            //string nan = "";
+            //Nanny nanny = new Nanny (11);
+            //foreach (var item in nanny.GetType().GetProperties())
+            //{
+            //    nan += string.Format($"{item.Name} : {item.GetValue(nanny, null)} \n");
+            //}
+            nan += "Day Working :\n";
+            for (int i = 0; i < 6; i++)
+                nan += string.Format(i + " " + daysWorking[i].ToString() + "\n");
+            nan += "\nHoure working : \n";
+            for (int i = 0; i < 6; i++)
+                nan += string.Format("Enter Hour: " + hoursWorking[i, 0] + "Exit Hour: " + hoursWorking[i, 1] + "\n");
+
+
+            return nan;
         }
 
     }

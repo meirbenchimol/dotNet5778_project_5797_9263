@@ -28,7 +28,13 @@ namespace BE
             this.teoudatZeoutNanny = teoudatZeoutNanny;
             this.teoudatZeoutChild = teoudatZeoutChild;
             this.knowMeet = true;
-            this.signature = false;
+            distance = 14;
+            signature = false;
+            hourePrice = 35;
+            monthPrice = 1500;
+            payement = Payement.Mensuel;
+            dateBeguin = new DateTime(2017, 10, 12);
+            dateFinish = new DateTime(2018, 10, 12);
         }
 
         //properties

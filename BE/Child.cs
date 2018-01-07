@@ -22,10 +22,11 @@ namespace BE
         {
             this.teoudatZeout = teoudatZeout;
             this.teoudatZeoutMom = teoudatZeoutMom;
-            this.firstname = "bart";
-            this.birthday = DateTime.MinValue;
-            this.genderChild = Gender.Boy;
-            this.specialNeed = false;
+            firstname = "bart";
+            birthday = new DateTime (2017,03,23);
+            genderChild = Gender.Boy;
+            specialNeed = false;
+            specialNeeds = "  ";
         }
 
         //properties

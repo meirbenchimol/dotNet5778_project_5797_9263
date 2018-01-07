@@ -14,7 +14,7 @@ namespace MAIN_PL
         static BL_imp bl;
         static void Main(string[] args)
         {
-            bl = new BL.BL_imp();
+            bl = new BL_imp();
 
             int choice = 0;
             do
@@ -38,8 +38,14 @@ namespace MAIN_PL
                 choice = int.Parse(Console.ReadLine());
                 switch (choice)
                 {
+                    case 1:
+                        AddNanny();
+                        break;
                     case 13:
                         PrintData();
+                        break;
+                    case 14:
+                        choice = 0;
                         break;
 
                     case (default):
@@ -50,8 +56,38 @@ namespace MAIN_PL
 
         private static void PrintData()
         {
+            Console.WriteLine("\n Nanny list : \n");
+            IEnumerable<Nanny> nannyData = bl.GetAllNanny(null);
+            foreach (Nanny item in nannyData)
+            {
+                Console.WriteLine(item + "\n");
+            }
+
             Console.WriteLine("\n Mother list : \n");
-            Console.WriteLine(bl.GetAllNanny(null).ToString());
+            IEnumerable<Mother> motherdata = bl.GetAllMother(null);
+            foreach (Mother item in motherdata)
+            {
+                Console.WriteLine(item + "\n");
+            }
+
+            Console.WriteLine("\n Children List : \n ");
+            IEnumerable<Child> childData = bl.GetAllChild(null);
+            foreach (Child item in childData )
+            {
+                Console.WriteLine(item +"\n");
+            }
+
+            Console.WriteLine("\n Contract List : \n ");
+            IEnumerable<Contract> contractData = bl.GetAllContract(null);
+            foreach ( Contract item in contractData)
+            {
+                Console.WriteLine(item + "\n");
+            }
+        }
+
+        public AddNanny()
+        {
+
         }
     }
 }
