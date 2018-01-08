@@ -28,5 +28,10 @@ namespace PLWPF
             bl = Factory_BL.GetBL();
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

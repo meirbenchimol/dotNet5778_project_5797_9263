@@ -66,7 +66,7 @@ namespace MAIN_PL
                         choice = 0;
                         break;
 
-                    case (default):
+                    default:
                         break;
                 }
             } while (choice != 0);
