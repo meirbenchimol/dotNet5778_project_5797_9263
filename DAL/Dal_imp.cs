@@ -30,7 +30,7 @@ namespace DAL
         }
         public bool DeleteNanny(int teoudatZeout)
         {
-            if (!!NannyList.Exists(x => x.TeoudatZeout == teoudatZeout))
+            if (!NannyList.Exists(x => x.TeoudatZeout == teoudatZeout))
                 throw new Exception("this nanny doesn't exist !");
 
             NannyList.Remove(NannyList.Find(n => n.TeoudatZeout == teoudatZeout));
@@ -136,8 +136,10 @@ namespace DAL
         #region Contract
         public void AddContract (Contract contract)
         {
-            if (ContractList.Exists(x=> x.ContractNumber==contract.ContractNumber))
+            if (ContractList.Exists(x => x.ContractNumber == contract.ContractNumber))
+            {
                 throw new Exception("this contract already exist !");
+            }
             ContractList.Add(contract);
             //ContractList.Sort();
         }

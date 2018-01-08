@@ -26,9 +26,11 @@ namespace BL
         public void Initialisation()
         {
             AddNanny(new Nanny(11111111) { Surname ="dupon",Firstname ="Marge",Birthdate= new DateTime (1992,12,21) });
+            AddNanny(new Nanny(1));
             AddNanny(new Nanny(22222222) { Surname = "ben", Firstname = "sarah", Birthdate = new DateTime(1990, 08, 03) });
             AddMother(new Mother(11133333) { Surname = "levi", Firstname = "debo", Adresse = "hapisga,jerusalem,israel" });
             AddMother(new Mother(11112222) { Surname = "cohen", Firstname = "lea", Adresse = "yaffa,jerusalem,israel" });
+            AddChild(new Child(2,11112222));
             AddChild(new Child(11111122, 11133333) { Firstname = "david", Birthday = new DateTime(2017, 08, 12) });
             AddContract(new Contract(111111, 11111111, 11111122) { DateBeguin = new DateTime(2018, 01, 01) });
         }
@@ -118,9 +120,11 @@ namespace BL
         public void AddContract(Contract contract)
         {
             Nanny myNanny = GetNanny(contract.TeoudatZeoutNanny);
-            if (!CapacityOSignature(myNanny, contract)&& myNanny==null)
+            Child myChild = GetChild(contract.TeoudatZeoutChild);
+            if (!CapacityOSignature(myNanny, contract) || myNanny == null)
+            {
                 throw new Exception("you can do this conctract because this nanny have signed the max children she can !");
-
+            }
             contract.MonthPrice = PriceOfMonth(contract);
 
 

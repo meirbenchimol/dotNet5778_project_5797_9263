@@ -26,7 +26,7 @@ namespace BE
         {
             this.contractNumber = contractNumber;
             this.teoudatZeoutNanny = teoudatZeoutNanny;
-            this.teoudatZeoutChild = teoudatZeoutChild;
+            this.TeoudatZeoutChild = teoudatZeoutChild;
             this.knowMeet = true;
             distance = 14;
             signature = false;
@@ -55,7 +55,7 @@ namespace BE
         {
             string contract = " The contract n°:" + contractNumber
                               + "\n Teoudat Zeout'Nanny: " + teoudatZeoutNanny
-                              + "\n Teoudat Zeout Children: " + teoudatZeoutChild
+                              + "\n Teoudat Zeout Children: " + TeoudatZeoutChild
                               + "\n had the first meeting ?: " + knowMeet
                               + "\n had sign ?: " + signature + "\n houres'price:" + hourePrice
                               + "\n months'price : " + monthPrice + "\n payemment par :" + payement

@@ -35,7 +35,7 @@ namespace BE
             this.teoudatZeout = teoudatZeout;
             this.surname = "X";
             this.firstname = "h";
-            this.birthdate = DateTime.Today;
+            this.birthdate = new DateTime (1999,12,13);
             this.phoneNumber = 0000;
             this.adresse = "herzl,jeru,israel";
             this.checkfloor = true;

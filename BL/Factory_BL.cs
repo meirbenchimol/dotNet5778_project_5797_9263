@@ -7,7 +7,7 @@ using BE;
 
 namespace BL
 {
-    class Factory_BL
+    public class Factory_BL
     {
         static IBL bl = null;
         public static IBL GetBL ()
