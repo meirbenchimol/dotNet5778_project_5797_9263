@@ -31,8 +31,8 @@ namespace PLWPF
 
         private void AddNannyButton_Click(object sender, RoutedEventArgs e)
         {
-            Window Add_Nanny = new Add_Nanny();
-            Add_Nanny.Show();
+            Window NannyWindow = new NannyWindow();
+            NannyWindow.Show();
         }
 
         private void UpdateNannyButton_Click(object sender, RoutedEventArgs e)

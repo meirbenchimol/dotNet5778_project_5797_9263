@@ -9,7 +9,7 @@ namespace BE
     public class Nanny : IComparable
     {
         //attributs
-        private int teoudatZeout;
+        private long teoudatZeout;
         private string surname;
         private string firstname;
         private DateTime birthdate;
@@ -33,20 +33,20 @@ namespace BE
         public Nanny(int teoudatZeout)
         {
             this.teoudatZeout = teoudatZeout;
-            this.surname = "X";
-            this.firstname = "h";
-            this.birthdate = new DateTime (1999,12,13);
-            this.phoneNumber = 0000;
-            this.adresse = "herzl,jeru,israel";
+            this.surname = "XXXXXXXX";
+            this.firstname = "XXXXXXX";
+            this.birthdate = new DateTime (1000,01,01);
+            this.phoneNumber = 0000000000;
+            this.adresse = "street,city,country";
             this.checkfloor = true;
-            this.floor = 2;
-            this.yearsExperiences = 3;
+            this.floor = 0;
+            this.yearsExperiences = 0;
             this.maxChild = 10;
-            this.minAge = 5;
-            this.maxAge = 18;
+            this.minAge = 0;
+            this.maxAge = 0;
             this.takePriceHoure = true;
-            priceHoure = 35;
-            priceMonth = 1800;
+            priceHoure = 0;
+            priceMonth = 0;
             daysWorking = new bool[6];
             hoursWorking = new int[6, 2];
             hollydayTAMAT = true;
@@ -54,7 +54,7 @@ namespace BE
         }
         
         //propreties
-        public int TeoudatZeout { get => teoudatZeout; set => teoudatZeout = value; }
+        public long TeoudatZeout { get => teoudatZeout; set => teoudatZeout = value; }
         public string Surname { get => surname; set => surname = value; }
         public string Firstname { get => firstname; set => firstname = value; }
         public DateTime Birthdate { get => birthdate; set => birthdate = value; }
