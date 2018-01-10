@@ -26,12 +26,25 @@ namespace PLWPF
         public MainWindow()
         {
             bl = Factory_BL.GetBL();
-            InitializeComponent();
+            InitializeComponent(); 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void AddNannyButton_Click(object sender, RoutedEventArgs e)
         {
+            Window Add_Nanny = new Add_Nanny();
+            Add_Nanny.Show();
+        }
 
+        private void UpdateNannyButton_Click(object sender, RoutedEventArgs e)
+        {
+            Window Update_Nanny = new Update_Nanny();
+            Update_Nanny.Show();
+        }
+
+        private void DeleteNannyButton_Click(object sender, RoutedEventArgs e)
+        {
+            Window Delete_Nanny = new Delete_Nanny();
+            Delete_Nanny.Show();
         }
     }
 }
