@@ -9,7 +9,7 @@ namespace BE
     public class Nanny : IComparable
     {
         //attributs
-        private long teoudatZeout;
+        private int teoudatZeout;
         private string surname;
         private string firstname;
         private DateTime birthdate;
@@ -54,7 +54,7 @@ namespace BE
         }
         
         //propreties
-        public long TeoudatZeout { get => teoudatZeout; set => teoudatZeout = value; }
+        public int TeoudatZeout { get => teoudatZeout; set => teoudatZeout = value; }
         public string Surname { get => surname; set => surname = value; }
         public string Firstname { get => firstname; set => firstname = value; }
         public DateTime Birthdate { get => birthdate; set => birthdate = value; }

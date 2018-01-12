@@ -31,7 +31,9 @@ namespace PLWPF
             bl = Factory_BL.GetBL();
         }
 
-        private void addButton_Click(object sender, RoutedEventArgs e)
+       
+
+        private void addButton_Click_1(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -45,7 +47,7 @@ namespace PLWPF
                 bl.AddNanny(nanny);
                 nanny = new Nanny(1);
                 this.NannyDetailsGrid.DataContext = nanny;
-                MessageBox.Show("Congratulation you have had nanny !");
+                MessageBox.Show("Congratulation you have add nanny !\n ID :"+nanny.TeoudatZeout+" Name : "+nanny.Surname+"  "+nanny.Firstname);
 
                 //this.teoudatZeoutTextBox.ClearValue(TextBlock.TextProperty);
                 //this.surnameTextBox.ClearValue(TextBlock.TextProperty);
@@ -60,5 +62,17 @@ namespace PLWPF
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void changeImageButton_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog f = new Microsoft.Win32.OpenFileDialog();
+            f.Filter = "JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
+            if (f.ShowDialog() == true)
+            {
+                this.NannyImage.Source = new BitmapImage(new Uri(f.FileName));
+
+            }
+        }
+
     }
 }

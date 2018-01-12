@@ -54,6 +54,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ImageConverter.cs" />
     <Compile Include="NannyWindow.xaml.cs">
       <DependentUpon>NannyWindow.xaml</DependentUpon>
     </Compile>
@@ -129,6 +130,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="image\topnanny.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\personne-inconnue.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
