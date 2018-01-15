@@ -54,13 +54,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="All Data\Data.xaml.cs">
+      <DependentUpon>Data.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ImageConverter.cs" />
     <Compile Include="NannyWindow.xaml.cs">
       <DependentUpon>NannyWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="All Data\ShowAllNanny.xaml.cs">
+      <DependentUpon>ShowAllNanny.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Update_Nanny.xaml.cs">
       <DependentUpon>Update_Nanny.xaml</DependentUpon>
     </Compile>
+    <Page Include="All Data\Data.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Delete_Nanny.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -81,6 +91,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="NannyWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="All Data\ShowAllNanny.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

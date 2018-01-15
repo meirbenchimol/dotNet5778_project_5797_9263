@@ -41,10 +41,12 @@ namespace PLWPF
             Update_Nanny.Show();
         }
 
-        private void DeleteNannyButton_Click(object sender, RoutedEventArgs e)
+      
+
+        private void AllDataButton_Click(object sender, RoutedEventArgs e)
         {
-            Window Delete_Nanny = new Delete_Nanny();
-            Delete_Nanny.Show();
+            Window Data = new Data();
+            Data.Show();
         }
     }
 }

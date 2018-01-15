@@ -24,11 +24,11 @@
             <RowDefinition Height="15*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <Button x:Name="addButton" Content="Add Nanny" 
-                  Grid.Column="1"  Grid.Row="4" Margin="10" Grid.ColumnSpan="1" Click="addButton_Click_1"/>
+        <Button x:Name="AddButton" Content="Add Nanny" 
+                  Grid.Column="1"  Grid.Row="4" Margin="10" Grid.ColumnSpan="1" Click="AddButton_Click_1"/>
         <Label x:Name="title" Content="Add New Nanny " Grid.Row="2" HorizontalAlignment="Center" FontSize="20" FontFamily="Showcard Gothic" Background="#FF48A6D3" Width="292" Grid.ColumnSpan="3" HorizontalContentAlignment="Center"  />
         
-        <ScrollViewer  HorizontalAlignment="Left"  BorderBrush="Black"  Grid.Row="3" Width="295"  Grid.Column="1" Background="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}"  >
+        <ScrollViewer  HorizontalAlignment="Left"  BorderBrush="Black"  Grid.Row="3" Width="285"  Grid.Column="1" Background="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}"  >
 
             <Grid x:Name="NannyDetailsGrid" VerticalAlignment="Top" HorizontalAlignment="Left" DataContext="{StaticResource nannyViewSource}"  Width="272">
                 <Grid.RowDefinitions>
@@ -72,7 +72,7 @@
                 <Label VerticalAlignment="Center" Grid.Row="5" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Adresse:"/>
                 <TextBox x:Name="adresseTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Adresse, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="5" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
 
-                <Label VerticalAlignment="Center" Grid.Row="6" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Checkfloor:"/>
+                <Label VerticalAlignment="Center" Grid.Row="6" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Check Elevator:"/>
                 <CheckBox x:Name="checkfloorCheckBox" VerticalAlignment="Center" Grid.Row="6" Margin="3" IsChecked="{Binding Checkfloor, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnExceptions=True}" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
 
                 <Label VerticalAlignment="Center" Grid.Row="7" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Floor:"/>

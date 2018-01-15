@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BE;
+using BL;
 
 namespace PLWPF
 {
@@ -19,9 +21,19 @@ namespace PLWPF
     /// </summary>
     public partial class Update_Nanny : Window
     {
+        IBL bl;
         public Update_Nanny()
         {
             InitializeComponent();
+            bl = Factory_BL.GetBL();
+
+            SurnamecomboBox.ItemsSource = bl.GetAllNanny(null);
+            SurnamecomboBox.SelectedValuePath = "TeoudatZeout";
+            SurnamecomboBox.DisplayMemberPath = "Surname";
+
+            FirstnameComboBox.ItemsSource = bl.GetAllNanny(null);
+            FirstnameComboBox.SelectedValuePath = "TeoudatZeout";
+            FirstnameComboBox.DisplayMemberPath = "Firstname";
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -30,6 +42,16 @@ namespace PLWPF
             System.Windows.Data.CollectionViewSource nannyViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("nannyViewSource")));
             // Load data by setting the CollectionViewSource.Source property:
             // nannyViewSource.Source = [generic data source]
+        }
+
+        private void UpdateButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

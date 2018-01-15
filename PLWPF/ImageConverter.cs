@@ -25,7 +25,7 @@ namespace Wpf_UI
             }
             catch (Exception ex)
             {
-                return new BitmapImage(new Uri(@"images\passport\empty_image.gif", UriKind.RelativeOrAbsolute));
+                return new BitmapImage(new Uri(@"image\personne-inconnue.jpg", UriKind.RelativeOrAbsolute));
             }
         }
 
@@ -39,7 +39,7 @@ namespace Wpf_UI
             }
             catch
             {
-                return @"images\passport\empty_image.gif";
+                return @"image\personne-inconnue.jpg";
             }
         }
 

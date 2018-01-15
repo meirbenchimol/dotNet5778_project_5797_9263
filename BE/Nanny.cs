@@ -28,10 +28,12 @@ namespace BE
         private int[,] hoursWorking;
         private bool hollydayTAMAT;
         private string recommandations;
+        //private string imageSource;
 
         //constructor 
         public Nanny(int teoudatZeout)
         {
+            //imageSource = (@"Empty image");
             this.teoudatZeout = teoudatZeout;
             this.surname = "XXXXXXXX";
             this.firstname = "XXXXXXX";
@@ -73,6 +75,7 @@ namespace BE
         public int[,] HoursWorking { get => hoursWorking; set => hoursWorking = value; }
         public bool HollydayTAMAT { get => hollydayTAMAT; set => hollydayTAMAT = value; }
         public string Recommandations { get => recommandations; set => recommandations = value; }
+        //public string ImageSource { get => imageSource; set => imageSource = value; }
 
         public int CompareTo(object obj)
         {
@@ -84,7 +87,7 @@ namespace BE
         //to string
         public override string ToString()
         {
-            string nan = "the Nanny " + surname + " " + firstname
+            string nan = "\n the Nanny " + surname + " " + firstname
                 + " \n teoudat Zeout :" + teoudatZeout + "\n birth date :" + birthdate
                 + "\n phone number :" + phoneNumber + "\n adresse :" + adresse
                 + "\n there are ascensor : " + checkfloor + " \n Floor : " + floor

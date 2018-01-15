@@ -33,7 +33,7 @@ namespace PLWPF
 
        
 
-        private void addButton_Click_1(object sender, RoutedEventArgs e)
+        private void AddButton_Click_1(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -46,8 +46,8 @@ namespace PLWPF
 
                 bl.AddNanny(nanny);
                 nanny = new Nanny(1);
-                this.NannyDetailsGrid.DataContext = nanny;
-                MessageBox.Show("Congratulation you have add nanny !\n ID :"+nanny.TeoudatZeout+" Name : "+nanny.Surname+"  "+nanny.Firstname);
+                nanny = (Nanny)NannyDetailsGrid.DataContext;
+                MessageBox.Show("Congratulation you have add nanny !\n ID :"+nanny.TeoudatZeout+" \n Name : "+nanny.Surname+"  "+nanny.Firstname);
 
                 //this.teoudatZeoutTextBox.ClearValue(TextBlock.TextProperty);
                 //this.surnameTextBox.ClearValue(TextBlock.TextProperty);
