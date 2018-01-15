@@ -46,12 +46,49 @@ namespace PLWPF
 
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                object myNanny = this.SurnamecomboBox.SelectedValue;
+                if (myNanny == null)
+                    throw new Exception("you must choice nanny !!");
 
+
+
+            }
+            catch
+            {
+
+            }
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                //if ((long.Parse(this.teoudatZeoutTextBox.Text)) % 8 >= 1)
+                //    nanny.TeoudatZeout = long.Parse(this.teoudatZeoutTextBox.Text);
+                //else
+                //    throw new Exception ("the teoudat zeout is not avaible");
+                //nanny.Surname = this.surnameTextBox.Text;
+                //nanny.Firstname = this.firstnameTextBox.Text;
 
+                bl.AddNanny(nanny);
+                nanny = new Nanny(1);
+                nanny = (Nanny)NannyDetailsGrid.DataContext;
+                MessageBox.Show("Congratulation you have add nanny !\n ID :" + nanny.TeoudatZeout + " \n Name : " + nanny.Surname + "  " + nanny.Firstname);
+
+                //this.teoudatZeoutTextBox.ClearValue(TextBlock.TextProperty);
+                //this.surnameTextBox.ClearValue(TextBlock.TextProperty);
+                //this.firstnameTextBox.ClearValue(TextBlock.TextProperty);
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("check your input and try again");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
