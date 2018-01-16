@@ -17,51 +17,21 @@ using BL;
 namespace PLWPF
 {
     /// <summary>
-    /// Logique d'interaction pour Update_Nanny.xaml
+    /// Interaction logic for Update_Mother.xaml
     /// </summary>
-    public partial class Update_Nanny : Window
+    public partial class Update_Mother : Window
     {
         IBL bl;
-        Nanny myNanny;
-        public Update_Nanny()
+        Mother myMother;
+        public Update_Mother()
         {
             InitializeComponent();
             bl = Factory_BL.GetBL();
 
-            IdComboBox.ItemsSource = bl.GetAllNanny(null);
+            IdComboBox.ItemsSource = bl.GetAllMother(null);
             IdComboBox.SelectedValuePath = "TeoudatZeout";
             IdComboBox.DisplayMemberPath = "TeoudatZeout";
 
-
-
-
-        }
-        private void ValidNanny_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-
-                myNanny = bl.GetNanny(GetSelectedId());
-
-                this.NannyDetailsGrid.DataContext = myNanny;
-
-            }
-            catch (FormatException)
-            {
-                MessageBox.Show("check your input and try again");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-        }
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-
-            System.Windows.Data.CollectionViewSource nannyViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("nannyViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
-            // nannyViewSource.Source = [generic data source]
         }
 
         private int GetSelectedId()
@@ -69,23 +39,17 @@ namespace PLWPF
             object result = this.IdComboBox.SelectedValue;
 
             if (result == null)
-                throw new Exception("you must choice nanny !!");
+                throw new Exception("you must choice Mother !!");
             return (int)result;
         }
-
-        private void UpdateButton_Click(object sender, RoutedEventArgs e)
+        private void ValidMother_Click(object sender, RoutedEventArgs e)
         {
             try
             {
 
-               
+                myMother = bl.GetMother(GetSelectedId());
 
-                bl.UpdateNanny(myNanny);
-             
-                MessageBox.Show("Congratulation you have update nanny !\n ID :" + myNanny.TeoudatZeout + " \n Name : " + myNanny.Surname + "  " + myNanny.Firstname);
-
-                myNanny = new Nanny(1);
-                myNanny = (Nanny)NannyDetailsGrid.DataContext;
+                this.GridMotherDetail.DataContext = myMother;
 
             }
             catch (FormatException)
@@ -96,6 +60,33 @@ namespace PLWPF
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+
+        private void UpdateButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+
+
+                bl.UpdateMother(myMother);
+            
+                MessageBox.Show("Congratulation you have update Mother !\n ID :" + myMother.TeoudatZeout + " \n Name : " + myMother.Surname + "  " + myMother.Firstname);
+                myMother = new Mother(0);
+                myMother = (Mother)GridMotherDetail.DataContext;
+
+
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("check your input and try again");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
@@ -103,14 +94,11 @@ namespace PLWPF
             try
             {
                 
-
-                bl.DeleteNanny(myNanny.TeoudatZeout);
-                
-                MessageBox.Show("Congratulation you have delete nanny !\n ID :" + myNanny.TeoudatZeout + " \n Name : " + myNanny.Surname + "  " + myNanny.Firstname);
-                myNanny = new Nanny(1);
-                NannyDetailsGrid.DataContext=myNanny ;
-                
-                
+                bl.DeleteMother(myMother.TeoudatZeout);
+            
+                MessageBox.Show("Congratulation you have delete Mother !\n ID :" + myMother.TeoudatZeout + " \n Name : " + myMother.Surname + "  " + myMother.Firstname);
+                myMother = new Mother(0);
+                myMother = (Mother)GridMotherDetail.DataContext;
             }
             catch (FormatException)
             {
@@ -121,7 +109,5 @@ namespace PLWPF
                 MessageBox.Show(ex.Message);
             }
         }
-
-       
     }
 }

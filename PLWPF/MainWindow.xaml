@@ -43,8 +43,8 @@
 
         <Rectangle Grid.Column="2" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="144" Margin="34,27,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="125"/>
         <TextBox Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="39,44,0,0" Grid.Row="1" TextWrapping="Wrap" Text="MOTHER" TextAlignment="Center" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="AddMotherButton" Content="Add Mother" Grid.Column="2" HorizontalAlignment="Left" Margin="54,97,0,0" Grid.Row="1" VerticalAlignment="Top" Width="90" />
-        <Button Content="Update Mother" Grid.Column="2" HorizontalAlignment="Left" Margin="54,122,0,0" Grid.Row="1" VerticalAlignment="Top" Width="90"/>
+        <Button x:Name="AddMotherButton" Content="Add Mother" Grid.Column="2" HorizontalAlignment="Left" Margin="54,97,0,0" Grid.Row="1" VerticalAlignment="Top" Width="90" Click="AddMotherButton_Click" />
+        <Button x:Name="UpdateMother"  Content="Update Mother" Grid.Column="2" HorizontalAlignment="Left" Margin="54,122,0,0" Grid.Row="1" VerticalAlignment="Top" Width="90" Click="UpdateMother_Click" />
 
         <Rectangle Grid.Column="3" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="144" Margin="34,27,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="125"/>
         <TextBox Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="39,44,0,0" Grid.Row="1" TextWrapping="Wrap" Text="CHILDREN" TextAlignment="Center" VerticalAlignment="Top" Width="120"/>

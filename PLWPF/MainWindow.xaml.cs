@@ -41,12 +41,22 @@ namespace PLWPF
             Update_Nanny.Show();
         }
 
-      
-
         private void AllDataButton_Click(object sender, RoutedEventArgs e)
         {
             Window Data = new Data();
             Data.Show();
+        }
+
+        private void AddMotherButton_Click(object sender, RoutedEventArgs e)
+        {
+            Window addMother = new AddMother();
+            addMother.Show();
+        }
+
+        private void UpdateMother_Click(object sender, RoutedEventArgs e)
+        {
+            Window updateMother = new Update_Mother();
+            updateMother.Show();
         }
     }
 }

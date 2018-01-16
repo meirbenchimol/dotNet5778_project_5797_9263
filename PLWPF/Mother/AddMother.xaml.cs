@@ -27,22 +27,38 @@ namespace PLWPF
         public AddMother()
         {
             InitializeComponent();
-            Mother myMother = new Mother(0);
+            myMother = new Mother(0);
             this.MotherDetailGrid.DataContext = myMother;
+            bl = Factory_BL.GetBL();
 
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-
-            System.Windows.Data.CollectionViewSource motherViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("motherViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
-            // motherViewSource.Source = [generic data source]
-        }
+     
 
         private void AddMotherButton_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                if ((int.Parse(this.teoudatZeoutTextBox.Text)) / 10000000 >= 1)
+                    myMother.TeoudatZeout = int.Parse(this.teoudatZeoutTextBox.Text);
+                else
+                    throw new Exception("the teoudat zeout is not avaible");
 
+                bl.AddMother(myMother);
+
+                MessageBox.Show("Congratulation you have add Mother !\n ID :" + myMother.TeoudatZeout + " \n Name : " + myMother.Surname + "  " + myMother.Firstname);
+                myMother = new Mother(0);
+                MotherDetailGrid.DataContext = myMother;
+              
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("check your input and try again");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
