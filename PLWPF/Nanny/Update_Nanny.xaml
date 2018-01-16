@@ -54,7 +54,7 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <Label VerticalAlignment="Center" Grid.Row="0" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="ID:"/>
-                <TextBox x:Name="teoudatZeoutTextBox" Width="120" VerticalAlignment="Center" Text="{Binding TeoudatZeout, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+                <TextBox x:Name="teoudatZeoutTextBox" Width="120" VerticalAlignment="Center" IsEnabled="False" Text="{Binding TeoudatZeout, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
 
                 <Label VerticalAlignment="Center" Grid.Row="1" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Surname:"/>
                 <TextBox x:Name="surnameTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Surname, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
@@ -105,9 +105,39 @@
                 <TextBox x:Name="recommandationsTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Recommandations, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="16" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
             </Grid>
         </ScrollViewer>
-        <Button x:Name="DeleteButton" Content="Delete" Grid.Column="1" HorizontalAlignment="Left" Margin="149,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75" Height="20" Click="DeleteButton_Click" />
-        <Button x:Name="UpdateButton" Content="Update" Grid.Column="1" HorizontalAlignment="Left" Margin="24,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75" Height="20" Click="UpdateButton_Click" />
-        <Button x:Name="ValidNanny" Content="Valide Nanny" Grid.Column="1" HorizontalAlignment="Left" Margin="84,43,0,0" Grid.Row="1" VerticalAlignment="Top" Width="107" Height="20" Click="ValidNanny_Click"/>
+        <Button x:Name="DeleteButton" Content="Delete" Grid.Column="1" HorizontalAlignment="Left" Margin="149,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75" Height="20" Click="DeleteButton_Click" >
+            <Button.Style>
+                <Style>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=teoudatZeoutTextBox, Path=Text}" Value="0">
+                            <Setter Property="Button.IsEnabled" Value="false"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="UpdateButton" Content="Update" Grid.Column="1" HorizontalAlignment="Left" Margin="24,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75" Height="20" Click="UpdateButton_Click" >
+            <Button.Style>
+                <Style>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=teoudatZeoutTextBox, Path=Text}" Value="0">
+                            <Setter Property="Button.IsEnabled" Value="false"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="ValidNanny" Content="Valide Nanny" Grid.Column="1" HorizontalAlignment="Left" Margin="84,43,0,0" Grid.Row="1" VerticalAlignment="Top" Width="107" Height="20" Click="ValidNanny_Click">
+            <Button.Style>
+                <Style>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=IdComboBox, Path=Text}" Value="">
+                            <Setter Property="Button.IsEnabled" Value="false"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
 
     </Grid>
 </Window>

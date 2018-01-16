@@ -25,7 +25,17 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Button x:Name="AddButton" Content="Add Nanny" 
-                  Grid.Column="1"  Grid.Row="4" Margin="10" Grid.ColumnSpan="1" Click="AddButton_Click_1"/>
+                  Grid.Column="1"  Grid.Row="4" Margin="10" Grid.ColumnSpan="1" Click="AddButton_Click_1">
+        <Button.Style>
+            <Style>
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding ElementName=teoudatZeoutTextBox, Path=Text}" Value="0">
+                        <Setter Property="Button.IsEnabled" Value="false"/>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </Button.Style>
+        </Button>
         <Label x:Name="title" Content="Add New Nanny " Grid.Row="2" HorizontalAlignment="Center" FontSize="20" FontFamily="Showcard Gothic" Background="#FF48A6D3" Width="292" Grid.ColumnSpan="3" HorizontalContentAlignment="Center"  />
         
         <ScrollViewer  HorizontalAlignment="Left"  BorderBrush="Black"  Grid.Row="3" Width="285"  Grid.Column="1" Background="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}"  >

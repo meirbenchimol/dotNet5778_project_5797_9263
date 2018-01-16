@@ -37,7 +37,7 @@ namespace PLWPF
         {
             try
             {
-                if ((int.Parse(this.teoudatZeoutTextBox.Text)) % 8 >= 1)
+                if ((int.Parse(this.teoudatZeoutTextBox.Text)) / 10000000 >= 1)
                     nanny.TeoudatZeout = int.Parse(this.teoudatZeoutTextBox.Text);
                 else
                     throw new Exception("the teoudat zeout is not avaible");
@@ -47,7 +47,7 @@ namespace PLWPF
                 bl.AddNanny(nanny);
                 
                 MessageBox.Show("Congratulation you have add nanny !\n ID :"+nanny.TeoudatZeout+" \n Name : "+nanny.Surname+"  "+nanny.Firstname);
-                nanny = new Nanny(00000000);
+                nanny = new Nanny(0);
                 NannyDetailsGrid.DataContext=nanny;
                 //this.teoudatZeoutTextBox.ClearValue(TextBlock.TextProperty);
                 //this.surnameTextBox.ClearValue(TextBlock.TextProperty);

@@ -61,13 +61,13 @@
       <DependentUpon>Data.xaml</DependentUpon>
     </Compile>
     <Compile Include="ImageConverter.cs" />
-    <Compile Include="NannyWindow.xaml.cs">
+    <Compile Include="Nanny\NannyWindow.xaml.cs">
       <DependentUpon>NannyWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="All Data\ShowData.xaml.cs">
       <DependentUpon>ShowData.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Update_Nanny.xaml.cs">
+    <Compile Include="Nanny\Update_Nanny.xaml.cs">
       <DependentUpon>Update_Nanny.xaml</DependentUpon>
     </Compile>
     <Page Include="Mother\AddMother.xaml">
@@ -90,7 +90,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="NannyWindow.xaml">
+    <Page Include="Nanny\NannyWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -98,7 +98,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Update_Nanny.xaml">
+    <Page Include="Nanny\Update_Nanny.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -121,6 +121,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\BE.Child.datasource" />
+    <None Include="Properties\DataSources\BE.Contract.datasource" />
+    <None Include="Properties\DataSources\BE.Mother.datasource" />
     <None Include="Properties\DataSources\BE.Nanny.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -151,5 +154,6 @@
   <ItemGroup>
     <Resource Include="image\photo.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
