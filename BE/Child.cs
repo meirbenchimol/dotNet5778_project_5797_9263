@@ -22,7 +22,7 @@ namespace BE
         {
             this.teoudatZeout = teoudatZeout;
             this.teoudatZeoutMom = teoudatZeoutMom;
-            firstname = "bart";
+            firstname = "firstname";
             birthday = new DateTime (2017,03,23);
             genderChild = Gender.Boy;
             specialNeed = false;
@@ -41,7 +41,7 @@ namespace BE
         //to string 
         public override string ToString()
         {
-            string children = "the children : " + firstname + "\n teoudat Zeout : " + teoudatZeout
+            string children = "The children : " + firstname + "\n teoudat Zeout : " + teoudatZeout
                             + "\n teoudat Zeout'mom : " + teoudatZeoutMom + "\n nirthday : " + birthday
                             + "\n gender : " + genderChild + "\n he have speciales need ?" 
                             + specialNeed + " who are : " + specialNeeds;

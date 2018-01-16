@@ -32,7 +32,7 @@ namespace PLWPF
         {
             try
             {
-                ShowAllNanny sn = new ShowAllNanny();
+                ShowData sn = new ShowData();
                 sn.Source = bl.GetAllNanny(null);
 
                 this.page.Content = sn;
@@ -44,7 +44,52 @@ namespace PLWPF
             }
         }
 
-              
-        
+        private void ShowMotherButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ShowData sn = new ShowData();
+                sn.Source = bl.GetAllMother(null);
+
+                this.page.Content = sn;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void ShowChildrenButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ShowData sn = new ShowData();
+                sn.Source = bl.GetAllChild(null);
+
+                this.page.Content = sn;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void ShowAllContracts_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ShowData sn = new ShowData();
+                sn.Source = bl.GetAllContract(null);
+
+                this.page.Content = sn;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

@@ -37,18 +37,18 @@ namespace PLWPF
         {
             try
             {
-                //if ((long.Parse(this.teoudatZeoutTextBox.Text)) % 8 >= 1)
-                //    nanny.TeoudatZeout = long.Parse(this.teoudatZeoutTextBox.Text);
-                //else
-                //    throw new Exception ("the teoudat zeout is not avaible");
+                if ((int.Parse(this.teoudatZeoutTextBox.Text)) % 8 >= 1)
+                    nanny.TeoudatZeout = int.Parse(this.teoudatZeoutTextBox.Text);
+                else
+                    throw new Exception("the teoudat zeout is not avaible");
                 //nanny.Surname = this.surnameTextBox.Text;
                 //nanny.Firstname = this.firstnameTextBox.Text;
 
                 bl.AddNanny(nanny);
-                nanny = new Nanny(1);
-                nanny = (Nanny)NannyDetailsGrid.DataContext;
+                
                 MessageBox.Show("Congratulation you have add nanny !\n ID :"+nanny.TeoudatZeout+" \n Name : "+nanny.Surname+"  "+nanny.Firstname);
-
+                nanny = new Nanny(00000000);
+                NannyDetailsGrid.DataContext=nanny;
                 //this.teoudatZeoutTextBox.ClearValue(TextBlock.TextProperty);
                 //this.surnameTextBox.ClearValue(TextBlock.TextProperty);
                 //this.firstnameTextBox.ClearValue(TextBlock.TextProperty);

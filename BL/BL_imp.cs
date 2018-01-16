@@ -26,8 +26,12 @@ namespace BL
         public void Initialisation()
         {
             AddNanny(new Nanny(11111111) { Surname ="dupon",Firstname ="Marge",Birthdate= new DateTime (1992,12,21) });
-            AddNanny(new Nanny(1));
+            AddNanny(new Nanny(33333333){ Surname = "hadad" ,Firstname="keren", Birthdate = new DateTime(1990, 02, 21) });
             AddNanny(new Nanny(22222222) { Surname = "ben", Firstname = "sarah", Birthdate = new DateTime(1990, 08, 03) });
+            AddNanny(new Nanny(44444444) { Surname = "benhamou", Firstname = "cecile", Birthdate = new DateTime(1999, 01, 21) });
+            AddNanny(new Nanny(55555555) { Surname = "jormo", Firstname = "hasley", Birthdate = new DateTime(1989, 09, 21) });
+            AddNanny(new Nanny(66666666) { Surname = "halfon", Firstname = "dana", Birthdate = new DateTime(1990, 02, 21) });
+
             AddMother(new Mother(11133333) { Surname = "levi", Firstname = "debo", Adresse = "hapisga,jerusalem,israel" });
             AddMother(new Mother(11112222) { Surname = "cohen", Firstname = "lea", Adresse = "yaffa,jerusalem,israel" });
             AddChild(new Child(2,11112222));

@@ -35,9 +35,9 @@ namespace BE
         {
             //imageSource = (@"Empty image");
             this.teoudatZeout = teoudatZeout;
-            this.surname = "XXXXXXXX";
-            this.firstname = "XXXXXXX";
-            this.birthdate = new DateTime (1000,01,01);
+            this.surname = "surname";
+            this.firstname = "firstname";
+            this.birthdate = new DateTime (1900,01,01);
             this.phoneNumber = 0000000000;
             this.adresse = "street,city,country";
             this.checkfloor = true;
@@ -87,9 +87,9 @@ namespace BE
         //to string
         public override string ToString()
         {
-            string nan = "\n the Nanny " + surname + " " + firstname
-                + " \n teoudat Zeout :" + teoudatZeout + "\n birth date :" + birthdate
-                + "\n phone number :" + phoneNumber + "\n adresse :" + adresse
+            string nan = "\n The Nanny : " + surname + " " + firstname
+                + " \n teoudat Zeout :" + teoudatZeout + "\n birth date : " + birthdate
+                + "\n phone number : " + phoneNumber + "\n adresse :" + adresse
                 + "\n there are ascensor : " + checkfloor + " \n Floor : " + floor
                 + "\n Years experiences : " + yearsExperiences + "\n Max children : " + maxChild
                 + "\n max age : " + maxAge + "\n min age : " + minAge

@@ -54,6 +54,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Mother\AddMother.xaml.cs">
+      <DependentUpon>AddMother.xaml</DependentUpon>
+    </Compile>
     <Compile Include="All Data\Data.xaml.cs">
       <DependentUpon>Data.xaml</DependentUpon>
     </Compile>
@@ -61,17 +64,17 @@
     <Compile Include="NannyWindow.xaml.cs">
       <DependentUpon>NannyWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="All Data\ShowAllNanny.xaml.cs">
-      <DependentUpon>ShowAllNanny.xaml</DependentUpon>
+    <Compile Include="All Data\ShowData.xaml.cs">
+      <DependentUpon>ShowData.xaml</DependentUpon>
     </Compile>
     <Compile Include="Update_Nanny.xaml.cs">
       <DependentUpon>Update_Nanny.xaml</DependentUpon>
     </Compile>
-    <Page Include="All Data\Data.xaml">
+    <Page Include="Mother\AddMother.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Delete_Nanny.xaml">
+    <Page Include="All Data\Data.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -83,9 +86,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Delete_Nanny.xaml.cs">
-      <DependentUpon>Delete_Nanny.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -94,7 +94,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="All Data\ShowAllNanny.xaml">
+    <Page Include="All Data\ShowData.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -147,6 +147,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="image\personne-inconnue.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\photo.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

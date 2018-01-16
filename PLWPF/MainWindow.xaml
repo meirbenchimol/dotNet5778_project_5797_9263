@@ -36,20 +36,15 @@
         <Button x:Name="AllDataButton" Content="All Data" Grid.Column="2" HorizontalAlignment="Left" Margin="86,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="2" Click="AllDataButton_Click"/>
         <Button Content="About us" Grid.Column="2" HorizontalAlignment="Left" Margin="86,46,0,0" Grid.Row="2" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="2" RenderTransformOrigin="3.64,1.75"/>
 
-        <Rectangle x:Name="___NannyInterface_" Grid.Column="1" HorizontalAlignment="Left" Height="144" Margin="34,27,0,0" Grid.Row="1" VerticalAlignment="Top" Width="125" RadiusX="1" MinWidth="7">
-            <Rectangle.Fill>
-                <ImageBrush Stretch="Uniform"/>
-            </Rectangle.Fill>
-        </Rectangle>
-        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="39,44,0,0" Grid.Row="1" TextWrapping="Wrap" Text="NANNY" VerticalAlignment="Top" TextAlignment="Center" Width="120"/>
-        <Button Name="AddNannyButton"  Content="Add Nanny" Grid.Column="1" HorizontalAlignment="Left" Margin="54,97,0,0" Grid.Row="1" VerticalAlignment="Top" Width="90" Click="AddNannyButton_Click" />
-        <Button Name="UpdateNannyButton" Content="Update Nanny" Grid.Column="1" HorizontalAlignment="Left" Margin="54,122,0,0" Grid.Row="1" VerticalAlignment="Top" Width="90" Click="UpdateNannyButton_Click"/>
+
+        <TextBox Grid.Column="1" HorizontalAlignment="Center" Height="34"  Grid.Row="1" TextWrapping="Wrap" Text="NANNY" VerticalAlignment="Top" TextAlignment="Center" Width="157" Margin="19,27,10,0" Background="#FFDE1616" BorderBrush="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" FontFamily="Showcard Gothic" FontWeight="Bold" TextDecorations="{x:Null}" FontSize="20"/>
+        <Button Name="AddNannyButton"  Content="Add Nanny" HorizontalAlignment="Left" Margin="42,87,0,0" Grid.Row="1" VerticalAlignment="Top" Width="103" Click="AddNannyButton_Click" Grid.Column="1" FontFamily="Showcard Gothic" Background="#FFDDDDDD" Height="21"  />
+        <Button Name="UpdateNannyButton" Content="Update Nanny" HorizontalAlignment="Left" Margin="42,136,0,0" Grid.Row="1" VerticalAlignment="Top" Width="103" Click="UpdateNannyButton_Click" Grid.Column="1" FontFamily="Showcard Gothic" RenderTransformOrigin="0.291,0.368" Height="20"/>
 
         <Rectangle Grid.Column="2" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="144" Margin="34,27,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="125"/>
         <TextBox Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="39,44,0,0" Grid.Row="1" TextWrapping="Wrap" Text="MOTHER" TextAlignment="Center" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Add Mother" Grid.Column="2" HorizontalAlignment="Left" Margin="54,97,0,0" Grid.Row="1" VerticalAlignment="Top" Width="90" />
+        <Button x:Name="AddMotherButton" Content="Add Mother" Grid.Column="2" HorizontalAlignment="Left" Margin="54,97,0,0" Grid.Row="1" VerticalAlignment="Top" Width="90" />
         <Button Content="Update Mother" Grid.Column="2" HorizontalAlignment="Left" Margin="54,122,0,0" Grid.Row="1" VerticalAlignment="Top" Width="90"/>
-        <Button Content="Delet Mother" Grid.Column="2" HorizontalAlignment="Left" Margin="54,147,0,0" Grid.Row="1" VerticalAlignment="Top" Width="90"/>
 
         <Rectangle Grid.Column="3" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="144" Margin="34,27,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="125"/>
         <TextBox Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="39,44,0,0" Grid.Row="1" TextWrapping="Wrap" Text="CHILDREN" TextAlignment="Center" VerticalAlignment="Top" Width="120"/>

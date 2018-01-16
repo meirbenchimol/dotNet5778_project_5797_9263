@@ -24,11 +24,11 @@ namespace BE
         public Mother(int teoudatZeout)
         {
             this.teoudatZeout = teoudatZeout;
-            this.surname = "dupon";
-            this.firstname = "marge";
+            this.surname = "surname";
+            this.firstname = "firstname";
             this.phoneNumber = 0000001;
-            this.adresse ="yafo,jerusalem,israel";
-            adresseWanted = "uziel,jerusalem,israel";
+            this.adresse ="street,city,country";
+            adresseWanted = "street,city,country";
             distanceMax = 20;
             daysNeeds = new bool[6];
             houresNeeds = new int[6, 2];
@@ -56,10 +56,10 @@ namespace BE
         //to string 
         public override string ToString()
         {
-            string mom = "the mom " + surname + " " + firstname + "\n teoudat Zeout : " + teoudatZeout
-                        + "\n phone number : " + phoneNumber + "\n adresse : " + adresse
-                        + "\n adresse wanted : " + adresseWanted + "\n" +
-                        "\n recomandations : " + recomandations;
+            string mom = "THE MOTHER " + surname + " " + firstname + "\n ID : " + teoudatZeout
+                        + "\n PHONE NUMBER : " + phoneNumber + "\n ADRESSE : " + adresse
+                        + "\n ADRESSE WANTED : " + adresseWanted + "\n" +
+                        "\n RECOMMANDATIONS : " + recomandations;
 
             //for (int i = 0; i < 6; i++)
             //    mom += string.Format(i + " " + daysNeeds[i].ToString() + "\n");

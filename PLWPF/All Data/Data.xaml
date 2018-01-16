@@ -27,9 +27,9 @@
 
 
         <Button x:Name="ShowNannyButton" Content="Show all Nanny" Grid.Column="1" HorizontalAlignment="Center"  Grid.Row="2" VerticalAlignment="Center" Width="100" Click="ShowNannyButton_Click"  />
-        <Button Content="Show all Mother" Grid.Column="2" HorizontalAlignment="Center"  Grid.Row="2" VerticalAlignment="center" Width="100" />
-        <Button Content="Show all Children" Grid.Column="3" HorizontalAlignment="Center"  Grid.Row="2" VerticalAlignment="Center" Width="100"/>
-        <Button Content="Show all Contracts" Grid.Column="4" HorizontalAlignment="Center"  Grid.Row="2" VerticalAlignment="Center" Width="120"/>
+        <Button x:Name="ShowMotherButton" Content="Show all Mother" Grid.Column="2" HorizontalAlignment="Center"  Grid.Row="2" VerticalAlignment="center" Width="100" Click="ShowMotherButton_Click" />
+        <Button x:Name="ShowChildrenButton" Content="Show all Children" Grid.Column="3" HorizontalAlignment="Center"  Grid.Row="2" VerticalAlignment="Center" Width="100" Click="ShowChildrenButton_Click"/>
+        <Button x:Name="ShowAllContracts" Content="Show all Contracts" Grid.Column="4" HorizontalAlignment="Center"  Grid.Row="2" VerticalAlignment="Center" Width="120" Click="ShowAllContracts_Click"/>
 
         <Button Content="Grouping 1" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"  Margin="85,20,0,0"/>
         <Button Grid.ColumnSpan="2" Content="Grouping 2" Grid.Column="3" HorizontalAlignment="Left" Margin="96,15,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75"/>

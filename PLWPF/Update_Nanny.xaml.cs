@@ -22,20 +22,40 @@ namespace PLWPF
     public partial class Update_Nanny : Window
     {
         IBL bl;
+        Nanny myNanny;
         public Update_Nanny()
         {
             InitializeComponent();
             bl = Factory_BL.GetBL();
 
-            SurnamecomboBox.ItemsSource = bl.GetAllNanny(null);
-            SurnamecomboBox.SelectedValuePath = "TeoudatZeout";
-            SurnamecomboBox.DisplayMemberPath = "Surname";
+            IdComboBox.ItemsSource = bl.GetAllNanny(null);
+            IdComboBox.SelectedValuePath = "TeoudatZeout";
+            IdComboBox.DisplayMemberPath = "TeoudatZeout";
 
-            FirstnameComboBox.ItemsSource = bl.GetAllNanny(null);
-            FirstnameComboBox.SelectedValuePath = "TeoudatZeout";
-            FirstnameComboBox.DisplayMemberPath = "Firstname";
+
+
+
         }
+        private void ValidNanny_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
 
+                myNanny = bl.GetNanny(GetSelectedId());
+
+                this.NannyDetailsGrid.DataContext = myNanny;
+
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("check your input and try again");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
@@ -44,42 +64,29 @@ namespace PLWPF
             // nannyViewSource.Source = [generic data source]
         }
 
+        private int GetSelectedId()
+        {
+            object result = this.IdComboBox.SelectedValue;
+
+            if (result == null)
+                throw new Exception("you must choice nanny !!");
+            return (int)result;
+        }
+
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                object myNanny = this.SurnamecomboBox.SelectedValue;
-                if (myNanny == null)
-                    throw new Exception("you must choice nanny !!");
+
+               
+
+                bl.UpdateNanny(myNanny);
+                myNanny = new Nanny(1);
+                myNanny = (Nanny)NannyDetailsGrid.DataContext;
+                MessageBox.Show("Congratulation you have update nanny !\n ID :" + myNanny.TeoudatZeout + " \n Name : " + myNanny.Surname + "  " + myNanny.Firstname);
 
 
 
-            }
-            catch
-            {
-
-            }
-        }
-
-        private void DeleteButton_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                //if ((long.Parse(this.teoudatZeoutTextBox.Text)) % 8 >= 1)
-                //    nanny.TeoudatZeout = long.Parse(this.teoudatZeoutTextBox.Text);
-                //else
-                //    throw new Exception ("the teoudat zeout is not avaible");
-                //nanny.Surname = this.surnameTextBox.Text;
-                //nanny.Firstname = this.firstnameTextBox.Text;
-
-                bl.AddNanny(nanny);
-                nanny = new Nanny(1);
-                nanny = (Nanny)NannyDetailsGrid.DataContext;
-                MessageBox.Show("Congratulation you have add nanny !\n ID :" + nanny.TeoudatZeout + " \n Name : " + nanny.Surname + "  " + nanny.Firstname);
-
-                //this.teoudatZeoutTextBox.ClearValue(TextBlock.TextProperty);
-                //this.surnameTextBox.ClearValue(TextBlock.TextProperty);
-                //this.firstnameTextBox.ClearValue(TextBlock.TextProperty);
             }
             catch (FormatException)
             {
@@ -90,5 +97,31 @@ namespace PLWPF
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                
+
+                bl.DeleteNanny(myNanny.TeoudatZeout);
+                
+                MessageBox.Show("Congratulation you have delete nanny !\n ID :" + myNanny.TeoudatZeout + " \n Name : " + myNanny.Surname + "  " + myNanny.Firstname);
+                myNanny = new Nanny(1);
+                NannyDetailsGrid.DataContext=myNanny ;
+                
+                
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("check your input and try again");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+       
     }
 }

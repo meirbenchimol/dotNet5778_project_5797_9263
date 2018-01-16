@@ -28,10 +28,10 @@ namespace BE
             this.teoudatZeoutNanny = teoudatZeoutNanny;
             this.TeoudatZeoutChild = teoudatZeoutChild;
             this.knowMeet = true;
-            distance = 14;
+            distance = 0;
             signature = false;
-            hourePrice = 35;
-            monthPrice = 1500;
+            hourePrice = 0;
+            monthPrice = 0;
             payement = Payement.Mensuel;
             dateBeguin = new DateTime(2017, 10, 12);
             dateFinish = new DateTime(2018, 10, 12);
