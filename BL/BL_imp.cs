@@ -205,7 +205,7 @@ namespace BL
             if (contract.Payement == Payement.Horraire)// checkink if the payement is to houres ?
             {
                 //if the payement is to houre we need the number of houre par semain and there are 4 week in the month
-                contract.MonthPrice =(4 * TotalHouresWorkingWeek(childMother.HouresNeeds) * nannychildren.PriceHoure * ((100 - count * 2) / 100));
+                contract.MonthPrice =(int)(4 * TotalHouresWorkingWeek(childMother.HouresNeeds).TotalHours * nannychildren.PriceHoure * ((100 - count * 2) / 100));
             }
             else
                 contract.MonthPrice = nannychildren.PriceMonth * (100 - count * 2) / 100;
@@ -213,28 +213,36 @@ namespace BL
             return contract.MonthPrice ;
         }
 
-        public int TotalHouresWorkingWeek (int [,]matrcice/*in the matrice there are to  the first line the hour begin to woork
+        public TimeSpan TotalHouresWorkingWeek (DateTime [,]matrice/*in the matrice there are to  the first line the hour begin to woork
             and to the second line the hour to stôp to work*/ )
         {
-            int houresWorking = 0;// total of hours in the week where 
-            for (int i =0; i<6; i++)
-            {
-                houresWorking += matrcice[i, 0]-matrcice [i,0];
-            }
-            return houresWorking;
+            //int houresWorking = 0;// total of hours in the week where 
+            //for (int i =0; i<6; i++)
+            //{
+             //   houresWorking += matrcice[i, 0]-matrcice [i,0];
+           // }
+            //return houresWorking;
+
+            TimeSpan sum = (matrice[1,0].Subtract(matrice[0,0])) ;
+            for (int i = 1 ; i<6; i++)
+                {
+                    sum+=matrice[1,i].Subtract(matrice[0,i]);
+                }
+            return sum;
         }
 
-        public int HouresAverageDay(int[,] matrice, bool[] aray)
+        public int HouresAverageDay(DateTime[,] matrice, bool[] aray)
         {
-            int houresWorking = 0;// total of hours in the week where 
+            double houresWorking = TotalHouresWorkingWeek(matrice).TotalHours;// total of hours in the week where 
             int daysWorking = 0;
             for (int i = 0; i < 6; i++)
             {
                 if (aray[i] == true)
                     daysWorking++;
-                houresWorking += matrice[1, i] - matrice[0, i];
             }
-            return houresWorking / daysWorking;
+            return (int)houresWorking / daysWorking;
+          
+
         }
         
         // method for calcul the distance between 2 adresse 

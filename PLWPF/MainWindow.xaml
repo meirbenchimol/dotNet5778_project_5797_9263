@@ -37,7 +37,7 @@
         <Button Content="About us" Grid.Column="2" HorizontalAlignment="Left" Margin="86,46,0,0" Grid.Row="2" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="2" RenderTransformOrigin="3.64,1.75"/>
 
 
-        <TextBox Grid.Column="1" HorizontalAlignment="Center" Height="34"  Grid.Row="1" TextWrapping="Wrap" Text="NANNY" VerticalAlignment="Top" TextAlignment="Center" Width="157" Margin="19,27,10,0" Background="#FFDE1616" BorderBrush="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" FontFamily="Showcard Gothic" FontWeight="Bold" TextDecorations="{x:Null}" FontSize="20"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Center" Height="154"  Grid.Row="1" TextWrapping="Wrap" Text="NANNY" VerticalAlignment="Top" TextAlignment="Center" Width="140" Margin="19,27,27,0" Background="#FFDE1616" BorderBrush="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" FontFamily="Showcard Gothic" FontWeight="Bold" TextDecorations="{x:Null}" FontSize="20"/>
         <Button Name="AddNannyButton"  Content="Add Nanny" HorizontalAlignment="Left" Margin="42,87,0,0" Grid.Row="1" VerticalAlignment="Top" Width="103" Click="AddNannyButton_Click" Grid.Column="1" FontFamily="Showcard Gothic" Background="#FFDDDDDD" Height="21"  />
         <Button Name="UpdateNannyButton" Content="Update Nanny" HorizontalAlignment="Left" Margin="42,136,0,0" Grid.Row="1" VerticalAlignment="Top" Width="103" Click="UpdateNannyButton_Click" Grid.Column="1" FontFamily="Showcard Gothic" RenderTransformOrigin="0.291,0.368" Height="20"/>
 

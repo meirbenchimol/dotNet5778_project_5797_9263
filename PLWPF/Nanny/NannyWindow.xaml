@@ -40,7 +40,7 @@
         
         <ScrollViewer  HorizontalAlignment="Left"  BorderBrush="Black"  Grid.Row="3" Width="285"  Grid.Column="1" Background="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}"  >
 
-            <Grid x:Name="NannyDetailsGrid" VerticalAlignment="Top" HorizontalAlignment="Left" DataContext="{StaticResource nannyViewSource}"  Width="272">
+            <Grid x:Name="NannyDetailsGrid" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" DataContext="{StaticResource nannyViewSource}"  >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -82,7 +82,7 @@
                 <Label VerticalAlignment="Center" Grid.Row="5" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Adresse:"/>
                 <TextBox x:Name="adresseTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Adresse, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="5" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
 
-                <Label VerticalAlignment="Center" Grid.Row="6" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Check Elevator:"/>
+                <Label VerticalAlignment="Center" Grid.Row="6" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="There are Elevator:"/>
                 <CheckBox x:Name="checkfloorCheckBox" VerticalAlignment="Center" Grid.Row="6" Margin="3" IsChecked="{Binding Checkfloor, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnExceptions=True}" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
 
                 <Label VerticalAlignment="Center" Grid.Row="7" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Floor:"/>
@@ -119,7 +119,7 @@
         <Border Grid.Row="1" Grid.Column="1" Margin="82,10,59,10" BorderThickness="2" BorderBrush="Blue">
             <StackPanel >
                 <Image x:Name="NannyImage" 
-                       Source="image/personne-inconnue.jpg "
+                       
                        
                MinHeight="50" MinWidth="50"
                     

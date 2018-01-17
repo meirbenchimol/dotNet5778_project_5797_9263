@@ -17,7 +17,7 @@ namespace BE
         private string adresseWanted;
         private int distanceMax;
         private bool[] daysNeeds;
-        private int[,] houresNeeds;
+        private DateTime[,] houresNeeds;
         private string recomandations;
 
         //constructor
@@ -31,7 +31,7 @@ namespace BE
             adresseWanted = "street,city,country";
             distanceMax = 20;
             daysNeeds = new bool[6];
-            houresNeeds = new int[6, 2];
+            houresNeeds = new DateTime[6, 2];
             recomandations = "  ";
         }
 
@@ -43,7 +43,7 @@ namespace BE
         public string Adresse { get => adresse; set => adresse = value; }
         public string AdresseWanted { get => adresseWanted; set => adresseWanted = value; }
         public bool[] DaysNeeds { get => daysNeeds; set => daysNeeds = value; }
-        public int[,] HouresNeeds { get => houresNeeds; set => houresNeeds = value; }
+        public DateTime[,] HouresNeeds { get => houresNeeds; set => houresNeeds = value; }
         public string Recomandations { get => recomandations; set => recomandations = value; }
         public int DistanceMax { get => distanceMax; set => distanceMax = value; }
 

@@ -25,7 +25,7 @@ namespace BE
         private int priceHoure;
         private int priceMonth;
         private bool[] daysWorking;
-        private int[,] hoursWorking;
+        private DateTime[,] hoursWorking;
         private bool hollydayTAMAT;
         private string recommandations;
         //private string imageSource;
@@ -50,7 +50,7 @@ namespace BE
             priceHoure = 0;
             priceMonth = 0;
             daysWorking = new bool[6];
-            hoursWorking = new int[6, 2];
+            hoursWorking = new DateTime[6, 2];
             hollydayTAMAT = true;
             recommandations = "  ";
         }
@@ -72,7 +72,7 @@ namespace BE
         public int PriceHoure { get => priceHoure; set => priceHoure = value; }
         public int PriceMonth { get => priceMonth; set => priceMonth = value; }
         public bool[] DaysWorking { get => daysWorking; set => daysWorking = value; }
-        public int[,] HoursWorking { get => hoursWorking; set => hoursWorking = value; }
+        public DateTime[,] HoursWorking { get => hoursWorking; set => hoursWorking = value; }
         public bool HollydayTAMAT { get => hollydayTAMAT; set => hollydayTAMAT = value; }
         public string Recommandations { get => recommandations; set => recommandations = value; }
         //public string ImageSource { get => imageSource; set => imageSource = value; }
