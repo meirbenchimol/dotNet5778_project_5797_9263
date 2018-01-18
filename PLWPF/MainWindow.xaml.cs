@@ -58,5 +58,17 @@ namespace PLWPF
             Window updateMother = new Update_Mother();
             updateMother.Show();
         }
+
+        private void AddChildrenButton_Click(object sender, RoutedEventArgs e)
+        {
+            Window AddChildren = new Add_Child();
+            AddChildren.Show();
+        }
+
+        private void UpdateChildrenButton_Click(object sender, RoutedEventArgs e)
+        {
+            Window UpdateChildren = new Update_child();
+            UpdateChildren.Show();
+        }
     }
 }

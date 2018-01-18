@@ -54,6 +54,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Child\Add_Child.xaml.cs">
+      <DependentUpon>Add_Child.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Mother\AddMother.xaml.cs">
       <DependentUpon>AddMother.xaml</DependentUpon>
     </Compile>
@@ -76,6 +79,13 @@
     <Compile Include="Timetable.xaml.cs">
       <DependentUpon>Timetable.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Child\Update_child.xaml.cs">
+      <DependentUpon>Update_child.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Child\Add_Child.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Mother\AddMother.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -113,6 +123,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Timetable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Child\Update_child.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
