@@ -33,30 +33,35 @@
 
         <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" HorizontalAlignment="Center"   Content ="WELCOME TO NANNY'CENTER "  VerticalAlignment="center" Background="{x:Null}" FontSize="36" FontFamily="Showcard Gothic" Foreground="#FF005AF7"  />
 
-        <Button x:Name="AllDataButton" Content="All Data" Grid.Column="2" HorizontalAlignment="Left" Margin="86,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="2" Click="AllDataButton_Click"/>
-        <Button Content="About us" Grid.Column="2" HorizontalAlignment="Left" Margin="86,46,0,0" Grid.Row="2" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="2" RenderTransformOrigin="3.64,1.75"/>
+        <Button x:Name="AllDataButton" Content="All Data" Grid.Column="2" HorizontalAlignment="Center" Margin="98,10,94,0" Grid.Row="2" VerticalAlignment="Top" Width="180" Grid.ColumnSpan="2" Click="AllDataButton_Click" FontFamily="Segoe UI Black" FontSize="20" BorderThickness="8" ClipToBounds="True" SnapsToDevicePixels="True" Background="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}"/>
+        <Button Content="About us" Grid.Column="2" HorizontalAlignment="Center"  Grid.Row="2" VerticalAlignment="Bottom" Width="180" Grid.ColumnSpan="2" Margin="98,0,94,19" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" FontFamily="Segoe UI Black" BorderThickness="5" ClipToBounds="True" />
 
 
-        <TextBox Grid.Column="1" HorizontalAlignment="Center" Height="154" IsEnabled="False" Grid.Row="1" TextWrapping="Wrap" Text="NANNY" VerticalAlignment="Top" TextAlignment="Center" Width="140" Margin="19,27,27,0" Background="#FFDE1616" BorderBrush="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" FontFamily="Showcard Gothic" FontWeight="Bold" TextDecorations="{x:Null}" FontSize="20"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Center" Height="154" IsEnabled="False" Grid.Row="1" TextWrapping="Wrap" Text="NANNY" VerticalAlignment="Center" TextAlignment="Center" Width="140"  Background="#FFDE1616" FontFamily="Showcard Gothic" FontWeight="Bold" TextDecorations="{x:Null}" FontSize="20" OpacityMask="Black" CaretBrush="Black" BorderThickness="10" SnapsToDevicePixels="True" ClipToBounds="True" SelectionOpacity="0">
+            <TextBox.BorderBrush>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="#FF2198DC" Offset="1"/>
+                    <GradientStop Color="#FF000406" Offset="0.2"/>
+                </LinearGradientBrush>
+            </TextBox.BorderBrush>
+        </TextBox>
         <Button Name="AddNannyButton"  Content="Add Nanny" HorizontalAlignment="Left" Margin="42,87,0,0" Grid.Row="1" VerticalAlignment="Top" Width="103" Click="AddNannyButton_Click" Grid.Column="1" FontFamily="Showcard Gothic" Background="#FFDDDDDD" Height="21"  />
-        <Button Name="UpdateNannyButton" Content="Update Nanny" HorizontalAlignment="Left" Margin="42,136,0,0" Grid.Row="1" VerticalAlignment="Top" Width="103" Click="UpdateNannyButton_Click" Grid.Column="1" FontFamily="Showcard Gothic" RenderTransformOrigin="0.291,0.368" Height="20"/>
+        <Button Name="UpdateNannyButton" Content="Update Nanny" HorizontalAlignment="Left" Margin="42,123,0,0" Grid.Row="1" VerticalAlignment="Top" Width="103" Click="UpdateNannyButton_Click" Grid.Column="1" FontFamily="Showcard Gothic" RenderTransformOrigin="0.291,0.368" Height="20"/>
 
-        <Rectangle Grid.Column="2" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="144" Margin="34,27,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="125"/>
-        <TextBox Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="39,44,0,0" Grid.Row="1" TextWrapping="Wrap" Text="MOTHER" TextAlignment="Center" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="AddMotherButton" Content="Add Mother" Grid.Column="2" HorizontalAlignment="Left" Margin="54,97,0,0" Grid.Row="1" VerticalAlignment="Top" Width="90" Click="AddMotherButton_Click" />
-        <Button x:Name="UpdateMother"  Content="Update Mother" Grid.Column="2" HorizontalAlignment="Left" Margin="54,122,0,0" Grid.Row="1" VerticalAlignment="Top" Width="90" Click="UpdateMother_Click" />
+        <TextBox x:Name="MotherTextBox" Grid.Column="2" HorizontalAlignment="Center" Height="154" IsEnabled="False" Grid.Row="1" TextWrapping="Wrap" Text="MOTHER" VerticalAlignment="Center" TextAlignment="Center"  Width="140" Background="#FFDE1616" FontFamily="Showcard Gothic" FontWeight="Bold" TextDecorations="{x:Null}" FontSize="20" OpacityMask="Black" CaretBrush="Black" BorderThickness="10" SnapsToDevicePixels="True" ClipToBounds="True" SelectionOpacity="0"/>
+        <Button x:Name="AddMotherButton" Content="Add Mother" Grid.Column="2" HorizontalAlignment="Left" Margin="36,88,0,0" Grid.Row="1" VerticalAlignment="Top" Width="108" Click="AddMotherButton_Click" RenderTransformOrigin="0.341,-0.051" FontFamily="Showcard Gothic" />
+        <Button x:Name="UpdateMother"  Content="Update Mother" Grid.Column="2" HorizontalAlignment="Left" Margin="36,122,0,0" Grid.Row="1" VerticalAlignment="Top" Width="108" Click="UpdateMother_Click" FontFamily="Showcard Gothic" />
 
-        <Rectangle Grid.Column="3" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="144" Margin="34,27,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="125"/>
-        <TextBox Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="39,44,0,0" Grid.Row="1" TextWrapping="Wrap" Text="CHILDREN" TextAlignment="Center" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="AddChildrenButton" Content="Add Children" Grid.Column="3" HorizontalAlignment="Left" Margin="54,97,0,0" Grid.Row="1" VerticalAlignment="Top" Width="90" Click="AddChildrenButton_Click" />
-        <Button x:Name="UpdateChildrenButton" Content="Update Children" Grid.Column="3" HorizontalAlignment="Left" Margin="54,122,0,0" Grid.Row="1" VerticalAlignment="Top" Width="90" Click="UpdateChildrenButton_Click"/>
+        <TextBox Grid.Column="3" HorizontalAlignment="Center" Height="150" IsEnabled="False" Grid.Row="1" TextWrapping="Wrap" Text="CHILDREN" TextAlignment="Center" VerticalAlignment="Center" Width="150" Background="#FFDE1616" FontFamily="Showcard Gothic" FontWeight="Bold" TextDecorations="{x:Null}" FontSize="20" OpacityMask="Black" CaretBrush="Black" BorderThickness="10" SnapsToDevicePixels="True" ClipToBounds="True" SelectionOpacity="0"/>
+        <Button x:Name="AddChildrenButton" Content="Add Children" Grid.Column="3" HorizontalAlignment="Left" Margin="37,97,0,0" Grid.Row="1" VerticalAlignment="Top" Width="115" Click="AddChildrenButton_Click" FontFamily="Showcard Gothic" />
+        <Button x:Name="UpdateChildrenButton" Content="Update Children" Grid.Column="3" HorizontalAlignment="Left" Margin="37,122,0,0" Grid.Row="1" VerticalAlignment="Top" Width="115" Click="UpdateChildrenButton_Click" FontFamily="Showcard Gothic"/>
 
 
         <Rectangle Grid.Column="4" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="144" Margin="34,27,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="125"/>
         <TextBox Grid.Column="4" HorizontalAlignment="Left" Height="23" Margin="39,44,0,0" Grid.Row="1" TextWrapping="Wrap" Text="CONTRACT" TextAlignment="Center" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Add Contract" Grid.Column="4" HorizontalAlignment="Left" Margin="54,97,0,0" Grid.Row="1" VerticalAlignment="Top" Width="90" />
-        <Button Content="Update Contract" Grid.Column="4" HorizontalAlignment="Left" Margin="54,122,0,0" Grid.Row="1" VerticalAlignment="Top" Width="90"/>
-        <Button Content="Delet Contract" Grid.Column="4" HorizontalAlignment="Left" Margin="54,147,0,0" Grid.Row="1" VerticalAlignment="Top" Width="90"/>
+        <Button x:Name="AddContractButton" Content="Add Contract" Grid.Column="4" HorizontalAlignment="Left" Margin="54,97,0,0" Grid.Row="1" VerticalAlignment="Top" Width="90" Click="AddContractButton_Click" />
+        <Button x:Name="UpdateContractButton" Content="Update Contract" Grid.Column="4" HorizontalAlignment="Left" Margin="54,122,0,0" Grid.Row="1" VerticalAlignment="Top" Width="90" Click="UpdateContractButton_Click"/>
 
     </Grid>
 </Window>

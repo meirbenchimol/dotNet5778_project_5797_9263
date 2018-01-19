@@ -30,7 +30,16 @@
         <Label Content="Update Children" Grid.Column="1" HorizontalAlignment="Stretch"  Grid.Row="1" VerticalAlignment="Stretch" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" FontFamily="Showcard Gothic" />
 
         <ScrollViewer Grid.ColumnSpan="2" Grid.Column="1" HorizontalAlignment="Stretch" Grid.Row="4" VerticalAlignment="Stretch" Background="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}" >
-            <Grid x:Name="ChildrenDetailGrid" DataContext="{StaticResource childViewSource}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Grid x:Name="ChildrenDetailGrid" DataContext="{StaticResource childViewSource}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                <Grid.Style>
+                    <Style>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=firstnameTextBox}" Value="">
+                                <Setter Property="UIElement.IsEnabled" Value="false"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
@@ -44,9 +53,7 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <Label VerticalAlignment="Center" Grid.Row="0" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="ID : "/>
-                <ComboBox x:Name="teoudatZeoutComboBox" Width="120" VerticalAlignment="Center"  Grid.Row="0" Margin="3" Height="23" HorizontalAlignment="Center" Grid.Column="1"/>
-
+                
                 <Label VerticalAlignment="Center" Grid.Row="1" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Mother'ID : "/>
                 <ComboBox x:Name="IdMomComboBox" Grid.Column="1" HorizontalAlignment="Center" Margin="10,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="120"/>
 
@@ -100,7 +107,20 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button Content="Valid Children" Grid.Column="1" HorizontalAlignment="Left" Margin="91,3,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="2"/>
+        <Label VerticalAlignment="Stretch" Grid.Row="2" Margin="3" HorizontalAlignment="Stretch" Grid.Column="1" Content="ID : " Grid.ColumnSpan="2" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" />
+        <ComboBox x:Name="teoudatZeoutComboBox" Width="120" VerticalAlignment="Center"  Grid.Row="2" Margin="3" Height="18" HorizontalAlignment="Center" Grid.Column="2"/>
 
+        <Button x:Name="ValidButton" Content="Valid Children" Grid.Column="1" HorizontalAlignment="Left" Margin="91,3,0,0" Grid.Row="3" VerticalAlignment="Top" Width="90" Grid.ColumnSpan="2" Click="ValidButton_Click" >
+            <Button.Style>
+                <Style>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=teoudatZeoutComboBox}" Value="">
+                            <Setter Property="UIElement.IsEnabled" Value="false"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+       
     </Grid>
 </Window>

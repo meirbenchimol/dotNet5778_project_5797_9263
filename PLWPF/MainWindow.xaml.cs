@@ -68,7 +68,19 @@ namespace PLWPF
         private void UpdateChildrenButton_Click(object sender, RoutedEventArgs e)
         {
             Window UpdateChildren = new Update_child();
-            UpdateChildren.Show();
+            UpdateChildren.ShowDialog();
+        }
+
+        private void AddContractButton_Click(object sender, RoutedEventArgs e)
+        {
+            Window AddContractwindow = new Add_Contract();
+            AddContractwindow.ShowDialog();
+        }
+
+        private void UpdateContractButton_Click(object sender, RoutedEventArgs e)
+        {
+            Window UpdateContractWindow = new Update_Contract();
+            UpdateContractWindow.ShowDialog();
         }
     }
 }

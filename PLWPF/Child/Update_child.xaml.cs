@@ -63,17 +63,15 @@ namespace PLWPF
         {
             try
             {
-                myChild = bl.GetChild(GetSelectedId());
-                this.ChildrenDetailGrid.DataContext = myChild;
-
+              
                 myChild.TeoudatZeoutMom = GetSelectedIdmom();
 
 
                 bl.UpdateChild(myChild);
 
                 MessageBox.Show("Congratulation you have update Children !\n ID :" + myChild.TeoudatZeout +"\n Mother'ID : "+myChild.TeoudatZeoutMom+ " \n Name : " + myChild.Firstname );
-                myChild = new Child(0, 11133333);
-                ChildrenDetailGrid.DataContext = myChild;
+                //ChildrenDetailGrid.DataContext = null;
+                this.Close();
                 
             }
             catch (FormatException)
@@ -91,18 +89,10 @@ namespace PLWPF
         {
             try
             {
-                myChild = bl.GetChild(GetSelectedId());
-                this.ChildrenDetailGrid.DataContext = myChild;
-
-                myChild.TeoudatZeoutMom = GetSelectedIdmom();
-
-
                 bl.DeleteChild(myChild.TeoudatZeout);
 
                 MessageBox.Show("Congratulation you have delete Children !\n ID :" + myChild.TeoudatZeout + "\n Mother'ID : " + myChild.TeoudatZeoutMom + " \n Name : " + myChild.Firstname);
-                //myChild = new Child(0, 11133333);
-                ChildrenDetailGrid.DataContext = null;
-
+                this.Close();
             }
             catch (FormatException)
             {
@@ -121,6 +111,26 @@ namespace PLWPF
             System.Windows.Data.CollectionViewSource childViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("childViewSource")));
             // Load data by setting the CollectionViewSource.Source property:
             // childViewSource.Source = [generic data source]
+        }
+
+        private void ValidButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                myChild = bl.GetChild(GetSelectedId());
+
+                this.ChildrenDetailGrid.DataContext = myChild;
+
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("check your input and try again");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
