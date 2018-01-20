@@ -289,6 +289,7 @@ namespace BL
             }
             return potentialNanny.AsEnumerable();
         }
+        // 5 better nanny who are not exacly what the mom want but can maybe is good
         public IEnumerable <Nanny> LessPotentielNanny (Mother mother)
         {
             Mother myMother = dal.GetMother(mother.TeoudatZeout);

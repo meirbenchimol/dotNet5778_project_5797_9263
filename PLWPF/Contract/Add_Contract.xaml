@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PLWPF"
         xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.Add_Contract"
         mc:Ignorable="d"
-        Title="Add_Contract" Height="600" Width="300" Loaded="Window_Loaded" Background="#FF15A6DC">
+        Title="Add_Contract" Height="600" Width="400" Loaded="Window_Loaded" Background="#FF15A6DC">
     <Window.Resources>
         <CollectionViewSource x:Key="contractViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Contract}, CreateList=True}"/>
     </Window.Resources>
@@ -16,7 +16,7 @@
             <RowDefinition Height="40*"/>
             <RowDefinition Height="150*"/>
             <RowDefinition Height="25*"/>
-            <RowDefinition Height="10*"/>
+            <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10*"/>
@@ -25,7 +25,7 @@
         </Grid.ColumnDefinitions>
         <Label x:Name="Title" Content="Add Contract" Grid.Column="1" HorizontalAlignment="Stretch" Grid.Row="1" VerticalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Segoe UI Black" FontSize="20" />
         <ScrollViewer Grid.Column="1" HorizontalAlignment="Stretch" Grid.Row="2" VerticalAlignment="Stretch" >
-            <Grid x:Name="grid1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" DataContext="{StaticResource contractViewSource}" Background="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}">
+            <Grid x:Name="ContractDedailGtid" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" DataContext="{StaticResource contractViewSource}" Margin="1" Background="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -38,35 +38,55 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <Label VerticalAlignment="Stretch" Grid.Row="0" Margin="3" HorizontalAlignment="Stretch" Grid.Column="0" Content="Contract Number:"/>
-                <TextBox x:Name="contractNumberTextBox"  VerticalAlignment="Stretch" Text="{Binding ContractNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="3,5,17,5"  HorizontalAlignment="Stretch" Grid.Column="1"/>
-               
-                <Label VerticalAlignment="Center" Grid.Row="1" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Date Beguin:"/>
-                <DatePicker x:Name="dateBeguinDatePicker" VerticalAlignment="Center" SelectedDate="{Binding DateBeguin, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="3" HorizontalAlignment="Left" Grid.Column="1"/>
-                
-                <Label VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Date Finish:"/>
-                <DatePicker x:Name="dateFinishDatePicker" VerticalAlignment="Center" SelectedDate="{Binding DateFinish, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="2" Margin="3" HorizontalAlignment="Left" Grid.Column="1"/>
-                <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Distance:"/>
-                <TextBox x:Name="distanceTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Distance, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
-                <Label VerticalAlignment="Center" Grid.Row="4" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Houre Price:"/>
-                <TextBox x:Name="hourePriceTextBox" Width="120" VerticalAlignment="Center" Text="{Binding HourePrice, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
-                <Label VerticalAlignment="Center" Grid.Row="5" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Know Meet:"/>
-                <CheckBox x:Name="knowMeetCheckBox" VerticalAlignment="Center" Grid.Row="5" Margin="3" IsChecked="{Binding KnowMeet, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
-                <Label VerticalAlignment="Center" Grid.Row="6" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Month Price:"/>
-                <TextBox x:Name="monthPriceTextBox" Width="120" VerticalAlignment="Center" Text="{Binding MonthPrice, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="6" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
-                <Label VerticalAlignment="Center" Grid.Row="7" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Payement:"/>
-                <ComboBox x:Name="payementComboBox" Width="120" VerticalAlignment="Center" Text="{Binding Payement, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="7" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
-                <Label VerticalAlignment="Center" Grid.Row="8" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Signature:"/>
-                <CheckBox x:Name="signatureCheckBox" VerticalAlignment="Center" Grid.Row="8" Margin="3" IsChecked="{Binding Signature, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
-                <Label VerticalAlignment="Center" Grid.Row="9" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Teoudat Zeout Child:"/>
-                <TextBox x:Name="teoudatZeoutChildTextBox" Width="120" VerticalAlignment="Center" Text="{Binding TeoudatZeoutChild, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="9" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
-                <Label VerticalAlignment="Center" Grid.Row="10" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Teoudat Zeout Nanny:"/>
-                <TextBox x:Name="teoudatZeoutNannyTextBox" Width="120" VerticalAlignment="Center" Text="{Binding TeoudatZeoutNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="10" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+                <TextBox x:Name="contractNumberTextBox"  VerticalAlignment="Stretch" Text="{Binding ContractNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="3"  HorizontalAlignment="Stretch" Grid.Column="1"/>
+
+                <Label VerticalAlignment="Center" Grid.Row="1" Margin="3" HorizontalAlignment="Stretch"  Grid.Column="0" Grid.ColumnSpan="2" Content="ID Nanny : "/>
+                <ComboBox x:Name="teoudatZeoutNannyComboBox"  VerticalAlignment="Stretch"  Grid.Row="1" Margin="3"  HorizontalAlignment="Stretch" Grid.Column="1"/>
+
+                <Button x:Name="ValidNannyButton" Content="Valid this Nanny " Grid.Column="1" HorizontalAlignment="Left" Margin="10,3,0,0" Grid.Row="2" VerticalAlignment="Top" Width="101" Click="ValidNannyButton_Click"/>
+                <Button Content="PotentialNanny" Grid.Column="1" HorizontalAlignment="Left" Margin="116,3,0,0" Grid.Row="2" VerticalAlignment="Top" Width="92"/>
+
+
+                <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="ID Children : "/>
+                <ComboBox x:Name="teoudatZeoutChildComboBox" VerticalAlignment="Stretch" Grid.Row="3" Margin="3"  HorizontalAlignment="Stretch" Grid.Column="1"/>
+
+                <Button x:Name="ValidChildrenButton" Content="Valid this Children" Grid.Column="1" HorizontalAlignment="Left" Margin="46,6,0,3" Grid.Row="4" VerticalAlignment="Top" Width="101" Click="ValidChildrenButton_Click"/>
+
+                <Label VerticalAlignment="Center" Grid.Row="5" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Date Beguin:"/>
+                <DatePicker x:Name="dateBeguinDatePicker" VerticalAlignment="Center" SelectedDate="{Binding DateBeguin, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="5" Margin="3" HorizontalAlignment="Left" Grid.Column="1"/>
+
+                <Label VerticalAlignment="Center" Grid.Row="6" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Date Finish:"/>
+                <DatePicker x:Name="dateFinishDatePicker" VerticalAlignment="Center" SelectedDate="{Binding DateFinish, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="6" Margin="3" HorizontalAlignment="Left" Grid.Column="1"/>
+
+                <Label VerticalAlignment="Center" Grid.Row="7" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Distance:" />
+                <TextBox x:Name="distanceTextBox" Width="120" VerticalAlignment="Center" IsEnabled="False" Text="{Binding Distance, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="7" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+
+                <Button x:Name="CalculeDistanceButton" Content="Calcule distance between them" Margin="15,3"  Grid.Column="1" HorizontalAlignment="Left"  Grid.Row="8" VerticalAlignment="Top" Width="187" Click="CalculeDistanceButton_Click"/>
+
+                <Label VerticalAlignment="Center" Grid.Row="9" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Houre Price:"/>
+                <TextBox x:Name="hourePriceTextBox" IsEnabled="False" Width="120" VerticalAlignment="Center" Text="{Binding HourePrice, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="9" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+
+                <Label VerticalAlignment="Center" Grid.Row="10" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Month Price:"/>
+                <TextBox x:Name="monthPriceTextBox" IsEnabled="False" Width="120" VerticalAlignment="Center" Text="{Binding MonthPrice, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="10" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+
+                <Label VerticalAlignment="Center" Grid.Row="11" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Payement:"/>
+                <ComboBox x:Name="payementComboBox" Width="120" VerticalAlignment="Center" Text="{Binding Payement, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="11" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+
+                <Label VerticalAlignment="Center" Grid.Row="12" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Know Meet:"/>
+                <CheckBox x:Name="knowMeetCheckBox" VerticalAlignment="Center" Grid.Row="12" Margin="3" IsChecked="{Binding KnowMeet, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
+
+                <Label VerticalAlignment="Center" Grid.Row="13" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Signature:"/>
+                <CheckBox x:Name="signatureCheckBox" VerticalAlignment="Center" Grid.Row="13" Margin="3" IsChecked="{Binding Signature, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
             </Grid>
         </ScrollViewer>
         <Button x:Name="AddContractButton" Content="ADD" Grid.Column="1" HorizontalAlignment="Stretch"  Grid.Row="3" VerticalAlignment="Stretch" FontFamily="Segoe UI Black" Cursor="None" Margin="5" />

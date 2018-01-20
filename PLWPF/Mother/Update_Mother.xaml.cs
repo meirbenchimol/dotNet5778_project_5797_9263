@@ -75,7 +75,7 @@ namespace PLWPF
                 MessageBox.Show("Congratulation you have update Mother !\n ID :" + myMother.TeoudatZeout + " \n Name : " + myMother.Surname + "  " + myMother.Firstname);
                 myMother = new Mother(0);
                 myMother = (Mother)GridMotherDetail.DataContext;
-
+                this.Close();
 
             }
             catch (FormatException)
@@ -99,6 +99,7 @@ namespace PLWPF
                 MessageBox.Show("Congratulation you have delete Mother !\n ID :" + myMother.TeoudatZeout + " \n Name : " + myMother.Surname + "  " + myMother.Firstname);
                 myMother = new Mother(0);
                 myMother = (Mother)GridMotherDetail.DataContext;
+                this.Close();
             }
             catch (FormatException)
             {
