@@ -102,7 +102,7 @@
                 <Label VerticalAlignment="Center" Grid.Row="11" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Max Age:"/>
                 <TextBox x:Name="maxAgeTextBox" Width="120" VerticalAlignment="Center" Text="{Binding MaxAge, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="11" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
 
-                <Grid x:Name="timetableGrid" HorizontalAlignment="Stretch"  Grid.Row="12" VerticalAlignment="Stretch"  Grid.Column="0" Grid.ColumnSpan="2"    >
+                <!--<Grid x:Name="timetableGrid" HorizontalAlignment="Stretch"  Grid.Row="12" VerticalAlignment="Stretch"  Grid.Column="0" Grid.ColumnSpan="2"    >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30*"/>
                         <RowDefinition Height="25*"/>
@@ -118,6 +118,7 @@
                         <ColumnDefinition Width="30*"/>
                         <ColumnDefinition Width="30*"/>
                     </Grid.ColumnDefinitions>
+                    
                     <Label Content="Sunday" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"  />
                     <Label Content="Monday" Grid.Column="2" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
                     <Label Content="Tuesday" Grid.Column="3" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
@@ -151,6 +152,10 @@
                     <TextBox x:Name="HF6" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  Grid.Row="3"   Grid.Column="6" IsEnabled="{Binding ElementName=CheckDay6, Path=IsChecked}"/>
 
 
+                </Grid>-->
+
+                <Grid Grid.Row="12" VerticalAlignment="Stretch"  Grid.Column="0" Grid.ColumnSpan="2">
+                    <local:PlanningUserControl x:Name="Planning"></local:PlanningUserControl>
                 </Grid>
 
                 <Label VerticalAlignment="Center" Grid.Row="13" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Take Houreprice:"/>

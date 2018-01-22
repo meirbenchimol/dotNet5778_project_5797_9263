@@ -99,6 +99,9 @@
     <Compile Include="Mother\Update_Mother.xaml.cs">
       <DependentUpon>Update_Mother.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PlanningUserControl.xaml.cs">
+      <DependentUpon>PlanningUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Timetable.xaml.cs">
       <DependentUpon>Timetable.xaml</DependentUpon>
     </Compile>
@@ -153,6 +156,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Mother\Update_Mother.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PlanningUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

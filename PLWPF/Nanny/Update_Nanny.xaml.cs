@@ -42,7 +42,7 @@ namespace PLWPF
             {
 
                 myNanny = bl.GetNanny(GetSelectedId());
-
+                //planning.in
                 this.NannyDetailsGrid.DataContext = myNanny;
 
             }
