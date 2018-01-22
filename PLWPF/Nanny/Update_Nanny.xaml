@@ -22,14 +22,15 @@
             <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="10*"/>
-            <ColumnDefinition Width="80*"/>
-            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="49*"/>
+            <ColumnDefinition Width="200*"/>
+            <ColumnDefinition Width="200*"/>
+            <ColumnDefinition Width="49*"/>
         </Grid.ColumnDefinitions>
-        <Label Content="Update Nanny " Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontFamily="Showcard Gothic" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.RowSpan="2" />
+        <Label Content="Update Nanny " Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontFamily="Showcard Gothic" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.RowSpan="2" Grid.ColumnSpan="2" />
 
 
-        <StackPanel  VerticalAlignment="Stretch"  Grid.Row="2" HorizontalAlignment="Stretch" Grid.Column="1"  Background="LightBlue" Orientation="Horizontal" >
+        <StackPanel  VerticalAlignment="Stretch"  Grid.Row="2" HorizontalAlignment="Stretch" Grid.Column="1"  Background="LightBlue" Orientation="Horizontal" Grid.ColumnSpan="2" >
             <Label  Content="ID:             " VerticalAlignment="Center" HorizontalAlignment="Left" />
             <ComboBox x:Name="IdComboBox"  VerticalAlignment="Center"   HorizontalAlignment="Left"  Width="150" Margin="5"/>
             <Button x:Name="ValidNanny" Content="Valide Nanny" HorizontalAlignment="Center" Margin="5" VerticalAlignment="Center" Width="107" Height="20" Click="ValidNanny_Click">
@@ -45,7 +46,7 @@
             </Button>
         </StackPanel>
 
-        <ScrollViewer Grid.Column="1" HorizontalAlignment="Stretch" Grid.Row="3" VerticalAlignment="Stretch" >
+        <ScrollViewer Grid.Column="1" HorizontalAlignment="Stretch" Grid.Row="3" VerticalAlignment="Stretch" Grid.ColumnSpan="2" >
             <Grid x:Name="NannyDetailsGrid" VerticalAlignment="Stretch" Margin="1" HorizontalAlignment="Stretch" DataContext="{StaticResource nannyViewSource}"   Background="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -129,32 +130,29 @@
                 <TextBox x:Name="recommandationsTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Recommandations, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="16" Margin="3,4,0,4" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
             </Grid>
         </ScrollViewer>
-        <StackPanel Grid.Column="1" HorizontalAlignment="Stretch" Margin="5" Grid.Row="4" VerticalAlignment="Stretch" Orientation="Horizontal"  >
-        <Button x:Name="DeleteButton" Content="Delete" HorizontalAlignment="Left" Width="150" Height="30 " Click="DeleteButton_Click" >
+       
+        <Button x:Name="UpdateButton" Content="Update"  Grid.Column="1" Grid.Row="4" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="3"  Click="UpdateButton_Click"  >
             <Button.Style>
                 <Style>
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding ElementName=teoudatZeoutTextBox, Path=Text}" Value="0">
-                            <Setter Property="Button.IsEnabled" Value="false"/>
+                        <DataTrigger Binding="{Binding Text, ElementName=teoudatZeoutTextBox}" Value="0">
+                            <Setter Property="UIElement.IsEnabled" Value="false"/>
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
             </Button.Style>
         </Button>
-           
-            <Button x:Name="UpdateButton" Content="Update" HorizontalAlignment="Right"  Width="150" Height="30" Click="UpdateButton_Click" >
-                <Button.Style>
-                    <Style>
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding Text, ElementName=teoudatZeoutTextBox}" Value="0">
-                                <Setter Property="UIElement.IsEnabled" Value="false"/>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-            </Button>
-            
-        </StackPanel>
+        <Button x:Name="DeleteButton" Content="Delete" Grid.Column="2" Grid.Row="4" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="3" Click="DeleteButton_Click"  >
+            <Button.Style>
+                <Style>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=teoudatZeoutTextBox}" Value="0">
+                            <Setter Property="UIElement.IsEnabled" Value="false"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
 
     </Grid>
 </Window>

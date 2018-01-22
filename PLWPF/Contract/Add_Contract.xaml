@@ -110,7 +110,17 @@
                 <CheckBox x:Name="signatureCheckBox" VerticalAlignment="Center" Grid.Row="13" Margin="3" IsChecked="{Binding Signature, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
             </Grid>
         </ScrollViewer>
-        <Button x:Name="AddContractButton" Content="ADD" Grid.Column="1" HorizontalAlignment="Stretch"  Grid.Row="3" VerticalAlignment="Stretch" FontFamily="Segoe UI Black" Cursor="None" Margin="5" Click="AddContractButton_Click" />
+        <Button x:Name="AddContractButton" Content="ADD" Grid.Column="1" HorizontalAlignment="Stretch"  Grid.Row="3" VerticalAlignment="Stretch" FontFamily="Segoe UI Black" Cursor="None" Margin="5" Click="AddContractButton_Click" >
+            <Button.Style>
+                <Style>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=teoudatZeoutNannyComboBox}" Value="">
+                            <Setter Property="UIElement.IsEnabled" Value="false"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
 
     </Grid>
 </Window>

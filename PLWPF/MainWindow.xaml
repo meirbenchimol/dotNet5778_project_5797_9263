@@ -39,34 +39,46 @@
             <Button Content="About us" Grid.Column="2" HorizontalAlignment="Center"  Grid.Row="2" VerticalAlignment="Bottom" Width="180" Grid.ColumnSpan="2" Margin="98,0,94,19" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" FontFamily="Segoe UI Black" BorderThickness="5" ClipToBounds="True" />
         </StackPanel>
 
-        <TextBox Grid.Column="1" HorizontalAlignment="Center" Height="154" IsEnabled="False" Grid.Row="1" TextWrapping="Wrap" Text="NANNY" VerticalAlignment="Center" TextAlignment="Center" Width="140"  Background="#FFDE1616" FontFamily="Showcard Gothic" FontWeight="Bold" TextDecorations="{x:Null}" FontSize="20" OpacityMask="Black" CaretBrush="Black" BorderThickness="10" SnapsToDevicePixels="True" ClipToBounds="True" SelectionOpacity="0">
-            <TextBox.BorderBrush>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="Black" Offset="0"/>
-                    <GradientStop Color="#FF2198DC" Offset="1"/>
-                    <GradientStop Color="#FF000406" Offset="0.2"/>
-                </LinearGradientBrush>
-            </TextBox.BorderBrush>
-        </TextBox>
-        <Button Name="AddNannyButton"  Content="Add Nanny" HorizontalAlignment="Left" Margin="42,87,0,0" Grid.Row="1" VerticalAlignment="Top" Width="103" Click="AddNannyButton_Click" Grid.Column="1" FontFamily="Showcard Gothic" Background="#FFDDDDDD" Height="21"  />
-        <Button Name="UpdateNannyButton" Content="Update Nanny" HorizontalAlignment="Left" Margin="42,123,0,0" Grid.Row="1" VerticalAlignment="Top" Width="103" Click="UpdateNannyButton_Click" Grid.Column="1" FontFamily="Showcard Gothic" RenderTransformOrigin="0.291,0.368" Height="20"/>
+        <Border Grid.Column="1"  HorizontalAlignment="Center" Height="auto"  Grid.Row="1"  VerticalAlignment="Center" Width="auto" BorderBrush="Purple" BorderThickness="1" Background="{StaticResource Back}"  Padding="5">
+            <StackPanel   >
+                <Label Content="NANNY" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Showcard Gothic" FontSize="20" />
+                <Label Content=" "/>
+                <Button Name="AddNannyButton"  Content="Add Nanny" HorizontalAlignment="center"  VerticalAlignment="Center" Width="120" Click="AddNannyButton_Click"  FontFamily="Segoe UI Black"  FontSize="14" Margin="2"  />
+                <Label Content=" "/>
+                <Button Name="UpdateNannyButton" Content="Update Nanny" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="120" Click="UpdateNannyButton_Click" FontFamily="Segoe UI Black" FontSize="14" Margin="2"  />
 
-        <TextBox x:Name="MotherTextBox" Grid.Column="2" HorizontalAlignment="Center" Height="154" IsEnabled="False" Grid.Row="1" TextWrapping="Wrap" Text="MOTHER" VerticalAlignment="Center" TextAlignment="Center"  Width="140" Background="#FFDE1616" FontFamily="Showcard Gothic" FontWeight="Bold" TextDecorations="{x:Null}" FontSize="20" OpacityMask="Black" CaretBrush="Black" BorderThickness="10" SnapsToDevicePixels="True" ClipToBounds="True" SelectionOpacity="0"/>
-        <Button x:Name="AddMotherButton" Content="Add Mother" Grid.Column="2" HorizontalAlignment="Left" Margin="36,88,0,0" Grid.Row="1" VerticalAlignment="Top" Width="108" Click="AddMotherButton_Click" RenderTransformOrigin="0.341,-0.051" FontFamily="Showcard Gothic" />
-        <Button x:Name="UpdateMother"  Content="Update Mother" Grid.Column="2" HorizontalAlignment="Left" Margin="36,122,0,0" Grid.Row="1" VerticalAlignment="Top" Width="108" Click="UpdateMother_Click" FontFamily="Showcard Gothic" />
-
-        <TextBox Grid.Column="3" HorizontalAlignment="Center" Height="150" IsEnabled="False" Grid.Row="1" TextWrapping="Wrap" Text="CHILDREN" TextAlignment="Center" VerticalAlignment="Center" Width="150" Background="#FFDE1616" FontFamily="Showcard Gothic" FontWeight="Bold" TextDecorations="{x:Null}" FontSize="20" OpacityMask="Black" CaretBrush="Black" BorderThickness="10" SnapsToDevicePixels="True" ClipToBounds="True" SelectionOpacity="0"/>
-        <Button x:Name="AddChildrenButton" Content="Add Children" Grid.Column="3" HorizontalAlignment="Left" Margin="37,97,0,0" Grid.Row="1" VerticalAlignment="Top" Width="115" Click="AddChildrenButton_Click" FontFamily="Showcard Gothic" />
-        <Button x:Name="UpdateChildrenButton" Content="Update Children" Grid.Column="3" HorizontalAlignment="Left" Margin="37,122,0,0" Grid.Row="1" VerticalAlignment="Top" Width="115" Click="UpdateChildrenButton_Click" FontFamily="Showcard Gothic"/>
-
-        <Border Grid.Column="4"  HorizontalAlignment="Center" Height="150"  Grid.Row="1"  VerticalAlignment="Center" Width="132" Margin="30,20,24,21" BorderBrush="Purple" BorderThickness="1" Background="{StaticResource Back}"  Padding="5">
+            </StackPanel>
+        </Border>
+        
+      
+        <Border Grid.Column="2"  HorizontalAlignment="Center" Height="auto"  Grid.Row="1"  VerticalAlignment="Center" Width="auto" BorderBrush="Purple" BorderThickness="1" Background="{StaticResource Back}"  Padding="5">
+            <StackPanel   >
+                <Label Content="MOTHER" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Showcard Gothic" FontSize="20" />
+                <Label Content=" "/>
+                <Button x:Name="AddMotherButton" Content="Add Mother"  HorizontalAlignment="Center"  VerticalAlignment="Center" Width="120" Click="AddMotherButton_Click" FontFamily="Segoe UI Black"  FontSize="14" Margin="2" />
+                <Label Content=" "/>
+                <Button x:Name="UpdateMother"  Content="Update Mother"  HorizontalAlignment="Center"  VerticalAlignment="Center" Width="120" Click="UpdateMother_Click" FontFamily="Segoe UI Black" FontSize="14" Margin="2" />
+            </StackPanel>
+        </Border>
+       
+        <Border Grid.Column="3"  HorizontalAlignment="Center" Height="auto"  Grid.Row="1"  VerticalAlignment="Center" Width="auto" BorderBrush="Purple" BorderThickness="1" Background="{StaticResource Back}"  Padding="5">
+            <StackPanel   >
+                <Label Content="CHILDREN" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Showcard Gothic" FontSize="20" />
+                <Label Content=" "/>
+                <Button x:Name="AddChildrenButton" Content="Add Children"  HorizontalAlignment="Center"   VerticalAlignment="Center" Width="120" Click="AddChildrenButton_Click" FontFamily="Segoe UI Black"  FontSize="14" Margin="2" />
+                <Label Content=" "/>
+                <Button x:Name="UpdateChildrenButton" Content="Update Children" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" Click="UpdateChildrenButton_Click" FontFamily="Segoe UI Black" FontSize="14" Margin="2"/>
+            </StackPanel>
+        </Border>
+        
+        <Border Grid.Column="4"  HorizontalAlignment="Center" Height="auto"  Grid.Row="1"  VerticalAlignment="Center" Width="auto" BorderBrush="Purple" BorderThickness="1" Background="{StaticResource Back}"  Padding="5">
         <StackPanel   >
             <Label Content="CONTRACT" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Showcard Gothic" FontSize="20" />
             <Label Content=" "/>
-            <Button x:Name="AddContractButton" Content="Add Contract"  HorizontalAlignment="Center"    VerticalAlignment="Center" Width="121" Click="AddContractButton_Click" FontFamily="Segoe UI Black" FontSize="14" Margin="2,0"  />
+            <Button x:Name="AddContractButton" Content="Add Contract"  HorizontalAlignment="Center"    VerticalAlignment="Center" Width="120" Click="AddContractButton_Click" FontFamily="Segoe UI Black" FontSize="14" Margin="2"  />
             <Label Content=" "/>
 
-            <Button x:Name="UpdateContractButton" Content="Update Contract" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="123" Click="UpdateContractButton_Click" FontFamily="Segoe UI Black" FontSize="14" Margin="2,0,0,0"/>
+            <Button x:Name="UpdateContractButton" Content="Update Contract" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="120" Click="UpdateContractButton_Click" FontFamily="Segoe UI Black" FontSize="14" Margin="2"/>
 
         </StackPanel>
         </Border>

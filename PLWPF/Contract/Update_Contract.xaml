@@ -123,8 +123,28 @@
                 <CheckBox x:Name="signatureCheckBox" VerticalAlignment="Center" Grid.Row="14" Margin="3" IsChecked="{Binding Signature, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
             </Grid>
         </ScrollViewer>
-        <Button x:Name="UpdateButton" Content="  Update  " Grid.Column="1" HorizontalAlignment="Left" Margin="10,5,0,0" Grid.Row="3" VerticalAlignment="Top" Width="179" FontFamily="Segoe UI Black" Height="47" Click="UpdateButton_Click"/>
-        <Button x:Name="DeleteButton" Content="  Delete  " Grid.Column="1" HorizontalAlignment="Left" Margin="223,5,0,0" Grid.Row="3" VerticalAlignment="Top" Width="176" FontFamily="Segoe UI Black" Height="47" Click="DeleteButton_Click"/>
+        <Button x:Name="UpdateButton" Content="  Update  " Grid.Column="1" HorizontalAlignment="Left" Margin="10,5,0,0" Grid.Row="3" VerticalAlignment="Top" Width="179" FontFamily="Segoe UI Black" Height="47" Click="UpdateButton_Click">
+            <Button.Style>
+                <Style>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=contractNumberComboBox}" Value="">
+                            <Setter Property="UIElement.IsEnabled" Value="false"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="DeleteButton" Content="  Delete  " Grid.Column="1" HorizontalAlignment="Left" Margin="223,5,0,0" Grid.Row="3" VerticalAlignment="Top" Width="176" FontFamily="Segoe UI Black" Height="47" Click="DeleteButton_Click">
+            <Button.Style>
+                <Style>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=contractNumberComboBox}" Value="">
+                            <Setter Property="UIElement.IsEnabled" Value="false"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
 
 
     </Grid>

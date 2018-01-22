@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BE;
 using BL;
+using System.ComponentModel;
+
 
 namespace PLWPF
 {
@@ -25,12 +27,17 @@ namespace PLWPF
         Contract myContract;
         Nanny myNanny;
         Child myChild;
+        Mother mom;
+        BackgroundWorker worker;
+
         public Update_Contract()
         {
             InitializeComponent();
             bl = Factory_BL.GetBL();
             myContract = new Contract(0, 0, 0);
-
+            worker = new BackgroundWorker();
+            worker.DoWork += Worker_DoWork;
+            worker.RunWorkerCompleted += Worker_RunWorkerCompleted;
             this.ContractDetailGrid.DataContext = myContract;
 
             contractNumberComboBox.ItemsSource = bl.GetAllContract(null);
@@ -46,6 +53,21 @@ namespace PLWPF
             teoudatZeoutChildComboBox.DisplayMemberPath = "TeoudatZeout";
 
             this.payementComboBox.ItemsSource = Enum.GetValues(typeof(BE.Payement));
+        }
+
+        private void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Result != null)
+            {
+                myContract.Distance = (int)e.Result;
+                this.distanceTextBox.Text = e.Result.ToString();
+            }
+        }
+
+        private void Worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            if (mom != null && myNanny != null)
+                e.Result = bl.CalculateDistance(mom.Adresse, myNanny.Adresse);
         }
 
         private int GetSelectedContractNumber()
@@ -138,6 +160,12 @@ namespace PLWPF
 
         private void RecalculeDistanceButton_Click(object sender, RoutedEventArgs e)
         {
+            mom = bl.GetMother(myChild.TeoudatZeoutMom);
+
+            if (worker.IsBusy != true)
+            {
+                worker.RunWorkerAsync();
+            }
 
         }
 
