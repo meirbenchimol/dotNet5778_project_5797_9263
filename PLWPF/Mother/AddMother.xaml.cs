@@ -13,7 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BE;
 using BL;
-	
+using Xceed.Wpf.Toolkit;
+
 
 namespace PLWPF
 {
@@ -43,21 +44,21 @@ namespace PLWPF
                     myMother.TeoudatZeout = int.Parse(this.teoudatZeoutTextBox.Text);
                 else
                     throw new Exception("the teoudat zeout is not avaible");
+                this.Planning.InsertDataInObject(myMother.DaysNeeds, myMother.HouresNeeds);
 
                 bl.AddMother(myMother);
 
-                MessageBox.Show("Congratulation you have add Mother !\n ID :" + myMother.TeoudatZeout + " \n Name : " + myMother.Surname + "  " + myMother.Firstname);
-                myMother = new Mother(0);
-                MotherDetailGrid.DataContext = myMother;
+                System.Windows.MessageBox.Show("Congratulation you have add Mother !\n ID :" + myMother.TeoudatZeout + " \n Name : " + myMother.Surname + "  " + myMother.Firstname);
+                this.Close();
               
             }
             catch (FormatException)
             {
-                MessageBox.Show("check your input and try again");
+                System.Windows.MessageBox.Show("check your input and try again");
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                System.Windows.MessageBox.Show(ex.Message);
             }
         }
     }

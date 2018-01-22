@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BE;
 using BL;
+using Xceed.Wpf.Toolkit;
 
 namespace PLWPF
 {
@@ -42,17 +43,18 @@ namespace PLWPF
             {
 
                 myNanny = bl.GetNanny(GetSelectedId());
-                //planning.in
+                this.Planning.InsertDataFromObject(myNanny.DaysWorking, myNanny.HoursWorking);
+
                 this.NannyDetailsGrid.DataContext = myNanny;
 
             }
             catch (FormatException)
             {
-                MessageBox.Show("check your input and try again");
+                System.Windows.MessageBox.Show("check your input and try again");
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                System.Windows.MessageBox.Show(ex.Message);
             }
 
         }
@@ -78,23 +80,21 @@ namespace PLWPF
             try
             {
 
-               
+
+                this.Planning.InsertDataInObject(myNanny.DaysWorking, myNanny.HoursWorking);
 
                 bl.UpdateNanny(myNanny);
-             
-                MessageBox.Show("Congratulation you have update nanny !\n ID :" + myNanny.TeoudatZeout + " \n Name : " + myNanny.Surname + "  " + myNanny.Firstname);
-
-                myNanny = new Nanny(1);
-                myNanny = (Nanny)NannyDetailsGrid.DataContext;
+                System.Windows.MessageBox.Show("Congratulation you have update nanny !\n ID :" + myNanny.TeoudatZeout + " \n Name : " + myNanny.Surname + "  " + myNanny.Firstname);
+                this.Close();
 
             }
             catch (FormatException)
             {
-                MessageBox.Show("check your input and try again");
+                System.Windows.MessageBox.Show("check your input and try again");
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                System.Windows.MessageBox.Show(ex.Message);
             }
         }
 
@@ -105,20 +105,18 @@ namespace PLWPF
                 
 
                 bl.DeleteNanny(myNanny.TeoudatZeout);
-                
-                MessageBox.Show("Congratulation you have delete nanny !\n ID :" + myNanny.TeoudatZeout + " \n Name : " + myNanny.Surname + "  " + myNanny.Firstname);
-                myNanny = new Nanny(1);
-                NannyDetailsGrid.DataContext=myNanny ;
+                System.Windows.MessageBox.Show("Congratulation you have delete nanny !\n ID :" + myNanny.TeoudatZeout + " \n Name : " + myNanny.Surname + "  " + myNanny.Firstname);
+                this.Close();
                 
                 
             }
             catch (FormatException)
             {
-                MessageBox.Show("check your input and try again");
+                System.Windows.MessageBox.Show("check your input and try again");
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                System.Windows.MessageBox.Show(ex.Message);
             }
         }
 

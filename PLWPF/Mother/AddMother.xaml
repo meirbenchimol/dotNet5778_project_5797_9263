@@ -3,10 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+
         xmlns:local="clr-namespace:PLWPF"
         xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.AddMother"
         mc:Ignorable="d"
-        Title="AddMother" Height="500" Width="350" Background="#FF48A6D3" >
+        Title="AddMother" Height="700" Width="550" Background="#FF48A6D3" >
     <Window.Resources>
         <CollectionViewSource x:Key="motherViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Mother}, CreateList=True}"/>
     </Window.Resources>
@@ -21,7 +23,7 @@
             <RowDefinition Height="40*"/>
             <RowDefinition Height="15*"/>
             <RowDefinition Height="100*"/>
-            <RowDefinition Height="15*"/>
+            <RowDefinition Height="20*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Button x:Name="AddMotherButton" Content="Add Mother" 
@@ -42,8 +44,9 @@
 
 
         <ScrollViewer Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Grid.Row="3" Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}"  >
-            <Grid x:Name="MotherDetailGrid" VerticalAlignment="Top" HorizontalAlignment="Left" DataContext="{StaticResource motherViewSource}" Height="409" Width="274">
+            <Grid x:Name="MotherDetailGrid" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" DataContext="{StaticResource motherViewSource}" >
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -54,32 +57,36 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto" MinWidth="180" />
+                    <ColumnDefinition Width="Auto" MinWidth="310" />
                 </Grid.ColumnDefinitions>
-                <Label VerticalAlignment="Center" Grid.Row="0" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Teoudat Zeout:"/>
-                <TextBox x:Name="teoudatZeoutTextBox" Width="120" VerticalAlignment="Center" Text="{Binding TeoudatZeout, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+                <Label VerticalAlignment="Center" Grid.Row="0" Margin="3,4,0,15" HorizontalAlignment="Left" Grid.Column="0" Content="Teoudat Zeout:" Height="26" Width="89"/>
+                <TextBox x:Name="teoudatZeoutTextBox" Width="120" VerticalAlignment="Center" Text="{Binding TeoudatZeout, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="3,6,0,17" Height="22" HorizontalAlignment="Left" Grid.Column="1"/>
 
-                <Label VerticalAlignment="Center" Grid.Row="1" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Surname:"/>
-                <TextBox x:Name="surnameTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Surname, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+                <Label VerticalAlignment="Center" Grid.Row="1" Margin="3,14,0,4" HorizontalAlignment="Left" Grid.Column="0" Content="Surname:" Height="26" Width="59"/>
+                <TextBox x:Name="surnameTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Surname, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="3,16,0,6" Height="22" HorizontalAlignment="Left" Grid.Column="1"/>
 
-                <Label VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Firstname:"/>
-                <TextBox x:Name="firstnameTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Firstname, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="2" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+                <Label VerticalAlignment="Center" Grid.Row="2" Margin="3,4,0,14" HorizontalAlignment="Left" Grid.Column="0" Content="Firstname:" Height="26" Width="64"/>
+                <TextBox x:Name="firstnameTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Firstname, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="2" Margin="3,6,0,16" Height="22" HorizontalAlignment="Left" Grid.Column="1"/>
 
-                <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Phone Number:"/>
-                <TextBox x:Name="phoneNumberTextBox" Width="120" VerticalAlignment="Center" Text="{Binding PhoneNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+                <Label VerticalAlignment="Center" Grid.Row="3" Margin="3,14,0,4" HorizontalAlignment="Left" Grid.Column="0" Content="Phone Number:" Height="26" Width="93"/>
+                <TextBox x:Name="phoneNumberTextBox" Width="120" VerticalAlignment="Center" Text="{Binding PhoneNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Margin="3,16,0,6" Height="22" HorizontalAlignment="Left" Grid.Column="1"/>
 
-                <Label VerticalAlignment="Center" Grid.Row="4" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Adresse:"/>
-                <TextBox x:Name="adresseTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Adresse, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+                <Label VerticalAlignment="Center" Grid.Row="4" Margin="3,4,0,14" HorizontalAlignment="Left" Grid.Column="0" Content="Adresse:" Height="26" Width="54"/>
+                <TextBox x:Name="adresseTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Adresse, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="4" Margin="3,6,0,16" Height="22" HorizontalAlignment="Left" Grid.Column="1"/>
 
-                <Label VerticalAlignment="Center" Grid.Row="5" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Adresse Wanted:"/>
-                <TextBox x:Name="adresseWantedTextBox" Width="120" VerticalAlignment="Center" Text="{Binding AdresseWanted, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="5" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+                <Label VerticalAlignment="Center" Grid.Row="5" Margin="3,14,0,4" HorizontalAlignment="Left" Grid.Column="0" Content="Adresse Wanted:" Height="26" Width="99"/>
+                <TextBox x:Name="adresseWantedTextBox" Width="120" VerticalAlignment="Center" Text="{Binding AdresseWanted, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="5" Margin="3,16,0,6" Height="22" HorizontalAlignment="Left" Grid.Column="1"/>
 
-                <Label VerticalAlignment="Center" Grid.Row="6" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Distance Max:"/>
-                <TextBox x:Name="distanceMaxTextBox" Width="120" VerticalAlignment="Center" Text="{Binding DistanceMax, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="6" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+                <Label VerticalAlignment="Center" Grid.Row="6" Margin="3,4,0,14" HorizontalAlignment="Left" Grid.Column="0" Content="Distance Max:" Height="26" Width="83"/>
+                <TextBox x:Name="distanceMaxTextBox" Width="120" VerticalAlignment="Center" Text="{Binding DistanceMax, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="6" Margin="3,6,0,16" Height="22" HorizontalAlignment="Left" Grid.Column="1"/>
 
-                <Label VerticalAlignment="Center" Grid.Row="7" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Recomandations:"/>
-                <TextBox x:Name="recomandationsTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Recomandations, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="7" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+                <Grid Grid.Row="7" VerticalAlignment="Stretch" Margin="3" Grid.Column="0" Grid.ColumnSpan="2">
+                    <local:PlanningUserControl x:Name="Planning"></local:PlanningUserControl>
+                </Grid>
+
+                <Label VerticalAlignment="Center" Grid.Row="8" Margin="3,15,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="Recomandations:" Height="26" Width="101"/>
+                <TextBox x:Name="recomandationsTextBox"  VerticalAlignment="Center" Text="{Binding Recomandations, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="8" Margin="3" Height="70" HorizontalAlignment="Stretch" Grid.Column="1"/>
             </Grid>
         </ScrollViewer>
 

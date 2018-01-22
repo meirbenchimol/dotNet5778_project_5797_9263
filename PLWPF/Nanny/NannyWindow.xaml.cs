@@ -44,17 +44,13 @@ namespace PLWPF
                     nanny.TeoudatZeout = int.Parse(this.teoudatZeoutTextBox.Text);
                 else
                     throw new Exception("the teoudat zeout is not avaible");
-                //nanny.Surname = this.surnameTextBox.Text;
-                //nanny.Firstname = this.firstnameTextBox.Text;
+               
                 this.Planning.InsertDataInObject(nanny.DaysWorking, nanny.HoursWorking);
                 bl.AddNanny(nanny);
 
                 System.Windows.MessageBox.Show("Congratulation you have add nanny !\n ID :"+nanny.HoursWorking[0,1]+nanny.TeoudatZeout+" \n Name : "+nanny.Surname+"  "+nanny.Firstname);
-                nanny = new Nanny(0);
-                NannyDetailsGrid.DataContext=nanny;
-                //this.teoudatZeoutTextBox.ClearValue(TextBlock.TextProperty);
-                //this.surnameTextBox.ClearValue(TextBlock.TextProperty);
-                //this.firstnameTextBox.ClearValue(TextBlock.TextProperty);
+                this.Close();
+                
             }
             catch (FormatException)
             {

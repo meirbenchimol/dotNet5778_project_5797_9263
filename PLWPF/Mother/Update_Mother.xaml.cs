@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BE;
 using BL;
+using Xceed.Wpf.Toolkit;
+
 
 namespace PLWPF
 {
@@ -48,17 +50,18 @@ namespace PLWPF
             {
 
                 myMother = bl.GetMother(GetSelectedId());
+                this.Planning.InsertDataFromObject(myMother.DaysNeeds, myMother.HouresNeeds);
 
                 this.GridMotherDetail.DataContext = myMother;
 
             }
             catch (FormatException)
             {
-                MessageBox.Show("check your input and try again");
+                System.Windows.MessageBox.Show("check your input and try again");
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                System.Windows.MessageBox.Show(ex.Message);
             }
         }
 
@@ -69,22 +72,22 @@ namespace PLWPF
             {
 
 
+                this.Planning.InsertDataInObject(myMother.DaysNeeds, myMother.HouresNeeds);
 
                 bl.UpdateMother(myMother);
-            
-                MessageBox.Show("Congratulation you have update Mother !\n ID :" + myMother.TeoudatZeout + " \n Name : " + myMother.Surname + "  " + myMother.Firstname);
-                myMother = new Mother(0);
-                myMother = (Mother)GridMotherDetail.DataContext;
+
+                System.Windows.MessageBox.Show("Congratulation you have update Mother !\n ID :" + myMother.TeoudatZeout + " \n Name : " + myMother.Surname + "  " + myMother.Firstname);
+             
                 this.Close();
 
             }
             catch (FormatException)
             {
-                MessageBox.Show("check your input and try again");
+                System.Windows.MessageBox.Show("check your input and try again");
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                System.Windows.MessageBox.Show(ex.Message);
             }
 
         }
@@ -95,19 +98,18 @@ namespace PLWPF
             {
                 
                 bl.DeleteMother(myMother.TeoudatZeout);
-            
-                MessageBox.Show("Congratulation you have delete Mother !\n ID :" + myMother.TeoudatZeout + " \n Name : " + myMother.Surname + "  " + myMother.Firstname);
-                myMother = new Mother(0);
-                myMother = (Mother)GridMotherDetail.DataContext;
+
+                System.Windows.MessageBox.Show("Congratulation you have delete Mother !\n ID :" + myMother.TeoudatZeout + " \n Name : " + myMother.Surname + "  " + myMother.Firstname);
+               
                 this.Close();
             }
             catch (FormatException)
             {
-                MessageBox.Show("check your input and try again");
+                System.Windows.MessageBox.Show("check your input and try again");
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                System.Windows.MessageBox.Show(ex.Message);
             }
         }
     }
