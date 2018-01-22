@@ -28,6 +28,8 @@ namespace PLWPF
             InitializeComponent();
             bl = Factory_BL.GetBL();
             myChild = new Child(0, 11133333);
+            this.ChidrenDetailGrid.DataContext = myChild;
+
 
             IdMomComboBox.ItemsSource = bl.GetAllMother(null);
             IdMomComboBox.SelectedValuePath = "TeoudatZeout";
@@ -64,13 +66,13 @@ namespace PLWPF
                 else
                     throw new Exception("the teoudat zeout is not avaible");
 
-                this.ChidrenDetailGrid.DataContext = myChild;
                 myChild.TeoudatZeoutMom = GetSelectedId();
                 bl.AddChild(myChild);
 
                 MessageBox.Show("Congratulation you have add Children !\n ID :" + myChild.TeoudatZeout + " \n Mother'ID :  " + myChild.TeoudatZeoutMom + " \n Name :  " + myChild.Firstname);
-                myChild = new Child(0, 11133333);
-                ChidrenDetailGrid.DataContext = myChild;
+                //myChild = new Child(0, 11133333);
+                //ChidrenDetailGrid.DataContext = myChild;
+                this.Close();
 
             }
             catch (FormatException)

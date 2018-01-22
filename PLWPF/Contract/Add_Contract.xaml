@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PLWPF"
         xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.Add_Contract"
         mc:Ignorable="d"
-        Title="Add_Contract" Height="600" Width="400" Loaded="Window_Loaded" Background="#FF15A6DC">
+        Title="Add_Contract" Height="600" Width="450" Loaded="Window_Loaded" Background="#FF15A6DC">
     <Window.Resources>
         <CollectionViewSource x:Key="contractViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Contract}, CreateList=True}"/>
     </Window.Resources>
@@ -23,9 +23,9 @@
             <ColumnDefinition Width="250*"/>
             <ColumnDefinition Width="10*"/>
         </Grid.ColumnDefinitions>
-        <Label x:Name="Title" Content="Add Contract" Grid.Column="1" HorizontalAlignment="Stretch" Grid.Row="1" VerticalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Segoe UI Black" FontSize="20" />
+        <Label  Content="Add Contract" Grid.Column="1" HorizontalAlignment="Stretch" Grid.Row="1" VerticalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Segoe UI Black" FontSize="20" />
         <ScrollViewer Grid.Column="1" HorizontalAlignment="Stretch" Grid.Row="2" VerticalAlignment="Stretch" >
-            <Grid x:Name="ContractDedailGtid" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" DataContext="{StaticResource contractViewSource}" Margin="1" Background="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}">
+            <Grid x:Name="ContractDedailGrid" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" DataContext="{StaticResource contractViewSource}" Margin="1" Background="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -48,22 +48,43 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <Label VerticalAlignment="Stretch" Grid.Row="0" Margin="3" HorizontalAlignment="Stretch" Grid.Column="0" Content="Contract Number:"/>
-                <TextBox x:Name="contractNumberTextBox"  VerticalAlignment="Stretch" Text="{Binding ContractNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="3"  HorizontalAlignment="Stretch" Grid.Column="1"/>
+                <TextBox x:Name="contractNumberTextBox"  VerticalAlignment="Stretch" Text="{Binding ContractNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="3,3,-47,3"  HorizontalAlignment="Stretch" Grid.Column="1"/>
 
-                <Label VerticalAlignment="Center" Grid.Row="1" Margin="3" HorizontalAlignment="Stretch"  Grid.Column="0" Grid.ColumnSpan="2" Content="ID Nanny : "/>
-                <ComboBox x:Name="teoudatZeoutNannyComboBox"  VerticalAlignment="Stretch"  Grid.Row="1" Margin="3"  HorizontalAlignment="Stretch" Grid.Column="1"/>
+                <Label VerticalAlignment="Center" Grid.Row="1" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="ID Children : "/>
+                <ComboBox x:Name="teoudatZeoutChildComboBox" VerticalAlignment="Stretch" Grid.Row="1" Margin="3,3,-47,3"  HorizontalAlignment="Stretch" Grid.Column="1"/>
 
-                <Button x:Name="ValidNannyButton" Content="Valid this Nanny " Grid.Column="1" HorizontalAlignment="Left" Margin="10,3,0,0" Grid.Row="2" VerticalAlignment="Top" Width="101" Click="ValidNannyButton_Click"/>
-                <Button Content="PotentialNanny" Grid.Column="1" HorizontalAlignment="Left" Margin="116,3,0,0" Grid.Row="2" VerticalAlignment="Top" Width="92"/>
+                <Button x:Name="ValidChildrenButton" Content="Valid this Children" Grid.Column="1" HorizontalAlignment="Left" Margin="83,7,0,3" Grid.Row="2" VerticalAlignment="Top" Width="101" Click="ValidChildrenButton_Click">
+                    <Button.Style>
+                        <Style>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text, ElementName=teoudatZeoutChildComboBox}" Value="">
+                                    <Setter Property="UIElement.IsEnabled" Value="false"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+                <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Stretch"  Grid.Column="0" Grid.ColumnSpan="2" Content="ID Nanny : "/>
+                <ComboBox x:Name="teoudatZeoutNannyComboBox"  VerticalAlignment="Stretch"  Grid.Row="3" Margin="3,3,-47,3"  HorizontalAlignment="Stretch" Grid.Column="1"/>
+
+                <Button x:Name="ValidNannyButton" Content="Valid this Nanny " Grid.Column="1" HorizontalAlignment="Left" Margin="10,3,0,3" Grid.Row="4" VerticalAlignment="Top" Width="101" Click="ValidNannyButton_Click">
+                    <Button.Style>
+                        <Style>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text, ElementName=teoudatZeoutNannyComboBox}" Value="">
+                                    <Setter Property="UIElement.IsEnabled" Value="false"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button x:Name="HelpButton" Content="Help for choice Nanny" Grid.Column="1" HorizontalAlignment="Left" Margin="127,3,-48,0" Grid.Row="4" VerticalAlignment="Top" Width="141" Click="HelpButton_Click"/>
 
 
-                <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="ID Children : "/>
-                <ComboBox x:Name="teoudatZeoutChildComboBox" VerticalAlignment="Stretch" Grid.Row="3" Margin="3"  HorizontalAlignment="Stretch" Grid.Column="1"/>
-
-                <Button x:Name="ValidChildrenButton" Content="Valid this Children" Grid.Column="1" HorizontalAlignment="Left" Margin="46,6,0,3" Grid.Row="4" VerticalAlignment="Top" Width="101" Click="ValidChildrenButton_Click"/>
 
                 <Label VerticalAlignment="Center" Grid.Row="5" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Date Beguin:"/>
-                <DatePicker x:Name="dateBeguinDatePicker" VerticalAlignment="Center" SelectedDate="{Binding DateBeguin, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="5" Margin="3" HorizontalAlignment="Left" Grid.Column="1"/>
+                <DatePicker x:Name="dateBeguinDatePicker" VerticalAlignment="Center" SelectedDate="{Binding DateBeguin, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="5" Margin="3,4,0,4" HorizontalAlignment="Left" Grid.Column="1"/>
 
                 <Label VerticalAlignment="Center" Grid.Row="6" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Date Finish:"/>
                 <DatePicker x:Name="dateFinishDatePicker" VerticalAlignment="Center" SelectedDate="{Binding DateFinish, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="6" Margin="3" HorizontalAlignment="Left" Grid.Column="1"/>
@@ -89,7 +110,7 @@
                 <CheckBox x:Name="signatureCheckBox" VerticalAlignment="Center" Grid.Row="13" Margin="3" IsChecked="{Binding Signature, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
             </Grid>
         </ScrollViewer>
-        <Button x:Name="AddContractButton" Content="ADD" Grid.Column="1" HorizontalAlignment="Stretch"  Grid.Row="3" VerticalAlignment="Stretch" FontFamily="Segoe UI Black" Cursor="None" Margin="5" />
+        <Button x:Name="AddContractButton" Content="ADD" Grid.Column="1" HorizontalAlignment="Stretch"  Grid.Row="3" VerticalAlignment="Stretch" FontFamily="Segoe UI Black" Cursor="None" Margin="5" Click="AddContractButton_Click" />
 
     </Grid>
 </Window>

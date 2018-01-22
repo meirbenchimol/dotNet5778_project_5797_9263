@@ -25,7 +25,7 @@ namespace BL
         }
         public void Initialisation()
         {
-            AddNanny(new Nanny(11111111) { Surname ="dupon",Firstname ="Marge",Birthdate= new DateTime (1992,12,21) });
+            AddNanny(new Nanny(11111111) { Surname ="dupon",Firstname ="Marge",Birthdate= new DateTime (1992,12,21) , Adresse = "yaffa,jerusalem,israel" });
             AddNanny(new Nanny(33333333){ Surname = "hadad" ,Firstname="keren", Birthdate = new DateTime(1990, 02, 21) });
             AddNanny(new Nanny(22222222) { Surname = "ben", Firstname = "sarah", Birthdate = new DateTime(1990, 08, 03) });
             AddNanny(new Nanny(44444444) { Surname = "benhamou", Firstname = "cecile", Birthdate = new DateTime(1999, 01, 21) });
@@ -129,6 +129,7 @@ namespace BL
             {
                 throw new Exception("you can do this conctract because this nanny have signed the max children she can !");
             }
+            contract.HourePrice = myNanny.PriceHoure;
             contract.MonthPrice = PriceOfMonth(contract);
 
 

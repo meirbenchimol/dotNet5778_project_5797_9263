@@ -53,6 +53,7 @@ namespace MAIN_PL
                     case 5:
                         DeleteNanny();
                         break;
+                    
                     case 7:
                         Detletechild();
                         break;

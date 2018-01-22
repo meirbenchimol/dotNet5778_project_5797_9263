@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:PLWPF"
         xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.NannyWindow"
         mc:Ignorable="d"
@@ -18,26 +19,26 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="40*"/>
-            <RowDefinition Height="15*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="30*"/>
             <RowDefinition Height="100*"/>
             <RowDefinition Height="15*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Button x:Name="AddButton" Content="Add Nanny" 
                   Grid.Column="1"  Grid.Row="4" Margin="10" Grid.ColumnSpan="1" Click="AddButton_Click_1">
-        <Button.Style>
-            <Style>
-                <Style.Triggers>
-                    <DataTrigger Binding="{Binding ElementName=teoudatZeoutTextBox, Path=Text}" Value="0">
-                        <Setter Property="Button.IsEnabled" Value="false"/>
-                    </DataTrigger>
-                </Style.Triggers>
-            </Style>
-        </Button.Style>
+            <Button.Style>
+                <Style>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=teoudatZeoutTextBox, Path=Text}" Value="0">
+                            <Setter Property="Button.IsEnabled" Value="false"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
         </Button>
-        <Label x:Name="title" Content="Add New Nanny " Grid.Row="2" HorizontalAlignment="Center" FontSize="20" FontFamily="Showcard Gothic" Background="#FF48A6D3" Width="292" Grid.ColumnSpan="3" HorizontalContentAlignment="Center"  />
-        
+        <Label x:Name="title" Content="Add New Nanny " Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalContentAlignment="Center" FontSize="20" FontFamily="Showcard Gothic" Background="#FF48A6D3" Width="292" Grid.ColumnSpan="3" HorizontalContentAlignment="Center"  />
+
         <ScrollViewer  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  BorderBrush="Black"  Grid.Row="3"   Grid.Column="1" Background="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}"  >
 
             <Grid x:Name="NannyDetailsGrid" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" DataContext="{StaticResource nannyViewSource}"  >
@@ -128,26 +129,26 @@
                     <Label Content="Houre Beguin : " HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center"/>
                     <Label Content="Houre Finish : " HorizontalAlignment="Center"  Grid.Row="3" VerticalAlignment="Center"/>
 
-                    <CheckBox Content="" Grid.Column="1" HorizontalAlignment="Center"  Grid.Row="1" VerticalAlignment="Center"/>
-                    <CheckBox Content="" Grid.Column="2" HorizontalAlignment="Center"  Grid.Row="1" VerticalAlignment="Center"/>
-                    <CheckBox Content="" Grid.Column="3" HorizontalAlignment="Center"  Grid.Row="1" VerticalAlignment="Center"/>
-                    <CheckBox Content="" Grid.Column="4" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center"/>
-                    <CheckBox Content="" Grid.Column="5" HorizontalAlignment="Center"  Grid.Row="1" VerticalAlignment="Center"/>
-                    <CheckBox Content="" Grid.Column="6" HorizontalAlignment="Center"  Grid.Row="1" VerticalAlignment="Center"/>
+                    <CheckBox x:Name="CheckDay1" Content="" Grid.Column="1" HorizontalAlignment="Center"  Grid.Row="1" VerticalAlignment="Center" IsChecked="{Binding DaysWorking[0], Mode=TwoWay}" />
+                    <CheckBox x:Name="CheckDay2" Content="" Grid.Column="2" HorizontalAlignment="Center"  Grid.Row="1" VerticalAlignment="Center" IsChecked="{Binding DaysWorking[1], Mode=TwoWay}" />
+                    <CheckBox x:Name="CheckDay3" Content="" Grid.Column="3" HorizontalAlignment="Center"  Grid.Row="1" VerticalAlignment="Center" IsChecked="{Binding DaysWorking[2], Mode=TwoWay}" />
+                    <CheckBox x:Name="CheckDay4" Content="" Grid.Column="4" HorizontalAlignment="Center"  Grid.Row="1" VerticalAlignment="Center" IsChecked="{Binding DaysWorking[3], Mode=TwoWay}" />
+                    <CheckBox x:Name="CheckDay5" Content="" Grid.Column="5" HorizontalAlignment="Center"  Grid.Row="1" VerticalAlignment="Center" IsChecked="{Binding DaysWorking[4], Mode=TwoWay}" />
+                    <CheckBox x:Name="CheckDay6" Content="" Grid.Column="6" HorizontalAlignment="Center"  Grid.Row="1" VerticalAlignment="Center" IsChecked="{Binding DaysWorking[5], Mode=TwoWay}" />
 
-                    <TextBox x:Name="HB1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  Grid.Row="2"   Grid.Column="1"  />
-                    <TextBox x:Name="HB2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  Grid.Row="2"   Grid.Column="2"  />
-                    <TextBox x:Name="HB3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  Grid.Row="2"   Grid.Column="3"  />
-                    <TextBox x:Name="HB4" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  Grid.Row="2"   Grid.Column="4"  />
-                    <TextBox x:Name="HB5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  Grid.Row="2"   Grid.Column="5"  />
-                    <TextBox x:Name="HB6" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  Grid.Row="2"   Grid.Column="6"  />
+                    <xctk:TimePicker x:Name="HB1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Value="{Binding HoursWorking[0\,1], Mode=TwoWay}" Grid.Row="2"   Grid.Column="1"    IsEnabled="{Binding ElementName=CheckDay1, Path=IsChecked}" />
+                    <TextBox x:Name="HB2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  Grid.Row="2"   Grid.Column="2" IsEnabled="{Binding ElementName=CheckDay2, Path=IsChecked}" />
+                    <TextBox x:Name="HB3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  Grid.Row="2"   Grid.Column="3" IsEnabled="{Binding ElementName=CheckDay3, Path=IsChecked}"/>
+                    <TextBox x:Name="HB4" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  Grid.Row="2"   Grid.Column="4" IsEnabled="{Binding ElementName=CheckDay4, Path=IsChecked}" />
+                    <TextBox x:Name="HB5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  Grid.Row="2"   Grid.Column="5" IsEnabled="{Binding ElementName=CheckDay5, Path=IsChecked}"/>
+                    <TextBox x:Name="HB6" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  Grid.Row="2"   Grid.Column="6" IsEnabled="{Binding ElementName=CheckDay6, Path=IsChecked}"/>
 
-                    <TextBox x:Name="HF1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  Grid.Row="3"   Grid.Column="1"  />
-                    <TextBox x:Name="HF2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  Grid.Row="3"   Grid.Column="2"  />
-                    <TextBox x:Name="HF3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  Grid.Row="3"   Grid.Column="3"  />
-                    <TextBox x:Name="HF4" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  Grid.Row="3"   Grid.Column="4"  />
-                    <TextBox x:Name="HF5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  Grid.Row="3"   Grid.Column="5"  />
-                    <TextBox x:Name="HF6" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  Grid.Row="3"   Grid.Column="6"  />
+                    <TextBox x:Name="HF1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  Grid.Row="3"   Grid.Column="1" IsEnabled="{Binding ElementName=CheckDay1, Path=IsChecked}" />
+                    <TextBox x:Name="HF2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  Grid.Row="3"   Grid.Column="2" IsEnabled="{Binding ElementName=CheckDay2, Path=IsChecked}"/>
+                    <TextBox x:Name="HF3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  Grid.Row="3"   Grid.Column="3" IsEnabled="{Binding ElementName=CheckDay3, Path=IsChecked}"/>
+                    <TextBox x:Name="HF4" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  Grid.Row="3"   Grid.Column="4" IsEnabled="{Binding ElementName=CheckDay4, Path=IsChecked}"/>
+                    <TextBox x:Name="HF5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  Grid.Row="3"   Grid.Column="5" IsEnabled="{Binding ElementName=CheckDay5, Path=IsChecked}"/>
+                    <TextBox x:Name="HF6" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  Grid.Row="3"   Grid.Column="6" IsEnabled="{Binding ElementName=CheckDay6, Path=IsChecked}"/>
 
 
                 </Grid>
@@ -164,30 +165,12 @@
 
                 <Label VerticalAlignment="Center" Grid.Row="16" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Hollyday TAMAT:"/>
                 <CheckBox x:Name="hollydayTAMATCheckBox" VerticalAlignment="Center" Grid.Row="16" Margin="3" IsChecked="{Binding HollydayTAMAT, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
-              
+
                 <Label VerticalAlignment="Center" Grid.Row="17" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Recommandations:"/>
-                <TextBox x:Name="recommandationsTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Recommandations, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="17" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+                <TextBox x:Name="recommandationsTextBox" Width="257" VerticalAlignment="Center" Text="{Binding Recommandations, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="17" Margin="3,5,0,-51" Height="80" HorizontalAlignment="Left" Grid.Column="1"/>
             </Grid>
         </ScrollViewer>
-        <Border Grid.Row="1" Grid.Column="1" Margin="82,10,59,10" BorderThickness="2" BorderBrush="Blue">
-            <StackPanel >
-                <Image x:Name="NannyImage" 
-                       
-                       
-               MinHeight="50" MinWidth="50"
-                    
-                       
-                       Stretch="Fill" Height="59">
-                    <!--<Image.Source>
-                <BitmapImage UriSource="{Binding Path=ImageSource}"  />
-        </Image.Source>-->
-                </Image>
-                <Button x:Name="changeImageButton" 
-                    Content="Change Image" 
-                        Margin="1"
-                Click="changeImageButton_Click" RenderTransformOrigin="0.392,2.751" Height="24"/>
-            </StackPanel>
-        </Border>
+
 
 
 

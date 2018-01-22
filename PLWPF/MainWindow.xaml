@@ -32,10 +32,11 @@
         </Grid.ColumnDefinitions>
 
         <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" HorizontalAlignment="Center"   Content ="WELCOME TO NANNY'CENTER "  VerticalAlignment="center" Background="{x:Null}" FontSize="36" FontFamily="Showcard Gothic" Foreground="#FF005AF7"  />
+        <StackPanel Grid.Column="2"  HorizontalAlignment="Center"   Grid.Row="2"  VerticalAlignment="Center" Grid.ColumnSpan="2" >
 
-        <Button x:Name="AllDataButton" Content="All Data" Grid.Column="2" HorizontalAlignment="Center" Margin="98,10,94,0" Grid.Row="2" VerticalAlignment="Top" Width="180" Grid.ColumnSpan="2" Click="AllDataButton_Click" FontFamily="Segoe UI Black" FontSize="20" BorderThickness="8" ClipToBounds="True" SnapsToDevicePixels="True" Background="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}"/>
-        <Button Content="About us" Grid.Column="2" HorizontalAlignment="Center"  Grid.Row="2" VerticalAlignment="Bottom" Width="180" Grid.ColumnSpan="2" Margin="98,0,94,19" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" FontFamily="Segoe UI Black" BorderThickness="5" ClipToBounds="True" />
-
+            <Button x:Name="AllDataButton" Content="All Data" Grid.Column="2" HorizontalAlignment="Stretch" Margin="5" Grid.Row="2" VerticalAlignment="Center"  Grid.ColumnSpan="2" Click="AllDataButton_Click" FontFamily="Segoe UI Black" FontSize="20" BorderThickness="8" ClipToBounds="True" SnapsToDevicePixels="True" Background="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}"/>
+            <Button Content="About us" Grid.Column="2" HorizontalAlignment="Center"  Grid.Row="2" VerticalAlignment="Bottom" Width="180" Grid.ColumnSpan="2" Margin="98,0,94,19" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" FontFamily="Segoe UI Black" BorderThickness="5" ClipToBounds="True" />
+        </StackPanel>
 
         <TextBox Grid.Column="1" HorizontalAlignment="Center" Height="154" IsEnabled="False" Grid.Row="1" TextWrapping="Wrap" Text="NANNY" VerticalAlignment="Center" TextAlignment="Center" Width="140"  Background="#FFDE1616" FontFamily="Showcard Gothic" FontWeight="Bold" TextDecorations="{x:Null}" FontSize="20" OpacityMask="Black" CaretBrush="Black" BorderThickness="10" SnapsToDevicePixels="True" ClipToBounds="True" SelectionOpacity="0">
             <TextBox.BorderBrush>
@@ -58,10 +59,15 @@
         <Button x:Name="UpdateChildrenButton" Content="Update Children" Grid.Column="3" HorizontalAlignment="Left" Margin="37,122,0,0" Grid.Row="1" VerticalAlignment="Top" Width="115" Click="UpdateChildrenButton_Click" FontFamily="Showcard Gothic"/>
 
 
-        <Rectangle Grid.Column="4" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="144" Margin="34,27,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="125"/>
-        <TextBox Grid.Column="4" HorizontalAlignment="Left" Height="23" Margin="39,44,0,0" Grid.Row="1" TextWrapping="Wrap" Text="CONTRACT" TextAlignment="Center" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="AddContractButton" Content="Add Contract" Grid.Column="4" HorizontalAlignment="Left" Margin="54,97,0,0" Grid.Row="1" VerticalAlignment="Top" Width="90" Click="AddContractButton_Click" />
-        <Button x:Name="UpdateContractButton" Content="Update Contract" Grid.Column="4" HorizontalAlignment="Left" Margin="54,122,0,0" Grid.Row="1" VerticalAlignment="Top" Width="90" Click="UpdateContractButton_Click"/>
+        <StackPanel Grid.Column="4"  HorizontalAlignment="Center" Height="150"  Grid.Row="1"  VerticalAlignment="Center" Width="132" Margin="30,20,24,21"  >
+            <Label Content="CONTRACT" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Showcard Gothic" FontSize="20" />
+            <Label Content=" "/>
+            <Button x:Name="AddContractButton" Content="Add Contract"  HorizontalAlignment="Center"    VerticalAlignment="Center" Width="121" Click="AddContractButton_Click" FontFamily="Segoe UI Black" FontSize="14" Margin="2,0"  />
+            <Label Content=" "/>
+
+            <Button x:Name="UpdateContractButton" Content="Update Contract" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="123" Click="UpdateContractButton_Click" FontFamily="Segoe UI Black" FontSize="14" Margin="2,0,0,0"/>
+
+        </StackPanel>
 
     </Grid>
 </Window>

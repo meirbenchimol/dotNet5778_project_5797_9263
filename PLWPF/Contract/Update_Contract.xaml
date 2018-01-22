@@ -1,12 +1,131 @@
-﻿<Window x:Class="PLWPF.Update_Contract"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
+        xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.Update_Contract"
         mc:Ignorable="d"
-        Title="Update_Contract" Height="300" Width="300">
+        Title="Update_Contract" Height="600" Width="450" Loaded="Window_Loaded" Background="#FF15A6DC">
+    <Window.Resources>
+        <CollectionViewSource x:Key="contractViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Contract}, CreateList=True}"/>
+    </Window.Resources>
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="150*"/>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="250*"/>
+            <ColumnDefinition Width="10*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Update Contract" Grid.Column="1" HorizontalAlignment="Stretch"  Grid.Row="1" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI Black" FontSize="20"/>
+        <ScrollViewer Grid.Column="1" HorizontalAlignment="Stretch"  Grid.Row="2" VerticalAlignment="Stretch" >
+            <Grid x:Name="ContractDetailGrid" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="2" DataContext="{StaticResource contractViewSource}" Background="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Label VerticalAlignment="Stretch" Grid.Row="0" Margin="3" HorizontalAlignment="Stretch" Grid.Column="0" Content="Contract Number:"/>
+                <ComboBox x:Name="contractNumberComboBox"  VerticalAlignment="Stretch"  Grid.Row="0" Margin="3,3,-47,3"  HorizontalAlignment="Stretch" Grid.Column="1"/>
+
+                <Button x:Name="ValidContractbutton" Content="Valid this Contract" Grid.Column="1" HorizontalAlignment="Left" Margin="83,7,0,3" Grid.Row="1" VerticalAlignment="Top" Width="101" Click="ValidContractbutton_Click">
+                    <Button.Style>
+                        <Style>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text, ElementName=contractNumberComboBox}" Value="">
+                                    <Setter Property="UIElement.IsEnabled" Value="false"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+                <Label VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="ID Children : "/>
+                <ComboBox x:Name="teoudatZeoutChildComboBox" VerticalAlignment="Stretch" Grid.Row="2" Margin="3,3,-47,3"  HorizontalAlignment="Stretch" Grid.Column="1" IsEnabled="{Binding ElementName=ValidContractbutton, Path=IsEnabled}" />
+
+                <Button x:Name="ValidChildrenButton" Content="Valid this Children" Grid.Column="1" HorizontalAlignment="Left" Margin="83,7,0,3" Grid.Row="3" VerticalAlignment="Top" Width="101" Click="ValidChildrenButton_Click" >
+                    <Button.Style>
+                        <Style>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text, ElementName=teoudatZeoutChildComboBox}" Value="">
+                                    <Setter Property="UIElement.IsEnabled" Value="false"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+                <Label VerticalAlignment="Center" Grid.Row="4" Margin="3" HorizontalAlignment="Stretch"  Grid.Column="0" Grid.ColumnSpan="2" Content="ID Nanny : "/>
+                <ComboBox x:Name="teoudatZeoutNannyComboBox"  VerticalAlignment="Stretch"  Grid.Row="4" Margin="3,3,-47,3"  HorizontalAlignment="Stretch" Grid.Column="1"/>
+
+                <Button x:Name="ValidNannyButton" Content="Valid this Nanny " Grid.Column="1" HorizontalAlignment="Left" Margin="70,5,0,3" Grid.Row="5" VerticalAlignment="Top" Width="101" Click="ValidNannyButton_Click" >
+                    <Button.Style>
+                        <Style>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text, ElementName=teoudatZeoutNannyComboBox}" Value="">
+                                    <Setter Property="UIElement.IsEnabled" Value="false"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+
+
+                <Label VerticalAlignment="Center" Grid.Row="6" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Date Beguin:"/>
+                <DatePicker x:Name="dateBeguinDatePicker" VerticalAlignment="Center" SelectedDate="{Binding DateBeguin, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="6" Margin="3,4,0,4" HorizontalAlignment="Left" Grid.Column="1"/>
+
+                <Label VerticalAlignment="Center" Grid.Row="7" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Date Finish:"/>
+                <DatePicker x:Name="dateFinishDatePicker" VerticalAlignment="Center" SelectedDate="{Binding DateFinish, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="7" Margin="3" HorizontalAlignment="Left" Grid.Column="1"/>
+
+                <Label VerticalAlignment="Center" Grid.Row="8" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Distance:" />
+                <TextBox x:Name="distanceTextBox" Width="120" VerticalAlignment="Center" IsEnabled="False" Text="{Binding Distance, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="8" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+
+                <Button x:Name="RecalculeDistanceButton" Content="Recalcule distance between them" Margin="15,3"  Grid.Column="1" HorizontalAlignment="Left"  Grid.Row="9" VerticalAlignment="Top" Width="187" Click="RecalculeDistanceButton_Click" />
+
+                <Label VerticalAlignment="Center" Grid.Row="10" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Houre Price:"/>
+                <TextBox x:Name="hourePriceTextBox" IsEnabled="False" Width="120" VerticalAlignment="Center" Text="{Binding HourePrice, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="10" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+
+                <Label VerticalAlignment="Center" Grid.Row="11" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Month Price:"/>
+                <TextBox x:Name="monthPriceTextBox" IsEnabled="False" Width="120" VerticalAlignment="Center" Text="{Binding MonthPrice, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="11" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+
+                <Label VerticalAlignment="Center" Grid.Row="12" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Payement:"/>
+                <ComboBox x:Name="payementComboBox" Width="120" VerticalAlignment="Center" Text="{Binding Payement, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="12" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+
+                <Label VerticalAlignment="Center" Grid.Row="13" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Know Meet:"/>
+                <CheckBox x:Name="knowMeetCheckBox" VerticalAlignment="Center" Grid.Row="13" Margin="3" IsChecked="{Binding KnowMeet, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
+
+                <Label VerticalAlignment="Center" Grid.Row="14" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Signature:"/>
+                <CheckBox x:Name="signatureCheckBox" VerticalAlignment="Center" Grid.Row="14" Margin="3" IsChecked="{Binding Signature, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
+            </Grid>
+        </ScrollViewer>
+        <Button x:Name="UpdateButton" Content="  Update  " Grid.Column="1" HorizontalAlignment="Left" Margin="10,5,0,0" Grid.Row="3" VerticalAlignment="Top" Width="179" FontFamily="Segoe UI Black" Height="47" Click="UpdateButton_Click"/>
+        <Button x:Name="DeleteButton" Content="  Delete  " Grid.Column="1" HorizontalAlignment="Left" Margin="223,5,0,0" Grid.Row="3" VerticalAlignment="Top" Width="176" FontFamily="Segoe UI Black" Height="47" Click="DeleteButton_Click"/>
+
+
     </Grid>
 </Window>

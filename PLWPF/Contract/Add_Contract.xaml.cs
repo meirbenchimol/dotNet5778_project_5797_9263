@@ -23,10 +23,15 @@ namespace PLWPF
     {
         IBL bl;
         Contract myContract;
+        Nanny myNanny;
+        Child myChildren;
         public Add_Contract()
         {
             InitializeComponent();
             bl = Factory_BL.GetBL();
+            myContract = new Contract(0, 0, 0);
+            this.ContractDedailGrid.DataContext = myContract;
+            
 
             teoudatZeoutNannyComboBox.ItemsSource = bl.GetAllNanny(null);
             teoudatZeoutNannyComboBox.SelectedValuePath = "TeoudatZeout";
@@ -35,12 +40,12 @@ namespace PLWPF
             teoudatZeoutChildComboBox.ItemsSource = bl.ChildWithoutNanny();
             teoudatZeoutChildComboBox.SelectedValuePath = "TeoudatZeout";
             teoudatZeoutChildComboBox.DisplayMemberPath = "TeoudatZeout";
-
+            
             this.payementComboBox.ItemsSource = Enum.GetValues(typeof(BE.Payement));
 
         
         }
-        private int GetSelectedIdnanny()
+        private int GetSelectedIdNanny()
         {
             object result = this.teoudatZeoutNannyComboBox.SelectedValue;
 
@@ -48,7 +53,7 @@ namespace PLWPF
                 throw new Exception("you must choice Mother !!");
             return (int)result;
         }
-        private int GetSelectedIdCHILD()
+        private int GetSelectedIdChild()
         {
             object result = this.teoudatZeoutChildComboBox.SelectedValue;
 
@@ -66,16 +71,72 @@ namespace PLWPF
 
         private void ValidNannyButton_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
 
+                myNanny = bl.GetNanny(GetSelectedIdNanny());
+                myContract.TeoudatZeoutNanny = myNanny.TeoudatZeout;
+
+
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("check your input and try again");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void ValidChildrenButton_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+
+                myChildren = bl.GetChild(GetSelectedIdChild());
+                myContract.TeoudatZeoutChild = myChildren.TeoudatZeout;
+
+
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("check your input and try again");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
         }
 
         private void CalculeDistanceButton_Click(object sender, RoutedEventArgs e)
         {
+            Mother mom = bl.GetMother(myChildren.TeoudatZeoutMom);
+
+            myContract.Distance = bl.CalculateDistance(mom.Adresse, myNanny.Adresse);
+
+        }
+
+        private void HelpButton_Click(object sender, RoutedEventArgs e)
+        {
+            Window Help = new Help_Choice_Nanny();
+            Help.Show();
+        }
+
+        private void AddContractButton_Click(object sender, RoutedEventArgs e)
+        {
+           if( myContract.TeoudatZeoutChild ==0)
+                MessageBox.Show("You need selected children and valid him !");
+
+            if ( myContract.TeoudatZeoutNanny == 0)
+                MessageBox.Show("You need selected Nanny and valid her !");
+
+
+            bl.AddContract(myContract);
+            this.ContractDedailGrid.DataContext = myContract;
+            MessageBox.Show("Congratulation !! \n You have add the contract n: " + myContract );
+            this.Close();
 
         }
     }

@@ -73,6 +73,7 @@ namespace PLWPF
 
         private void AddContractButton_Click(object sender, RoutedEventArgs e)
         {
+         
             Window AddContractwindow = new Add_Contract();
             AddContractwindow.ShowDialog();
         }

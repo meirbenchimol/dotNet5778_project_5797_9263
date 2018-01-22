@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BE;
 using BL;
+using Xceed.Wpf.Toolkit;
+
 
 namespace PLWPF
 {
@@ -29,9 +31,10 @@ namespace PLWPF
             nanny = new Nanny(0);
             this.NannyDetailsGrid.DataContext = nanny;
             bl = Factory_BL.GetBL();
+            
         }
 
-       
+      
 
         private void AddButton_Click_1(object sender, RoutedEventArgs e)
         {
@@ -45,8 +48,8 @@ namespace PLWPF
                 //nanny.Firstname = this.firstnameTextBox.Text;
 
                 bl.AddNanny(nanny);
-                
-                MessageBox.Show("Congratulation you have add nanny !\n ID :"+nanny.TeoudatZeout+" \n Name : "+nanny.Surname+"  "+nanny.Firstname);
+
+                System.Windows.MessageBox.Show("Congratulation you have add nanny !\n ID :"+nanny.HoursWorking[0,1]+nanny.TeoudatZeout+" \n Name : "+nanny.Surname+"  "+nanny.Firstname);
                 nanny = new Nanny(0);
                 NannyDetailsGrid.DataContext=nanny;
                 //this.teoudatZeoutTextBox.ClearValue(TextBlock.TextProperty);
@@ -55,24 +58,15 @@ namespace PLWPF
             }
             catch (FormatException)
             {
-                MessageBox.Show("check your input and try again");
+                System.Windows.MessageBox.Show("check your input and try again");
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                System.Windows.MessageBox.Show(ex.Message);
             }
         }
 
-        private void changeImageButton_Click(object sender, RoutedEventArgs e)
-        {
-            Microsoft.Win32.OpenFileDialog f = new Microsoft.Win32.OpenFileDialog();
-            f.Filter = "JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
-            if (f.ShowDialog() == true)
-            {
-                this.NannyImage.Source = new BitmapImage(new Uri(f.FileName));
-
-            }
-        }
+        
 
     }
 }
