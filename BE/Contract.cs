@@ -53,13 +53,17 @@ namespace BE
         //to string
         public override string ToString()
         {
-            string contract = " The contract n°:" + contractNumber
-                              + "\n Teoudat Zeout'Nanny: " + teoudatZeoutNanny
+            string contract = "##############################################################################"
+                              + "##############################################################################"
+                              + "########## The contract n°:" + contractNumber
+                              + "##########\n Teoudat Zeout'Nanny: " + teoudatZeoutNanny
                               + "\n Teoudat Zeout Children: " + TeoudatZeoutChild
                               + "\n had the first meeting ?: " + knowMeet
+                              + "\n Distance : " + distance
                               + "\n had sign ?: " + signature + "\n houres'price:" + hourePrice
                               + "\n months'price : " + monthPrice + "\n payemment par :" + payement
-                              + "\n the contract begin: " + dateBeguin + " and finish : " + dateFinish;
+                              + "\n the contract begin: " + dateBeguin + " and finish : " + dateFinish
+                              + "**********************************************************************************";
             return contract;
         }
     }

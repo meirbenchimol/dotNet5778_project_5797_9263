@@ -431,8 +431,8 @@ namespace BL
         {
 
             var Distance = from item in dal.GetAllContract(null)
-                           orderby item.Distance % 5
-                           group item by item.Distance % 5;
+                           orderby item.Distance % 500
+                           group item by item.Distance % 500;
             foreach (var g in Distance)
             {
                 Console.WriteLine("Less than {0}", g);

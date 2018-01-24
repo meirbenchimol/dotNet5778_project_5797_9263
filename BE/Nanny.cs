@@ -87,16 +87,26 @@ namespace BE
         //to string
         public override string ToString()
         {
-            string nan = "\n The Nanny : " + surname + " " + firstname
-                + " \n teoudat Zeout :" + teoudatZeout + "\n birth date : " + birthdate
-                + "\n phone number : " + phoneNumber + "\n adresse :" + adresse
-                + "\n there are ascensor : " + checkfloor + " \n Floor : " + floor
-                + "\n Years experiences : " + yearsExperiences + "\n Max children : " + maxChild
-                + "\n max age : " + maxAge + "\n min age : " + minAge
-                + "\n she take price par houres ? :" + takePriceHoure
-                + "\n price houre : " + priceHoure + "\n price months : " + priceMonth
-               
-                + "\n hollyday TAMAT ? : " + hollydayTAMAT + "\recomandations : " + recommandations;
+            string nan = "############################################################################"
+                + "############################################################################"
+                + "\n ########## The Nanny : " + surname + " " + firstname
+                +" ##########"
+                + " \n ID :   " + teoudatZeout
+                + "\n Birth date :   " + birthdate
+                + "\n Phone number :   " + phoneNumber
+                + "\n Adresse :" + adresse
+                + "\n There are ascensor :   " + checkfloor
+                + " \n Floor :   " + floor
+                + "\n Years experiences :   " + yearsExperiences
+                + "\n Max children :   " + maxChild
+                + "\n Age max :   " + maxAge + "\n min age : " + minAge
+                + "\n She take price par houres ?   :   " + takePriceHoure
+                + "\n Price for one houre :   " + priceHoure
+                + "\n Price for one months :   " + priceMonth
+
+                + "\n She have the hollyday TAMAT ?   : " + hollydayTAMAT
+                + "\recomandations :   " + recommandations
+                + "\n";
 
             //string nan = "";
             //Nanny nanny = new Nanny (11);
@@ -104,13 +114,14 @@ namespace BE
             //{
             //    nan += string.Format($"{item.Name} : {item.GetValue(nanny, null)} \n");
             //}
-            nan += "Day Working :\n";
-            for (int i = 0; i < 6; i++)
-                nan += string.Format(i + " " + daysWorking[i].ToString() + "\n");
-            nan += "\nHoure working : \n";
-            for (int i = 0; i < 6; i++)
-                nan += string.Format("Enter Hour: " + hoursWorking[i, 0] + "Exit Hour: " + hoursWorking[i, 1] + "\n");
 
+            nan += "+++++++ Day Working :  ++++++\n";
+            for (int i = 0; i < 6; i++)
+                nan += string.Format( "***Day "+ (DayOfWeek)i + "-> she work ? :   " + daysWorking[i].ToString() + "\n ---Hour Beguin : " + hoursWorking[i, 0] + " --- Hour Finish : " + hoursWorking[i, 1] + "\n");
+           
+            nan += "********************************************************************\n" +
+                "********************************************************************\n" +
+                "********************************************************************\n";
 
             return nan;
         }

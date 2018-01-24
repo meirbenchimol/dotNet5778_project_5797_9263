@@ -16,7 +16,7 @@
 
 
     </Window.Resources>
-    <Grid Background="{StaticResource backgroundGlobal}" ShowGridLines="true">
+    <Grid Background="{StaticResource backgroundGlobal}" ShowGridLines="False">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="2.5*"/>

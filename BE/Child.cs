@@ -41,10 +41,16 @@ namespace BE
         //to string 
         public override string ToString()
         {
-            string children = "The children : " + firstname + "\n teoudat Zeout : " + teoudatZeout
-                            + "\n teoudat Zeout'mom : " + teoudatZeoutMom + "\n nirthday : " + birthday
-                            + "\n gender : " + genderChild + "\n he have speciales need ?" 
-                            + specialNeed + " who are : " + specialNeeds;
+            string children = "########################################################################"
+                            + "########################################################################"
+                            + "######### The children : " + firstname
+                            + " ########### \n teoudat Zeout : " + teoudatZeout
+                            + "\n teoudat Zeout'mom : " + teoudatZeoutMom
+                            + "\n nirthday : " + birthday
+                            + "\n gender : " + genderChild
+                            + "\n he have speciales need ?" + specialNeed
+                            + " who are : " + specialNeeds
+                            + "***********************************************************************";
 
             return children;
         }

@@ -56,10 +56,17 @@ namespace BE
         //to string 
         public override string ToString()
         {
-            string mom = "THE MOTHER " + surname + " " + firstname + "\n ID : " + teoudatZeout
-                        + "\n PHONE NUMBER : " + phoneNumber + "\n ADRESSE : " + adresse
-                        + "\n ADRESSE WANTED : " + adresseWanted + "\n" +
-                        "\n RECOMMANDATIONS : " + recomandations;
+            string mom ="##############################################################"
+                + "##############################################################"
+                + "################ THE MOTHER " 
+                + surname + " " 
+                + firstname + "  ################\n ID : " 
+                + teoudatZeout
+                + "\n PHONE NUMBER : " + phoneNumber 
+                + "\n ADRESSE : " + adresse
+                + "\n ADRESSE WANTED : " + adresseWanted 
+                + "\n" 
+                + "\n RECOMMANDATIONS : " + recomandations;
 
             //for (int i = 0; i < 6; i++)
             //    mom += string.Format(i + " " + daysNeeds[i].ToString() + "\n");
@@ -75,12 +82,21 @@ namespace BE
             //{
             //    mom += string.Format($"{item.Name} : {item.GetValue(mother, null)} \n");
             //}
-            mom += "DayNeed :\n";
+            //mom += "DayNeed :\n";
+            //for (int i = 0; i < 6; i++)
+            //    mom += string.Format(i + " " + daysNeeds[i].ToString() + "\n");
+            //mom += "\nHoure need : \n";
+            //for (int i = 0; i < 6; i++)
+            //    mom += string.Format("Enter Hour: " + houresNeeds[i, 0] + "Exit Hour: " + houresNeeds[i, 1] + "\n");
+
+            mom += "+++++++ DayNeed :  ++++++\n";
             for (int i = 0; i < 6; i++)
-                mom += string.Format(i + " " + daysNeeds[i].ToString() + "\n");
-            mom += "\nHoure need : \n";
-            for (int i = 0; i < 6; i++)
-                mom += string.Format("Enter Hour: " + houresNeeds[i, 0] + "Exit Hour: " + houresNeeds[i, 1] + "\n");
+               
+                mom += string.Format("***Day " + (DayOfWeek)i + "-> she need ? :   " + daysNeeds[i].ToString() + "\n ---Beguin of Houres Need : " + houresNeeds[i, 0] + " --- Finish of Houres need : " + houresNeeds[i, 1] + "\n");
+
+            mom += "********************************************************************\n" +
+                "********************************************************************\n" +
+                "********************************************************************\n";
 
             return mom;
         }

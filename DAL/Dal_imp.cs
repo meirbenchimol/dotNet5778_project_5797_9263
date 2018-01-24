@@ -157,6 +157,7 @@ namespace DAL
             if (index<0)
                 throw new Exception(" this contract is not found");
             ContractList[index] = contract;
+
         }
         public Contract GetContract(int contractNumber)
         {
@@ -169,6 +170,7 @@ namespace DAL
             if (predicate == null)
                 return ContractList.AsEnumerable();
             return ContractList.Where(predicate);
+
         }
         #endregion
 

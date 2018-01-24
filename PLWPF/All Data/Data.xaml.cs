@@ -91,5 +91,59 @@ namespace PLWPF
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void Grouping1_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                bool minimun = false;
+                GroupeNannyByAgeAccept min = new GroupeNannyByAgeAccept();
+                min.Source = bl.Grouping_Nanny(minimun);
+
+
+                this.page.Content = min;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void Grouping1bis_Click(object sender, RoutedEventArgs e)
+        {
+            try 
+            {
+                bool maximun = true;
+                GroupeNannyByAgeAccept max = new GroupeNannyByAgeAccept();
+                max.Source = bl.Grouping_Nanny( maximun );
+                   
+
+                this.page.Content = max;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void Grouping2_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                
+                GroupingContractByDistance gd = new GroupingContractByDistance();
+                gd.Source = bl.Grouping_Contract();
+
+
+                this.page.Content = gd;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

@@ -81,6 +81,12 @@
     <Compile Include="Contract\Help_Choice_Nanny.xaml.cs">
       <DependentUpon>Help_Choice_Nanny.xaml</DependentUpon>
     </Compile>
+    <Compile Include="All Data\GroupeNannyByAgeAccept.xaml.cs">
+      <DependentUpon>GroupeNannyByAgeAccept.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="All Data\GroupingContractByDistance.xaml.cs">
+      <DependentUpon>GroupingContractByDistance.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Mother\AddMother.xaml.cs">
       <DependentUpon>AddMother.xaml</DependentUpon>
     </Compile>
@@ -120,6 +126,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Contract\Help_Choice_Nanny.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="All Data\GroupeNannyByAgeAccept.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="All Data\GroupingContractByDistance.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -228,6 +242,11 @@
   <ItemGroup>
     <Resource Include="image\photo.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="image\datacenter.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\datacenter2.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
