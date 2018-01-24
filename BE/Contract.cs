@@ -22,6 +22,7 @@ namespace BE
         private DateTime dateFinish;
 
         //constructor
+        public Contract () { }
         public Contract(int contractNumber, int teoudatZeoutNanny, int teoudatZeoutChild)
         {
             this.contractNumber = contractNumber;

@@ -11,7 +11,7 @@
     <Window.Resources>
         <CollectionViewSource x:Key="childViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Child}, CreateList=True}"/>
     </Window.Resources>
-    <Grid Background="#FF0D90EC">
+    <Grid Background="#FF15A6DC">
         <Grid.RowDefinitions>
             <RowDefinition Height="10*"/>
             <RowDefinition Height="50*"/>

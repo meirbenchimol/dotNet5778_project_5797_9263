@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:PLWPF"
         xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.NannyWindow"
         mc:Ignorable="d"
-        Title="NannyWindow" Height="600" Width="600"  Background="#FF48A6D3">
+        Title="NannyWindow" Height="600" Width="600"  Background="#FF15A6DC">
     <Window.Resources>
         <CollectionViewSource x:Key="nannyViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Nanny}, CreateList=True}"/>
     </Window.Resources>

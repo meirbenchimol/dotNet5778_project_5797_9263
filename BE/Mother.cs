@@ -21,6 +21,7 @@ namespace BE
         private string recomandations;
 
         //constructor
+        public Mother() { }
         public Mother(int teoudatZeout)
         {
             this.teoudatZeout = teoudatZeout;

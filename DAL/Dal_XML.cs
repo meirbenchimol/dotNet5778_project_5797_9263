@@ -18,19 +18,39 @@ namespace DAL
     class Dal_XML : Idal
     {
 
-        XElement NannyRoot;
-        string nannyPath = @"nannyXml.xml";
+        private readonly string childPath = @"ChildXML.xml";
+
+        private readonly string contractPath = @"ContractXML.xml";
+
+        private readonly string motherPath = @"MotherXML.xml";
+
+        private readonly string nannyPath = @"NannyXML.xml";
 
 
-        XElement MotherRoot;
-        string motherPath = @"motherXml.xml";
 
 
-        XElement ChildRoot;
-        string childPath = @"childXml.xml";
 
-        XElement ContractRoot;
-        string contractPath = @"contractXml.xml";
+        private XElement ChildRoot;
+
+        private XElement ContractRoot;
+
+        private XElement MotherRoot;
+
+        private XElement NannyRoot;
+
+        //XElement NannyRoot;
+        //string nannyPath = @"nannyXml.xml";
+
+
+        //XElement MotherRoot;
+        //string motherPath = @"motherXml.xml";
+
+
+        //XElement ChildRoot;
+        //string childPath = @"childXml.xml";
+
+        //XElement ContractRoot;
+        //string contractPath = @"contractXml.xml";
 
         public Dal_XML()
         {
@@ -56,17 +76,58 @@ namespace DAL
             ContractRoot = new XElement("Contract");
             ContractRoot.Save(contractPath);
 
+
+
+            //  ChildSerializer(DataSource.Childs,childsPath);
+
+            ContractSerializer(ContractList, contractPath);
+
+            MotherSerializer(MotherList, motherPath);
+
+            NanniesSerializer(NannyList, nannyPath);
+
         }
+
+        public bool FileExist()
+
+        {
+
+            if (!File.Exists(motherPath) || !File.Exists(nannyPath))
+
+                return false;
+
+            return true;
+
+        }
+
 
         private void LoadData()
         {
             try
             {
-                NannyRoot = XElement.Load(nannyPath);
-                MotherRoot = XElement.Load(motherPath);
+                //NannyRoot = XElement.Load(nannyPath);
+                //MotherRoot = XElement.Load(motherPath);
+                //ChildRoot = XElement.Load(childPath);
+                //ContractRoot = XElement.Load(contractPath);
+
+
+                NannyDeserializer(nannyPath);
+
+
+
+                MotherDeserializer(motherPath);
+
+
+
                 ChildRoot = XElement.Load(childPath);
-                ContractRoot = XElement.Load(contractPath);
+
+                //ChildDeserializer(childsPath);
+
+
+
+                ContractDeserializer(contractPath);
             }
+
             catch
             {
                 throw new Exception("File upload problem");
@@ -849,7 +910,7 @@ namespace DAL
 
 
 
-            NanniesSerializer(GetNannies(), nannyPath);
+            NanniesSerializer(GetAllNanny(null), nannyPath);
 
         }
 
@@ -933,109 +994,7 @@ namespace DAL
 
         #endregion
 
-
-
-        /*   #region ChildFunction
-
-
-
-           public void AddChild(Child child)
-
-           {
-
-               if (GetChild(child.IdNumber) == null)
-
-               {
-
-                   DataSource.Childs.Add(child);
-
-                   ChildSerializer(GetChilds(), childsPath);
-
-               }
-
-               else
-
-                   throw new DuplicateNameException("DAL Error : This child IdNumber number already exist");
-
-           }
-
-
-
-           public void RemoveChild(Child child)
-
-           {
-
-               if (GetChild(child.IdNumber) != null)
-
-               {
-
-                   DataSource.Childs.Remove(child);
-
-                   ChildSerializer(GetChilds(), childsPath);
-
-               }
-
-               else
-
-                   throw new ArgumentException("DAL Error : This child IdNumber number doesn't exist");
-
-           }
-
-
-
-           public void UpdateChild(Child child)
-
-           {
-
-               Child toUpdate = GetChild(child.IdNumber);
-
-               foreach (PropertyInfo property in toUpdate.GetType().GetProperties())
-
-
-
-                   if (property.GetValue(toUpdate) !=
-
-                       child.GetType().GetProperty(property.Name).GetValue(child))
-
-                       toUpdate.GetType().GetProperty(property.Name)
-
-                               .SetValue(toUpdate, property.GetValue(child));
-
-               ChildSerializer(GetChilds(), childsPath);
-
-           }
-
-
-
-           public Child GetChild(long idNumber)
-
-           {
-
-               try
-
-               {
-
-                   Child child = DataSource.Childs.Find(s => s.IdNumber == idNumber);
-
-                   return child;
-
-               }
-
-               catch (Exception e)
-
-               {
-
-                   throw new ArgumentException("DAL Error : Can't find the child !", e);
-
-               }
-
-           }
-
-
-
-          #endregion */
-
-
+        
 
         #region Childs Functions
 
@@ -1213,13 +1172,6 @@ namespace DAL
             }
 
         }
-        public IEnumerable<Child> GetAllChild()
-        {
-            if (predicate == null)
-                return ChildList.AsEnumerable();
-            return ChildList.Where(predicate);
-        }
-
         public IEnumerable<Child> GetAllChild(Func<Child, bool> predicate = null)
 
     {
@@ -1241,17 +1193,19 @@ namespace DAL
 
                     Child c = new Child(0,0);
 
-                    c.IdNumber = long.Parse(item.Element("idNumber").Value);
+                    c.TeoudatZeout = int.Parse(item.Element("teoudatZeout").Value);
 
-                    c.MotherId = long.Parse(item.Element("motherId").Value);
+                    c.TeoudatZeoutMom = int.Parse(item.Element("teoudatZeoutMom").Value);
 
-                    c.BirthDate = DateTime.Parse(item.Element("birthdate").Value);
+                    c.Birthday = DateTime.Parse(item.Element("birthday").Value);
 
-                    c.PrivateName = item.Element("privateName").Value;
+                    //c.GenderChild = Gender.Parse(item.Element("genderChild").Value);
 
-                    c.SpecialNeeds = bool.Parse(item.Element("specialsNeeds").Value);
+                    c.Firstname = item.Element("firstname").Value;
 
-                    c.RemarkNeeds = item.Element("remarkNeeds").Value;
+                    c.SpecialNeed = bool.Parse(item.Element("specialsNeed").Value);
+
+                    c.SpecialNeeds = item.Element("specialNeeds").Value;
 
 
 
@@ -1262,6 +1216,38 @@ namespace DAL
 
 
                 return childsToReturn;
+                }
+                else
+                {
+                    foreach (XElement item in xElements)
+
+                    {
+
+                        Child c = new Child(0, 0);
+
+                        c.TeoudatZeout = int.Parse(item.Element("teoudatZeout").Value);
+
+                        c.TeoudatZeoutMom = int.Parse(item.Element("teoudatZeoutMom").Value);
+
+                        c.Birthday = DateTime.Parse(item.Element("birthday").Value);
+
+                        //c.GenderChild = Gender.Parse(item.Element("genderChild").Value);
+
+                        c.Firstname = item.Element("firstname").Value;
+
+                        c.SpecialNeed = bool.Parse(item.Element("specialsNeed").Value);
+
+                        c.SpecialNeeds = item.Element("specialNeeds").Value;
+
+
+
+                        childsToReturn.Add(c);
+
+                    }
+
+
+
+                    return childsToReturn;
                 }
 
             }
@@ -1289,13 +1275,13 @@ namespace DAL
 
         {
 
-            if (GetContract(contract.ContractId) == null)
+            if (GetContract(contract.ContractNumber) == null)
 
             {
 
-                DataSource.Contracts.Add(contract);
+                ContractList.Add(contract);
 
-                ContractSerializer(GetContracts(), contractsPath);
+                ContractSerializer(GetAllContract(null), contractPath);
 
             }
 
@@ -1309,114 +1295,59 @@ namespace DAL
 
         }
 
-
-
-        public void RemoveContract(Contract contract)
-
+        public bool DeleteContract(int contractNumber)
         {
+            if (!ContractList.Exists(x => x.ContractNumber == contractNumber))
+                throw new Exception(" this contract not found !");
+            ContractList.Remove(ContractList.Find(x => x.ContractNumber == contractNumber));
 
-            if (contract == null)
+            ContractSerializer(GetAllContract(null), contractPath);
 
-            {
 
-            }
-
-            else
-
-            {
-
-                if (GetContract(contract.ContractId) != null)
-
-                {
-
-                    DataSource.Contracts.Remove(contract);
-
-                    ContractSerializer(GetContracts(), contractsPath);
-
-                }
-
-                else
-
-                {
-
-                    throw new ArgumentException("DAL Error : This concract ID number doesn't exist");
-
-                }
-
-            }
+            return ContractList.Remove(ContractList.Find(x => x.ContractNumber == contractNumber));
 
         }
 
-
-
-        public Contract GetContract(long contractId)
+      
+        
+        public void UpdateContract(Contract contract )
 
         {
 
-            try
+            Contract toUpdate = GetContract(contract.ContractNumber);
 
-            {
+            foreach (PropertyInfo property in toUpdate.GetType().GetProperties())
 
-                Contract contract = DataSource.Contracts.Find(s => s.ContractId == contractId);
 
-                return contract;
 
-            }
+                if (property.GetValue(toUpdate) !=
 
-            catch (Exception e)
+                    contract.GetType().GetProperty(property.Name).GetValue(contract))
 
-            {
+                    toUpdate.GetType().GetProperty(property.Name)
 
-                throw new ArgumentException("DAL Error : Can't find the contract !", e);
+                            .SetValue(toUpdate, property.GetValue(contract));
 
-            }
+
+
+            ContractSerializer(GetAllContract(null), contractPath);
 
         }
+        public Contract GetContract(int contractNumber)
+        {
 
+            return ContractList.FirstOrDefault(x => x.ContractNumber == contractNumber);
 
+        }
+        public IEnumerable<Contract> GetAllContract(Func<Contract, bool> predicate = null)
+        {
+            if (predicate == null)
+                return ContractList.AsEnumerable();
+            return ContractList.Where(predicate);
 
+        }
         #endregion
 
-
-
-        #region GetLists
-
-
-
-        public IEnumerable<Nanny> GetNannies()
-
-        {
-
-            return DataSource.Nannies;
-
-        }
-
-
-
-        public IEnumerable<Mother> GetMothers()
-
-        {
-
-            return DataSource.Mothers;
-
-        }
-
-
-
-       
-
-
-        public IEnumerable<Contract> GetContracts()
-
-        {
-
-            return DataSource.Contracts;
-
-        }
-
-
-
-        #endregion
-
+        
     }
 }

@@ -31,6 +31,8 @@ namespace BE
         //private string imageSource;
 
         //constructor 
+        public Nanny ()
+        { }
         public Nanny(int teoudatZeout)
         {
             //imageSource = (@"Empty image");

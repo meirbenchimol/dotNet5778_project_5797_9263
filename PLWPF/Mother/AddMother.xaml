@@ -8,7 +8,7 @@
         xmlns:local="clr-namespace:PLWPF"
         xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.AddMother"
         mc:Ignorable="d"
-        Title="AddMother" Height="700" Width="550" Background="#FF48A6D3" >
+        Title="AddMother" Height="700" Width="550" Background="#FF15A6DC" >
     <Window.Resources>
         <CollectionViewSource x:Key="motherViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Mother}, CreateList=True}"/>
     </Window.Resources>
@@ -38,7 +38,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Label x:Name="title" Content="Add New Mother " Grid.Row="2" HorizontalAlignment="Center" FontSize="20" FontFamily="Showcard Gothic" Background="#FF48A6D3" Width="292" Grid.ColumnSpan="3" HorizontalContentAlignment="Center"  />
+        <Label x:Name="title" Content="Add New Mother " Grid.Row="1" HorizontalAlignment="Center" FontSize="20" FontFamily="Showcard Gothic" Background="#FF48A6D3" Width="292" HorizontalContentAlignment="Center" Grid.Column="1" Margin="98,60,77,35"  />
 
 
 
@@ -90,13 +90,7 @@
             </Grid>
         </ScrollViewer>
 
-        <Border Grid.Row="1" Grid.Column="1" Margin="82,10,59,10" BorderThickness="2" BorderBrush="Blue">
-            <StackPanel >
-                <StackPanel.Background>
-                    <ImageBrush ImageSource="/PLWPF;component/image/personne-inconnue.jpg"/>
-                </StackPanel.Background>
-            </StackPanel>
-        </Border>
+        <Border Grid.Row="1" Grid.Column="1" Margin="82,10,59,10" BorderThickness="2" BorderBrush="Blue"/>
 
     </Grid>
 </Window>

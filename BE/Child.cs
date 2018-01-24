@@ -18,6 +18,7 @@ namespace BE
         private string specialNeeds;
 
         //constructor
+        public Child () { }
         public Child(int teoudatZeout, int teoudatZeoutMom)
         {
             this.teoudatZeout = teoudatZeout;
