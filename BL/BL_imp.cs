@@ -26,14 +26,14 @@ namespace BL
         public void Initialisation()
         {
             AddNanny(new Nanny(11111111) { Surname ="dupon",Firstname ="Marge",Birthdate= new DateTime (1992,12,21) , Adresse = "yaffa,jerusalem,israel" });
-            AddNanny(new Nanny(33333333){ Surname = "hadad" ,Firstname="keren", Birthdate = new DateTime(1990, 02, 21) });
-            AddNanny(new Nanny(22222222) { Surname = "ben", Firstname = "sarah", Birthdate = new DateTime(1990, 08, 03) });
-            AddNanny(new Nanny(44444444) { Surname = "benhamou", Firstname = "cecile", Birthdate = new DateTime(1999, 01, 21) });
-            AddNanny(new Nanny(55555555) { Surname = "jormo", Firstname = "hasley", Birthdate = new DateTime(1989, 09, 21) });
-            AddNanny(new Nanny(66666666) { Surname = "halfon", Firstname = "dana", Birthdate = new DateTime(1990, 02, 21) });
+            AddNanny(new Nanny(33333333){ Surname = "hadad" ,Firstname="keren", Birthdate = new DateTime(1990, 02, 21) , Adresse = "jerusalem,israel" });
+            AddNanny(new Nanny(22222222) { Surname = "ben", Firstname = "sarah", Birthdate = new DateTime(1990, 08, 03) ,Adresse = "tel aviv,israel" });
+            AddNanny(new Nanny(44444444) { Surname = "benhamou", Firstname = "cecile", Birthdate = new DateTime(1999, 01, 21) ,Adresse = "uziel,jerusalem,israel" });
+            AddNanny(new Nanny(55555555) { Surname = "jormo", Firstname = "hasley", Birthdate = new DateTime(1989, 09, 21) , Adresse = "yaffa,tel aviv,israel" });
+            AddNanny(new Nanny(66666666) { Surname = "halfon", Firstname = "dana", Birthdate = new DateTime(1990, 02, 21) ,Adresse = "jerusalem" });
 
             AddMother(new Mother(11133333) { Surname = "levi", Firstname = "debo", Adresse = "hapisga,jerusalem,israel" });
-            AddMother(new Mother(11112222) { Surname = "cohen", Firstname = "lea", Adresse = "yaffa,jerusalem,israel" });
+            AddMother(new Mother(11112222) { Surname = "cohen", Firstname = "lea", Adresse = "herzl,jerusalem,israel" });
             AddChild(new Child(2,11112222));
             AddChild(new Child(11111122, 11133333) { Firstname = "david", Birthday = new DateTime(2017, 08, 12) });
             AddContract(new Contract(111111, 11111111, 11111122) { DateBeguin = new DateTime(2018, 01, 01) });
@@ -224,10 +224,10 @@ namespace BL
            // }
             //return houresWorking;
 
-            TimeSpan sum = (matrice[1,0].Subtract(matrice[0,0])) ;
+            TimeSpan sum = (matrice[0,1].Subtract(matrice[0,0])) ;
             for (int i = 1 ; i<6; i++)
                 {
-                    sum+=matrice[1,i].Subtract(matrice[0,i]);
+                    sum+=matrice[i,1].Subtract(matrice[i,0]);
                 }
             return sum;
         }
@@ -280,8 +280,8 @@ namespace BL
                 int problem2 = 6;
                 for (int i=0; i<6;i++)
                 {
-                    if (myMother.HouresNeeds[0, i] >= item.HoursWorking[0, i] &&
-                        myMother.HouresNeeds[1, i] <= item.HoursWorking[1, i])
+                    if (myMother.HouresNeeds[i, 0] >= item.HoursWorking[i, 0] &&
+                        myMother.HouresNeeds[i, 1] <= item.HoursWorking[i, 1])
                         problem2--;
                 }
 
@@ -316,8 +316,8 @@ namespace BL
                             int problem2 = 6;
                             for (int m = 0; m < 6;m++)
                             {
-                                if (myMother.HouresNeeds[0, m] >= item.HoursWorking[0, m] &&
-                                    myMother.HouresNeeds[1, m] <= item.HoursWorking[1, m])
+                                if (myMother.HouresNeeds[m, 0] >= item.HoursWorking[m, 0] &&
+                                    myMother.HouresNeeds[m, 1] <= item.HoursWorking[m, 1])
                                     problem2--;
                             }
 

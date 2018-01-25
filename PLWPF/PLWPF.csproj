@@ -78,9 +78,6 @@
     <Compile Include="Child\Add_Child.xaml.cs">
       <DependentUpon>Add_Child.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Contract\Help_Choice_Nanny.xaml.cs">
-      <DependentUpon>Help_Choice_Nanny.xaml</DependentUpon>
-    </Compile>
     <Compile Include="All Data\GroupeNannyByAgeAccept.xaml.cs">
       <DependentUpon>GroupeNannyByAgeAccept.xaml</DependentUpon>
     </Compile>
@@ -108,9 +105,6 @@
     <Compile Include="PlanningUserControl.xaml.cs">
       <DependentUpon>PlanningUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Timetable.xaml.cs">
-      <DependentUpon>Timetable.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Child\Update_child.xaml.cs">
       <DependentUpon>Update_child.xaml</DependentUpon>
     </Compile>
@@ -122,10 +116,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Child\Add_Child.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Contract\Help_Choice_Nanny.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -174,10 +164,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PlanningUserControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Timetable.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

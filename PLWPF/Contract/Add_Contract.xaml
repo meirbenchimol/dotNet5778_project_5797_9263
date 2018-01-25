@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PLWPF"
         xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.Add_Contract"
         mc:Ignorable="d"
-        Title="Add_Contract" Height="600" Width="450" Loaded="Window_Loaded" Background="#FF15A6DC">
+        Title="Add_Contract" Height="800" Width="470" Loaded="Window_Loaded" Background="#FF15A6DC">
     <Window.Resources>
         <CollectionViewSource x:Key="contractViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Contract}, CreateList=True}"/>
     </Window.Resources>
@@ -38,7 +38,7 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
-
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -68,7 +68,7 @@
                 <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Stretch"  Grid.Column="0" Grid.ColumnSpan="2" Content="ID Nanny : "/>
                 <ComboBox x:Name="teoudatZeoutNannyComboBox"  VerticalAlignment="Stretch"  Grid.Row="3" Margin="3,3,-47,3"  HorizontalAlignment="Stretch" Grid.Column="1"/>
 
-                <Button x:Name="ValidNannyButton" Content="Valid this Nanny " Grid.Column="1" HorizontalAlignment="Left" Margin="10,3,0,3" Grid.Row="4" VerticalAlignment="Top" Width="101" Click="ValidNannyButton_Click">
+                <Button x:Name="ValidNannyButton" Content="Valid this Nanny " Grid.Column="1" HorizontalAlignment="Left" Margin="10,3,0,3" Grid.Row="5" VerticalAlignment="Top" Width="101" Click="ValidNannyButton_Click">
                     <Button.Style>
                         <Style>
                             <Style.Triggers>
@@ -79,35 +79,98 @@
                         </Style>
                     </Button.Style>
                 </Button>
-                <Button x:Name="HelpButton" Content="Help for choice Nanny" Grid.Column="1" HorizontalAlignment="Left" Margin="127,3,-48,0" Grid.Row="4" VerticalAlignment="Top" Width="141" Click="HelpButton_Click"/>
+                <Border Grid.Column="0"  Grid.Row="4" Grid.ColumnSpan="2"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF8CEE82" BorderBrush="#FF131212" Margin="5,5,-50,5" Padding="0" BorderThickness="2">
+                    <StackPanel >
+                        <Label Content=" "/>
+                        <Button x:Name="HelpButton" Content="Click for some help for choice Nanny"  HorizontalAlignment="Center"  VerticalAlignment="Top" Width="239" Click="HelpButton_Click" Margin="77,0,57,0">
+                            <Button.Style>
+                                <Style>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Text, ElementName=teoudatZeoutChildComboBox}" Value="">
+                                            <Setter Property="UIElement.IsEnabled" Value="false"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                        <Label Content=" Nanny who meets of yours the criterion  : " HorizontalAlignment="Center" />
+                        <ComboBox x:Name="CorrespondNannyComboBox" >
+                            <ComboBox.Style>
+                                <Style TargetType="{x:Type ComboBox}">
+                                    <Setter Property="IsEnabled" Value="true" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding SelectedItem,ElementName=teoudatZeoutNannyComboBox}" Value="{x:Null}">
+                                            <Setter Property="IsEnabled" Value="False" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ComboBox.Style>
+                        </ComboBox>
+                        <Label Content=" Nanny who can also match : " HorizontalAlignment="Center" />
+                        <ComboBox x:Name="PotentialNannyComboBox" >
+                            <ComboBox.Style>
+                                <Style TargetType="{x:Type ComboBox}">
+                                    <Setter Property="IsEnabled" Value="true" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding SelectedItem,ElementName=teoudatZeoutNannyComboBox}" Value="{x:Null}">
+                                            <Setter Property="IsEnabled" Value="False" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ComboBox.Style>
+                        </ComboBox>
+                        <Label Content=" Nanny in the perimeter search : " HorizontalAlignment="Center" />
+                        <ComboBox x:Name="AccessibleNannyComboBox" >
+                            <ComboBox.Style>
+                                <Style TargetType="{x:Type ComboBox}">
+                                    <Setter Property="IsEnabled" Value="true" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding SelectedItem,ElementName=teoudatZeoutNannyComboBox}" Value="{x:Null}">
+                                            <Setter Property="IsEnabled" Value="False" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ComboBox.Style>
+                        </ComboBox>
 
+                        <!--<StackPanel.Style>
+                            <Style>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding SelectedItem,ElementName=teoudatZeoutNannyComboBox}" Value="{x:Null}">
+                                        <Setter Property="IsEnabled" Value="False" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </StackPanel.Style>-->
 
+                    </StackPanel>
+                </Border>
 
-                <Label VerticalAlignment="Center" Grid.Row="5" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Date Beguin:"/>
-                <DatePicker x:Name="dateBeguinDatePicker" VerticalAlignment="Center" SelectedDate="{Binding DateBeguin, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="5" Margin="3,4,0,4" HorizontalAlignment="Left" Grid.Column="1"/>
+                <Label VerticalAlignment="Center" Grid.Row="6" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Date Beguin:"/>
+                <DatePicker x:Name="dateBeguinDatePicker" VerticalAlignment="Center" SelectedDate="{Binding DateBeguin, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="6" Margin="3,4,0,4" HorizontalAlignment="Left" Grid.Column="1"/>
 
-                <Label VerticalAlignment="Center" Grid.Row="6" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Date Finish:"/>
-                <DatePicker x:Name="dateFinishDatePicker" VerticalAlignment="Center" SelectedDate="{Binding DateFinish, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="6" Margin="3" HorizontalAlignment="Left" Grid.Column="1"/>
+                <Label VerticalAlignment="Center" Grid.Row="7" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Date Finish:"/>
+                <DatePicker x:Name="dateFinishDatePicker" VerticalAlignment="Center" SelectedDate="{Binding DateFinish, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="7" Margin="3" HorizontalAlignment="Left" Grid.Column="1"/>
 
-                <Label VerticalAlignment="Center" Grid.Row="7" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Distance:" />
-                <TextBox x:Name="distanceTextBox" Width="120" VerticalAlignment="Center" IsEnabled="False" Text="{Binding Distance, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="7" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+                <Label VerticalAlignment="Center" Grid.Row="8" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Distance:" />
+                <TextBox x:Name="distanceTextBox" Width="120" VerticalAlignment="Center" IsEnabled="False" Text="{Binding Distance, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="8" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
 
-                <Button x:Name="CalculeDistanceButton" Content="Calcule distance between them" Margin="15,3"  Grid.Column="1" HorizontalAlignment="Left"  Grid.Row="8" VerticalAlignment="Top" Width="187" Click="CalculeDistanceButton_Click"/>
+                <Button x:Name="CalculeDistanceButton" Content="Calcule distance between them" Margin="15,3"  Grid.Column="1" HorizontalAlignment="Left"  Grid.Row="9" VerticalAlignment="Top" Width="187" Click="CalculeDistanceButton_Click"/>
 
-                <Label VerticalAlignment="Center" Grid.Row="9" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Houre Price:"/>
-                <TextBox x:Name="hourePriceTextBox" IsEnabled="False" Width="120" VerticalAlignment="Center" Text="{Binding HourePrice, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="9" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+                <Label VerticalAlignment="Center" Grid.Row="10" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Houre Price:"/>
+                <TextBox x:Name="hourePriceTextBox" IsEnabled="False" Width="120" VerticalAlignment="Center" Text="{Binding HourePrice, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="10" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
 
-                <Label VerticalAlignment="Center" Grid.Row="10" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Month Price:"/>
-                <TextBox x:Name="monthPriceTextBox" IsEnabled="False" Width="120" VerticalAlignment="Center" Text="{Binding MonthPrice, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="10" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+                <Label VerticalAlignment="Center" Grid.Row="11" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Month Price:"/>
+                <TextBox x:Name="monthPriceTextBox" IsEnabled="False" Width="120" VerticalAlignment="Center" Text="{Binding MonthPrice, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="11" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
 
-                <Label VerticalAlignment="Center" Grid.Row="11" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Payement:"/>
-                <ComboBox x:Name="payementComboBox" Width="120" VerticalAlignment="Center" Text="{Binding Payement, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="11" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+                <Label VerticalAlignment="Center" Grid.Row="12" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Payement:"/>
+                <ComboBox x:Name="payementComboBox" Width="120" VerticalAlignment="Center" Text="{Binding Payement, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="12" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
 
-                <Label VerticalAlignment="Center" Grid.Row="12" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Know Meet:"/>
-                <CheckBox x:Name="knowMeetCheckBox" VerticalAlignment="Center" Grid.Row="12" Margin="3" IsChecked="{Binding KnowMeet, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
+                <Label VerticalAlignment="Center" Grid.Row="13" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Know Meet:"/>
+                <CheckBox x:Name="knowMeetCheckBox" VerticalAlignment="Center" Grid.Row="13" Margin="3" IsChecked="{Binding KnowMeet, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
 
-                <Label VerticalAlignment="Center" Grid.Row="13" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Signature:"/>
-                <CheckBox x:Name="signatureCheckBox" VerticalAlignment="Center" Grid.Row="13" Margin="3" IsChecked="{Binding Signature, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
+                <Label VerticalAlignment="Center" Grid.Row="14" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Signature:"/>
+                <CheckBox x:Name="signatureCheckBox" VerticalAlignment="Center" Grid.Row="14" Margin="3" IsChecked="{Binding Signature, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
             </Grid>
         </ScrollViewer>
         <Button x:Name="AddContractButton" Content="ADD" Grid.Column="1" HorizontalAlignment="Stretch"  Grid.Row="3" VerticalAlignment="Stretch" FontFamily="Segoe UI Black" Cursor="None" Margin="5" Click="AddContractButton_Click" >

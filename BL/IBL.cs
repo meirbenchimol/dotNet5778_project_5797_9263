@@ -42,6 +42,7 @@ namespace BL
         #endregion
 
         #region Methods
+        int PriceOfMonth(Contract contract);
         int CalculateDistance(string source, string dest);
         IEnumerable<Nanny> CoordinationMother(Mother mother);
         IEnumerable<Nanny> LessPotentielNanny(Mother mother);

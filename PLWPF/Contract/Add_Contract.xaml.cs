@@ -47,13 +47,15 @@ namespace PLWPF
             teoudatZeoutChildComboBox.ItemsSource = bl.ChildWithoutNanny();
             teoudatZeoutChildComboBox.SelectedValuePath = "TeoudatZeout";
             teoudatZeoutChildComboBox.DisplayMemberPath = "TeoudatZeout";
+
+
             
             this.payementComboBox.ItemsSource = Enum.GetValues(typeof(BE.Payement));
 
         
         }
 
-        private void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e )
         {
             if(e.Result!=null)
             {
@@ -62,15 +64,17 @@ namespace PLWPF
             }
         }
 
-        private void Worker_DoWork(object sender, DoWorkEventArgs e)
+        private void Worker_DoWork(object sender, DoWorkEventArgs e )
         {
-            if(mom!=null && myNanny!=null)
+            if (mom != null && myNanny != null)
+            {
                 e.Result = bl.CalculateDistance(mom.Adresse, myNanny.Adresse);
+            }
         }
 
-        private int GetSelectedIdNanny()
+        private int GetSelectedIdNanny(object result)
         {
-            object result = this.teoudatZeoutNannyComboBox.SelectedValue;
+            //object result = this.teoudatZeoutNannyComboBox.SelectedValue;
 
             if (result == null)
                 throw new Exception("you must choice Mother !!");
@@ -96,8 +100,9 @@ namespace PLWPF
         {
             try
             {
+                if (GetSelectedIdNanny(this.teoudatZeoutNannyComboBox.SelectedValue)!=0)
+                myNanny = bl.GetNanny(GetSelectedIdNanny(this.teoudatZeoutNannyComboBox.SelectedValue));
 
-                myNanny = bl.GetNanny(GetSelectedIdNanny());
                 myContract.TeoudatZeoutNanny = myNanny.TeoudatZeout;
 
 
@@ -146,21 +151,39 @@ namespace PLWPF
 
         private void HelpButton_Click(object sender, RoutedEventArgs e)
         {
-            Window Help = new Help_Choice_Nanny();
-            Help.Show();
+            mom = bl.GetMother(myChildren.TeoudatZeoutMom);
+
+
+            CorrespondNannyComboBox.ItemsSource = bl.CoordinationMother(mom);
+            CorrespondNannyComboBox.SelectedValuePath = "TeoudatZeout";
+            CorrespondNannyComboBox.DisplayMemberPath = "TeoudatZeout";
+
+            PotentialNannyComboBox.ItemsSource = bl.LessPotentielNanny(mom);
+            PotentialNannyComboBox.SelectedValuePath = "TeoudatZeout";
+            PotentialNannyComboBox.DisplayMemberPath = "TeoudatZeout";
+
+            AccessibleNannyComboBox.ItemsSource = bl.AccessibleNanny(mom);
+            AccessibleNannyComboBox.SelectedValuePath = "TeoudatZeout";
+            AccessibleNannyComboBox.DisplayMemberPath = "TeoudatZeout";
+
         }
 
         private void AddContractButton_Click(object sender, RoutedEventArgs e)
         {
-           if( myContract.TeoudatZeoutChild ==0)
-                MessageBox.Show("You need selected children and valid him !");
+            //if( myContract.TeoudatZeoutChild ==0)
+            //     MessageBox.Show("You need selected children and valid him !");
 
-            if ( myContract.TeoudatZeoutNanny == 0)
-                MessageBox.Show("You need selected Nanny and valid her !");
+            // if ( myContract.TeoudatZeoutNanny == 0)
+            //     MessageBox.Show("You need selected Nanny and valid her !");
+            myContract.MonthPrice = bl.PriceOfMonth(myContract);
+            this.hourePriceTextBox.Text = myContract.HourePrice.ToString();
+            this.monthPriceTextBox.Text = myContract.MonthPrice.ToString();
 
 
             bl.AddContract(myContract);
-            this.ContractDedailGrid.DataContext = myContract;
+
+            
+            //this.ContractDedailGrid.DataContext = myContract;
             MessageBox.Show("Congratulation !! \n You have add the contract n: " + myContract );
             this.Close();
 

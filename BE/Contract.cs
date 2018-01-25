@@ -54,8 +54,8 @@ namespace BE
         //to string
         public override string ToString()
         {
-            string contract = "##############################################################################"
-                              + "##############################################################################"
+            string contract = "##############################################################################\n"
+                              + "##############################################################################\n"
                               + "########## The contract n°:" + contractNumber
                               + "##########\n Teoudat Zeout'Nanny: " + teoudatZeoutNanny
                               + "\n Teoudat Zeout Children: " + TeoudatZeoutChild
@@ -64,7 +64,7 @@ namespace BE
                               + "\n had sign ?: " + signature + "\n houres'price:" + hourePrice
                               + "\n months'price : " + monthPrice + "\n payemment par :" + payement
                               + "\n the contract begin: " + dateBeguin + " and finish : " + dateFinish
-                              + "**********************************************************************************";
+                              + "\n**********************************************************************************";
             return contract;
         }
     }

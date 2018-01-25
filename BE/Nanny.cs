@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace BE
 {
+    [Serializable]
+
     public class Nanny : IComparable
     {
         //attributs
@@ -52,7 +56,7 @@ namespace BE
             priceHoure = 0;
             priceMonth = 0;
             daysWorking = new bool[6];
-            hoursWorking = new DateTime[6, 2];
+            HoursWorking = new DateTime[6, 2];
             hollydayTAMAT = true;
             recommandations = "  ";
         }
@@ -73,10 +77,15 @@ namespace BE
         public bool TakeHoureprice { get => takePriceHoure; set => takePriceHoure = value; }
         public int PriceHoure { get => priceHoure; set => priceHoure = value; }
         public int PriceMonth { get => priceMonth; set => priceMonth = value; }
-        public bool[] DaysWorking { get => daysWorking; set => daysWorking = value; }
-        public DateTime[,] HoursWorking { get => hoursWorking; set => hoursWorking = value; }
         public bool HollydayTAMAT { get => hollydayTAMAT; set => hollydayTAMAT = value; }
         public string Recommandations { get => recommandations; set => recommandations = value; }
+
+        [XmlIgnore]
+        public bool[] DaysWorking { get => daysWorking; set => daysWorking = value; }
+        [XmlIgnore]
+        public DateTime[,] HoursWorking { get => hoursWorking; set => hoursWorking = value; }
+
+       
         //public string ImageSource { get => imageSource; set => imageSource = value; }
 
         public int CompareTo(object obj)
@@ -85,12 +94,13 @@ namespace BE
             return this.teoudatZeout.CompareTo(nanny.teoudatZeout);
         }
 
+       
 
         //to string
         public override string ToString()
         {
-            string nan = "############################################################################"
-                + "############################################################################"
+            string nan = "############################################################################\n"
+                + "############################################################################\n"
                 + "\n ########## The Nanny : " + surname + " " + firstname
                 +" ##########"
                 + " \n ID :   " + teoudatZeout
@@ -119,7 +129,7 @@ namespace BE
 
             nan += "+++++++ Day Working :  ++++++\n";
             for (int i = 0; i < 6; i++)
-                nan += string.Format( "***Day "+ (DayOfWeek)i + "-> she work ? :   " + daysWorking[i].ToString() + "\n ---Hour Beguin : " + hoursWorking[i, 0] + " --- Hour Finish : " + hoursWorking[i, 1] + "\n");
+                nan += string.Format( "***Day "+ (DayOfWeek)i + "-> she work ? :   " + daysWorking[i].ToString() + "\n ---Hour Beguin : " + HoursWorking[i, 0] + " --- Hour Finish : " + HoursWorking[i, 1] + "\n");
            
             nan += "********************************************************************\n" +
                 "********************************************************************\n" +

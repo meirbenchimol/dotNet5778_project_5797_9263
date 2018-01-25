@@ -48,7 +48,7 @@ namespace PLWPF
 
                 bl.AddMother(myMother);
 
-                System.Windows.MessageBox.Show("Congratulation you have add Mother !\n ID :" + myMother.TeoudatZeout + " \n Name : " + myMother.Surname + "  " + myMother.Firstname);
+                System.Windows.MessageBox.Show("Congratulation you have add Mother !\n " + myMother);
                 this.Close();
               
             }

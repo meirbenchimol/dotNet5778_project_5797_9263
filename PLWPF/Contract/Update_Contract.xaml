@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PLWPF"
         xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.Update_Contract"
         mc:Ignorable="d"
-        Title="Update_Contract" Height="600" Width="450" Loaded="Window_Loaded" Background="#FF15A6DC">
+        Title="Update_Contract" Height="800" Width="450" Loaded="Window_Loaded" Background="#FF15A6DC">
     <Window.Resources>
         <CollectionViewSource x:Key="contractViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Contract}, CreateList=True}"/>
     </Window.Resources>

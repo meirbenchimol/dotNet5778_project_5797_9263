@@ -61,6 +61,7 @@ namespace PLWPF
             {
                 myContract.Distance = (int)e.Result;
                 this.distanceTextBox.Text = e.Result.ToString();
+                
             }
         }
 
@@ -108,6 +109,8 @@ namespace PLWPF
             {
 
                 myContract = bl.GetContract(GetSelectedContractNumber());
+                myChild = bl.GetChild(myContract.TeoudatZeoutChild);
+                myNanny = bl.GetNanny(myContract.TeoudatZeoutNanny);
 
             }
             catch (FormatException)
